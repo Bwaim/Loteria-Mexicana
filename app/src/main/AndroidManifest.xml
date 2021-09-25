@@ -5,6 +5,7 @@
     android:installLocation="auto">
 
     <application
+        android:name=".LoteriaApplication"
         android:allowBackup="true"
         android:autoRevokePermissions="allowed"
         android:icon="@mipmap/ic_launcher"

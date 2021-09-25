@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "642651592936",
+    "project_id": "loteria-mexicana-fd4d9",
+    "storage_bucket": "loteria-mexicana-fd4d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642651592936:android:ef2c7705bc47a8bccc515d",
+        "android_client_info": {
+          "package_name": "dev.bwaim.loteria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642651592936-amjmt2kc48i8r7lqgopg56c5md4muiek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRu6jV0wxanvQYKS-4LV7xNpOEXyKCbOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642651592936-amjmt2kc48i8r7lqgopg56c5md4muiek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642651592936:android:03bae3ac87d4ab44cc515d",
+        "android_client_info": {
+          "package_name": "dev.bwaim.loteria.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642651592936-amjmt2kc48i8r7lqgopg56c5md4muiek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRu6jV0wxanvQYKS-4LV7xNpOEXyKCbOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642651592936-amjmt2kc48i8r7lqgopg56c5md4muiek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

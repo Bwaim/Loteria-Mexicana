@@ -9,7 +9,7 @@ import java.util.regex.Pattern
 internal class TimberInitializer : Initializer<Unit> {
     override fun create(context: Context) {
         val tree = if (BuildConfig.DEBUG) {
-            SkeletonDebugTree()
+            LoteriaDebugTree()
         } else {
             ReleaseTree()
         }
@@ -22,7 +22,7 @@ internal class TimberInitializer : Initializer<Unit> {
      * Special version of [Timber.DebugTree] which is tailored for Timber being wrapped
      * within another class.
      */
-    private class SkeletonDebugTree : Timber.DebugTree() {
+    private class LoteriaDebugTree : Timber.DebugTree() {
         override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
             super.log(priority, createClassTag(), message, t)
         }

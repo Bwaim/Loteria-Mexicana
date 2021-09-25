@@ -6,21 +6,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 
 @Composable
-public fun SkeletonTheme(
+public fun LoteriaTheme(
     useDarkColors: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
-        colors = if (useDarkColors) SkeletonDarkColors else SkeletonLightColors,
+        colors = if (useDarkColors) LoteriaDarkColors else LoteriaLightColors,
         typography = debugTypography(),
         shapes = Shapes,
         content = content
     )
 }
 
-public object SkeletonTheme {
-    public val typography: SkeletonTypography
+public object LoteriaTheme {
+    public val typography: LoteriaTypography
         @Composable
         @ReadOnlyComposable
-        get() = LocalSkeletonTypography.current
+        get() = LocalLoteriaTypography.current
 }

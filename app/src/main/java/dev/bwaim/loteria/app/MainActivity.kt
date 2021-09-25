@@ -10,13 +10,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.bwaim.loteria.compose.theme.SkeletonTheme
+import dev.bwaim.loteria.compose.theme.LoteriaTheme
 
 public class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SkeletonTheme {
+            LoteriaTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -37,7 +37,7 @@ private fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    SkeletonTheme {
+    LoteriaTheme {
         Greeting("Android")
     }
 }

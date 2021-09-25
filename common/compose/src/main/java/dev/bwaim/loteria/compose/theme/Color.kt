@@ -43,7 +43,7 @@ private val OnPrimaryDark = Color(0xfffcfcfe)
 private val OnSecondaryDark = Color(0xfffcfcfe)
 private val OnSurfaceDark = Color(0xfffcfcfe)
 
-public val SkeletonLightColors: Colors = lightColors(
+public val LoteriaLightColors: Colors = lightColors(
     primary = PrimaryLight,
     primaryVariant = PrimaryVariantLight,
     secondary = SecondaryLight,
@@ -58,7 +58,7 @@ public val SkeletonLightColors: Colors = lightColors(
     onError = OnSurfaceLight
 )
 
-public val SkeletonDarkColors: Colors = darkColors(
+public val LoteriaDarkColors: Colors = darkColors(
     primary = PrimaryDark,
     primaryVariant = PrimaryVariantDark,
     secondary = SecondaryDark,

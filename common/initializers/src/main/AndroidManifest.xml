@@ -22,10 +22,6 @@
             <meta-data
                 android:name="dev.bwaim.loteria.initializers.TimberInitializer"
                 android:value="androidx.startup" />
-
-            <meta-data
-                android:name="dev.bwaim.loteria.initializers.WorkManagerInitializer"
-                android:value="androidx.startup" />
         </provider>
 
     </application>

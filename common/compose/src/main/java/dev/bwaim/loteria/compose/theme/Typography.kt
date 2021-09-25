@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 
 @Immutable
-public class SkeletonTypography internal constructor(
+public class LoteriaTypography internal constructor(
     public val headline1: TextStyle,
     public val title1: TextStyle,
     public val button: TextStyle,
@@ -53,7 +53,7 @@ public class SkeletonTypography internal constructor(
         headline1: TextStyle = this.headline1,
         title1: TextStyle = this.title1,
         button: TextStyle = this.button,
-    ): SkeletonTypography = SkeletonTypography(
+    ): LoteriaTypography = LoteriaTypography(
         headline1 = headline1,
         title1 = title1,
         button = button,
@@ -61,7 +61,7 @@ public class SkeletonTypography internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is SkeletonTypography) return false
+        if (other !is LoteriaTypography) return false
 
         if (headline1 != other.headline1) return false
         if (title1 != other.title1) return false
@@ -86,12 +86,12 @@ private fun TextStyle.withDefaultFontFamily(default: FontFamily): TextStyle {
     return if (fontFamily != null) this else copy(fontFamily = default)
 }
 
-internal val LocalSkeletonTypography = staticCompositionLocalOf { SkeletonTypography() }
+internal val LocalLoteriaTypography = staticCompositionLocalOf { LoteriaTypography() }
 
 /**
  * A Material [Typography] implementation which sets all text styles to a [TextStyle] with a
  * 1sp font size and a transparent color to discourage usage of
- * [MaterialTheme.typography] in preference to [SkeletonTheme.typography].
+ * [MaterialTheme.typography] in preference to [LoteriaTheme.typography].
  */
 internal fun debugTypography(): Typography {
     val debugTextStyle = TextStyle(fontSize = 100.sp)
@@ -115,12 +115,12 @@ internal fun debugTypography(): Typography {
 @Preview(name = "Typography")
 @Composable
 private fun PreviewTypography() {
-    SkeletonTheme(useDarkColors = false) {
+    LoteriaTheme(useDarkColors = false) {
         Surface {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(text = "Headline1", style = SkeletonTheme.typography.headline1)
-                Text(text = "Title 1", style = SkeletonTheme.typography.title1)
-                Text(text = "Button", style = SkeletonTheme.typography.button)
+                Text(text = "Headline1", style = LoteriaTheme.typography.headline1)
+                Text(text = "Title 1", style = LoteriaTheme.typography.title1)
+                Text(text = "Button", style = LoteriaTheme.typography.button)
             }
         }
     }

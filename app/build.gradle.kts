@@ -12,7 +12,7 @@ plugins {
 
 android {
     defaultConfig {
-        applicationId = "com.bwaim.androidskeleton"
+        applicationId = "dev.bwaim.loteria"
 
         versionCode = 1
         versionName = "1.0"

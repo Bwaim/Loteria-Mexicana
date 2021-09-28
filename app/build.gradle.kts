@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
 
     implementation(libs.compose.material)
+    debugImplementation(libs.compose.ui.tooling.library)
     implementation(libs.compose.ui.tooling.preview)
 
     implementation(libs.hilt.library)

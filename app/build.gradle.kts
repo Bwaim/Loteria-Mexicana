@@ -68,6 +68,7 @@ dependencies {
     implementation(project(":common:http"))
     implementation(project(":common:imageloading"))
     implementation(project(":common:initializers"))
+    implementation(project(":common:navigation"))
     implementation(project(":common:theme:theme"))
 
     implementation(libs.androidx.activity.compose)

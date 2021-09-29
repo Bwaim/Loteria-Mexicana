@@ -23,6 +23,7 @@ internal class ConnectivityInterceptor @Inject constructor(
         }
     }
 
+    @SuppressWarnings("Deprecated")
     override fun intercept(chain: Interceptor.Chain): Response {
         if (Build.VERSION.SDK_INT < 24) {
             connected = connectivityManager.activeNetworkInfo?.isConnected ?: false

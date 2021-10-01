@@ -1,8 +1,8 @@
 package dev.bwaim.loteria.http.interceptors.emptybody
 
+import com.google.common.truth.Truth.assertThat
 import dev.bwaim.loteria.http.interceptors.emptybody.EmptyBodyInterceptor.Companion.EMPTY_BODY
 import dev.bwaim.loteria.http.utils.HttpTestUtils.createFakeResponse
-import com.google.common.truth.Truth.assertThat
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK

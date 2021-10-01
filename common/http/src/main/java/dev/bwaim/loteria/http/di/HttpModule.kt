@@ -1,14 +1,14 @@
 package dev.bwaim.loteria.http.di
 
 import android.content.Context
-import dev.bwaim.loteria.http.BuildConfig
-import dev.bwaim.loteria.http.interceptors.connectivity.ConnectivityInterceptor
-import dev.bwaim.loteria.http.interceptors.emptybody.EmptyBodyInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.bwaim.loteria.http.BuildConfig
+import dev.bwaim.loteria.http.interceptors.connectivity.ConnectivityInterceptor
+import dev.bwaim.loteria.http.interceptors.emptybody.EmptyBodyInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

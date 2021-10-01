@@ -168,8 +168,9 @@ private fun PreviewMessageCard() {
 }
 
 // @Preview(showBackground = true)
-@SuppressWarnings
+
 @Composable
+@SuppressWarnings("unused")
 private fun DefaultPreview() {
     LoteriaTheme {
         Greeting("Android")

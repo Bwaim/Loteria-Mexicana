@@ -71,11 +71,19 @@ dependencies {
     implementation(project(":common:navigation"))
     implementation(project(":common:theme:theme"))
 
+    implementation(project(":exampleFeature"))
+    implementation(project(":navigation"))
+
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.compose.material)
     debugImplementation(libs.compose.ui.tooling.library)
     implementation(libs.compose.ui.tooling.preview)
+
+    implementation(libs.accompanist.insets.library)
+    implementation(libs.accompanist.insets.ui)
 
     implementation(libs.hilt.library)
     kapt(libs.hilt.compiler)

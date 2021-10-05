@@ -1,8 +1,8 @@
 package dev.bwaim.loteria.examplefeature
 
 import androidx.lifecycle.ViewModel
-import dev.bwaim.loteria.navigation.NavigationManager
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.bwaim.loteria.navigation.NavigationManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject

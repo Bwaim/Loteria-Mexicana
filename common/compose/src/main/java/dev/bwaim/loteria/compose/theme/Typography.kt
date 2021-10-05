@@ -45,7 +45,7 @@ public class LoteriaTypography internal constructor(
             lineHeight = 28.sp
         ),
         button: TextStyle = TextStyle(
-            fontSize = 17.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
             letterSpacing = 0.02.em,
             lineHeight = 24.sp

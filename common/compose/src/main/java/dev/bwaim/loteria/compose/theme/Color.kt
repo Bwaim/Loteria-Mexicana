@@ -10,21 +10,22 @@ import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.unit.Dp
 
 // Light color palette
-private val PrimaryLight = Color(0xff3a34bc)
-private val PrimaryVariantLight = Color(0xff322da3)
-private val PrimaryLightLight = Color(0xff4d47bc)
+private val PrimaryLight = Color(0xff009688)
+private val PrimaryVariantLight = Color(0xff00796b)
+private val OnPrimaryLight = Color(0xffffffff)
 
 private val SecondaryLight = Color(0xff924c8b)
 private val SecondaryVariantLight = Color(0xff822796)
-private val SecondaryLightLight = Color(0xffac4ec1)
-
-private val SurfaceLight = Color(0xfffcfcfe)
-
-private val ErrorLight = Color(0xffaf2d2d)
-
-private val OnPrimaryLight = Color(0xfffcfcfe)
 private val OnSecondaryLight = Color(0xfffcfcfe)
-private val OnSurfaceLight = Color(0xff0c0b28)
+
+private val BackgroundLight = Color(0xffffffff)
+private val OnBackgroundLight = Color(0xff212121)
+
+private val SurfaceLight = Color(0xffffffff)
+private val OnSurfaceLight = Color(0xff212121)
+
+private val ErrorLight = Color(0xffb00020)
+private val OnErrorLight = Color(0xffffffff)
 
 // Dark color palette
 private val PrimaryDark = Color(0xff7b78d9)
@@ -48,14 +49,14 @@ public val LoteriaLightColors: Colors = lightColors(
     primaryVariant = PrimaryVariantLight,
     secondary = SecondaryLight,
     secondaryVariant = SecondaryVariantLight,
-    background = SurfaceLight,
+    background = BackgroundLight,
     surface = SurfaceLight,
     error = ErrorLight,
     onPrimary = OnPrimaryLight,
     onSecondary = OnSecondaryLight,
-    onBackground = OnSurfaceLight,
+    onBackground = OnBackgroundLight,
     onSurface = OnSurfaceLight,
-    onError = OnSurfaceLight
+    onError = OnErrorLight
 )
 
 public val LoteriaDarkColors: Colors = darkColors(
@@ -73,13 +74,13 @@ public val LoteriaDarkColors: Colors = darkColors(
     onError = OnSurfaceDark
 )
 
-public val Colors.primaryLight: Color
-    @Composable
-    get() = if (isLight) PrimaryLightLight else PrimaryLightDark
-
-public val Colors.secondaryLight: Color
-    @Composable
-    get() = if (isLight) SecondaryLightLight else SecondaryLightDark
+// public val Colors.primaryLight: Color
+//    @Composable
+//    get() = if (isLight) PrimaryLightLight else PrimaryLightDark
+//
+// public val Colors.secondaryLight: Color
+//    @Composable
+//    get() = if (isLight) SecondaryLightLight else SecondaryLightDark
 
 /**
  * Return the fully opaque color that results from compositing [onSurface] atop [surface] with the

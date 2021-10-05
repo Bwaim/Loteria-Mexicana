@@ -8,9 +8,9 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import dev.bwaim.loteria.compose.ListDefaults.VerticalPadding
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
+import dev.bwaim.loteria.compose.ListDefaults.VerticalPadding
 
 @Composable
 public fun LazyListState.elevation(): Dp {

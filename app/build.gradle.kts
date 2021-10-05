@@ -85,6 +85,7 @@ dependencies {
 
     implementation(libs.accompanist.insets.library)
     implementation(libs.accompanist.insets.ui)
+    implementation(libs.accompanist.systemuicontroller)
 
     implementation(libs.hilt.library)
     kapt(libs.hilt.compiler)

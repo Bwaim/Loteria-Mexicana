@@ -10,13 +10,15 @@ import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.unit.Dp
 
 // Light color palette
-private val PrimaryLight = Color(0xff009688)
-private val PrimaryVariantLight = Color(0xff00796b)
-private val OnPrimaryLight = Color(0xffffffff)
+private val PrimaryLight = Color(0xffffb74d)
+private val PrimaryLightLight = Color(0xffffe97d)
+private val PrimaryDarkLight = Color(0xffc88719)
+private val OnPrimaryLight = Color(0xbf000000)
 
-private val SecondaryLight = Color(0xff924c8b)
-private val SecondaryVariantLight = Color(0xff822796)
-private val OnSecondaryLight = Color(0xfffcfcfe)
+private val SecondaryLight = Color(0xff4dd0e1)
+private val SecondaryLightLight = Color(0xff88ffff)
+private val SecondaryDarkLight = Color(0xff009faf)
+private val OnSecondaryLight = Color(0xbf000000)
 
 private val BackgroundLight = Color(0xffffffff)
 private val OnBackgroundLight = Color(0xff212121)
@@ -29,26 +31,29 @@ private val OnErrorLight = Color(0xffffffff)
 
 // Dark color palette
 private val PrimaryDark = Color(0xff7b78d9)
-private val PrimaryVariantDark = Color(0xff8f8dd9)
 private val PrimaryLightDark = Color(0xff6c69bf)
+private val PrimaryDarkDark = Color(0xff8f8dd9)
+private val OnPrimaryDark = Color(0xfffcfcfe)
 
 private val SecondaryDark = Color(0xffc161d6)
-private val SecondaryVariantDark = Color(0xffc576d6)
 private val SecondaryLightDark = Color(0xffaa55bd)
+private val SecondaryDarkDark = Color(0xffc576d6)
+private val OnSecondaryDark = Color(0xfffcfcfe)
+
+private val BackgroundDark = Color(0xff0c0b28)
+private val OnBackgroundDark = Color(0xfffcfcfe)
 
 private val SurfaceDark = Color(0xff0c0b28)
+private val OnSurfaceDark = Color(0xfffcfcfe)
 
 private val ErrorDark = Color(0xffa93232)
-
-private val OnPrimaryDark = Color(0xfffcfcfe)
-private val OnSecondaryDark = Color(0xfffcfcfe)
-private val OnSurfaceDark = Color(0xfffcfcfe)
+private val OnErrorDark = Color(0xfffcfcfe)
 
 public val LoteriaLightColors: Colors = lightColors(
     primary = PrimaryLight,
-    primaryVariant = PrimaryVariantLight,
+    primaryVariant = PrimaryDarkLight,
     secondary = SecondaryLight,
-    secondaryVariant = SecondaryVariantLight,
+    secondaryVariant = SecondaryDarkLight,
     background = BackgroundLight,
     surface = SurfaceLight,
     error = ErrorLight,
@@ -61,26 +66,26 @@ public val LoteriaLightColors: Colors = lightColors(
 
 public val LoteriaDarkColors: Colors = darkColors(
     primary = PrimaryDark,
-    primaryVariant = PrimaryVariantDark,
+    primaryVariant = PrimaryDarkDark,
     secondary = SecondaryDark,
-    secondaryVariant = SecondaryVariantDark,
-    background = SurfaceDark,
+    secondaryVariant = SecondaryDarkDark,
+    background = BackgroundDark,
     surface = SurfaceDark,
     error = ErrorDark,
     onPrimary = OnPrimaryDark,
     onSecondary = OnSecondaryDark,
-    onBackground = OnSurfaceDark,
+    onBackground = OnBackgroundDark,
     onSurface = OnSurfaceDark,
-    onError = OnSurfaceDark
+    onError = OnErrorDark
 )
 
-// public val Colors.primaryLight: Color
-//    @Composable
-//    get() = if (isLight) PrimaryLightLight else PrimaryLightDark
-//
-// public val Colors.secondaryLight: Color
-//    @Composable
-//    get() = if (isLight) SecondaryLightLight else SecondaryLightDark
+ public val Colors.primaryLight: Color
+    @Composable
+    get() = if (isLight) PrimaryLightLight else PrimaryLightDark
+
+ public val Colors.secondaryLight: Color
+    @Composable
+    get() = if (isLight) SecondaryLightLight else SecondaryLightDark
 
 /**
  * Return the fully opaque color that results from compositing [onSurface] atop [surface] with the

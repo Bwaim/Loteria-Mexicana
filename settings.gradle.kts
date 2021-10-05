@@ -13,3 +13,4 @@ include(":common:theme:theme")
 
 include(":exampleFeature")
 include(":navigation")
+include(":settings")

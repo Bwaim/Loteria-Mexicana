@@ -23,9 +23,6 @@ android {
 
 dependencies {
     implementation(project(":common:compose"))
-    implementation(project(":common:navigation"))
-
-    implementation(project(":navigation"))
 
     implementation(libs.compose.material)
     implementation(libs.compose.ui.tooling.preview)
@@ -34,4 +31,6 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.accompanist.insets.ui)
 }

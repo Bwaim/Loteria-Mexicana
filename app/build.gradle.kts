@@ -69,22 +69,22 @@ dependencies {
     implementation(project(":common:http"))
     implementation(project(":common:imageloading"))
     implementation(project(":common:initializers"))
-    implementation(project(":common:navigation"))
     implementation(project(":common:theme:theme"))
 
-    implementation(project(":navigation"))
     implementation(project(":settings"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 
+    implementation(libs.compose.animation)
     implementation(libs.compose.material)
     debugImplementation(libs.compose.ui.tooling.library)
     implementation(libs.compose.ui.tooling.preview)
 
     implementation(libs.accompanist.insets.library)
     implementation(libs.accompanist.insets.ui)
+    implementation(libs.accompanist.navigation.animation)
     implementation(libs.accompanist.systemuicontroller)
 
     implementation(libs.hilt.library)

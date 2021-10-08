@@ -72,8 +72,8 @@ dependencies {
     implementation(project(":common:navigation"))
     implementation(project(":common:theme:theme"))
 
-    implementation(project(":exampleFeature"))
     implementation(project(":navigation"))
+    implementation(project(":settings"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)

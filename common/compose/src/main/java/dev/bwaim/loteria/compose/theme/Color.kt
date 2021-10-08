@@ -79,11 +79,11 @@ public val LoteriaDarkColors: Colors = darkColors(
     onError = OnErrorDark
 )
 
- public val Colors.primaryLight: Color
+public val Colors.primaryLight: Color
     @Composable
     get() = if (isLight) PrimaryLightLight else PrimaryLightDark
 
- public val Colors.secondaryLight: Color
+public val Colors.secondaryLight: Color
     @Composable
     get() = if (isLight) SecondaryLightLight else SecondaryLightDark
 

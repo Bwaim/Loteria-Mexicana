@@ -96,4 +96,9 @@ dependencies {
     implementation(libs.leakcanary.plumber)
 
     implementation(libs.coil.library)
+
+    androidTestImplementation(libs.junit.library)
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.compose.ui.test)
+    debugImplementation(libs.compose.ui.test.manifest)
 }

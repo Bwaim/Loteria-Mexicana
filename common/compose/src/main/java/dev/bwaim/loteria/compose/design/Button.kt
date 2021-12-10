@@ -33,7 +33,7 @@ public fun LoteriaButton(
     }
 ) {
     Button(
-        onClick = { onClick },
+        onClick = onClick,
         modifier = modifier,
         enabled = enabled,
         shape = shape,

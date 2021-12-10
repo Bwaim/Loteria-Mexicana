@@ -11,10 +11,10 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.bwaim.loteria.compose.theme.LoteriaTheme
 
+@ExperimentalAnimationApi
 @AndroidEntryPoint
 public class MainActivity : ComponentActivity() {
 
-    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

@@ -94,4 +94,6 @@ dependencies {
 
     debugImplementation(libs.leakcanary.library)
     implementation(libs.leakcanary.plumber)
+
+    implementation(libs.coil.library)
 }

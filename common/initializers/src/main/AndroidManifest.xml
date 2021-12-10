@@ -12,10 +12,6 @@
             tools:node="merge">
 
             <meta-data
-                android:name="dev.bwaim.loteria.initializers.CoilInitializer"
-                android:value="androidx.startup" />
-
-            <meta-data
                 android:name="dev.bwaim.loteria.initializers.StrictModeInitializer"
                 android:value="androidx.startup" />
 

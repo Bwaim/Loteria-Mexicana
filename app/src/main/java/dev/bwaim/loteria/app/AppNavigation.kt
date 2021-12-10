@@ -36,8 +36,8 @@ internal fun AppNavigation() {
     AnimatedNavHost(
         navController,
         startDestination = Screen.MainMenu.route,
-        enterTransition = { _, _ -> fadeIn(animationSpec = tween(700)) },
-        exitTransition = { _, _ -> fadeOut(animationSpec = tween(700)) }
+        enterTransition = { fadeIn(animationSpec = tween(700)) },
+        exitTransition = { fadeOut(animationSpec = tween(700)) }
     ) {
         addMainMenuTopLevel(navController)
         addSettingsTopLevel(navController)

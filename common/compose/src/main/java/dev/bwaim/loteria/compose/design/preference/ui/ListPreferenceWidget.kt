@@ -34,15 +34,12 @@ private typealias ListPreferenceActioner = (ListPreferenceAction) -> Unit
 @Composable
 public fun <T> ListPreferenceWidget(
     preferences: ListPreferenceValues<T>,
-    initialValue: Preference<T>,
+    currentValue: Preference<T>,
     onValueChanged: (value: Preference<out Any?>) -> Unit
 ) {
-    val current by remember {
-        mutableStateOf(initialValue)
-    }
     ListPreferenceUi(
         preferences = preferences,
-        currentValue = current
+        currentValue = currentValue
     ) { action ->
         when (action) {
             is OnValueChanged<*> -> {
@@ -163,7 +160,7 @@ private fun <T> ListPreferenceDialog(
 
 @Preview
 @Composable
-public fun PreviewListPreference() {
+private fun PreviewListPreference() {
     val currentValue = Preference(label = "pref2", value = "pref2Value")
     val preferences = mapOf(
         "pref1" to Preference(label = "pref1", value = "pref1Value"),
@@ -174,13 +171,13 @@ public fun PreviewListPreference() {
         title = "MyListPref",
         entries = preferences
     )
-//    LoteriaTheme {
-    ListPreferenceWidget(
-        preferences = listPreference,
-        initialValue = currentValue,
-        onValueChanged = { }
-    )
-//    }
+    LoteriaTheme {
+        ListPreferenceWidget(
+            preferences = listPreference,
+            currentValue = currentValue,
+            onValueChanged = { }
+        )
+    }
 }
 
 @Preview(group = "active")

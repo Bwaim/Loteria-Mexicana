@@ -6,6 +6,6 @@ public data class Preference<T>(
 )
 
 public data class ListPreferenceValues<T>(
-    val title: String,
-    val entries: Map<String, Preference<T>>
+    val title: String = "",
+    val entries: Map<String, Preference<T>> = emptyMap()
 )

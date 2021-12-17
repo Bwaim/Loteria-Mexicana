@@ -9,17 +9,23 @@ import androidx.compose.runtime.SideEffect
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+import dev.bwaim.loteria.compose.extensions.shouldUseDarkColors
 import dev.bwaim.loteria.compose.theme.LoteriaTheme
+import dev.bwaim.loteria.theme.ThemeActivityDelegate
+import javax.inject.Inject
 
 @ExperimentalAnimationApi
 @AndroidEntryPoint
 public class MainActivity : ComponentActivity() {
 
+    @Inject
+    internal lateinit var themeActivityDelegate: ThemeActivityDelegate
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ProvideWindowInsets(consumeWindowInsets = false) {
-                LoteriaTheme(useDarkColors = false) {
+                LoteriaTheme(useDarkColors = themeActivityDelegate.shouldUseDarkColors()) {
                     val systemUiController = rememberSystemUiController()
                     val useDarkIcons = MaterialTheme.colors.isLight
                     val statusBarColor = MaterialTheme.colors.primaryVariant

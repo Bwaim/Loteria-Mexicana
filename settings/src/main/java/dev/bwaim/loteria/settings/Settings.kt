@@ -1,7 +1,6 @@
 package dev.bwaim.loteria.settings
 
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
@@ -11,6 +10,7 @@ import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.insets.ui.TopAppBar
 import dev.bwaim.loteria.compose.BackButton
 import dev.bwaim.loteria.compose.TopAppBarTitle
+import dev.bwaim.loteria.compose.design.preference.ui.PreviewListPreference
 
 private typealias SettingsActioner = (SettingsAction) -> Unit
 
@@ -18,7 +18,6 @@ private typealias SettingsActioner = (SettingsAction) -> Unit
 public fun Settings(
     navigateUp: () -> Unit
 ) {
-    Text(text = "settings")
     Settings { action ->
         when (action) {
             NavigateUp -> navigateUp()
@@ -36,6 +35,7 @@ private fun Settings(
         scaffoldState = scaffoldState,
         topBar = { SettingsAppBar(actioner) }
     ) {
+        PreviewListPreference()
     }
 }
 

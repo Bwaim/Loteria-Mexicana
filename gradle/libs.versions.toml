@@ -3,7 +3,7 @@ accompanist = "0.21.4-beta"
 activity = "1.4.0"
 coil = "2.0.0-alpha05"
 compose = "1.1.0-beta04"
-coroutines = "1.6.0-RC"
+coroutines = "1.6.0-RC2"
 dagger = "2.40.1"
 kotlin = "1.6.0"
 leakcanary = "2.7"
@@ -32,6 +32,7 @@ androidx-core-library = "androidx.core:core-ktx:1.8.0-alpha01"
 androidx-hilt-navigation-compose = "androidx.hilt:hilt-navigation-compose:1.0.0-beta01"
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 androidx-startup = "androidx.startup:startup-runtime:1.1.0"
+androidx-test-core = "androidx.test:core-ktx:1.4.1-alpha03"
 androidx-test-junit = "androidx.test.ext:junit-ktx:1.1.4-alpha03"
 androidx-test-monitor = "androidx.test:monitor:1.5.0-alpha01"
 androidx-test-orchestrator = { module = "androidx.test:orchestrator", version.ref = "test" }
@@ -47,6 +48,7 @@ compose-foundation = { module = "androidx.compose.foundation:foundation", versio
 compose-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
 compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 compose-ui-tooling-library = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-ui-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
@@ -57,7 +59,7 @@ compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 
 firebase-crashlytics-gradle = "com.google.firebase:firebase-crashlytics-gradle:2.8.1"
-firebase-crashlytics-library = "com.google.firebase:firebase-crashlytics-ktx:18.2.5"
+firebase-crashlytics-library = "com.google.firebase:firebase-crashlytics-ktx:18.2.6"
 firebase-perf-gradle = "com.google.firebase:perf-plugin:1.4.0"
 firebase-perf-library = "com.google.firebase:firebase-perf-ktx:20.0.4"
 

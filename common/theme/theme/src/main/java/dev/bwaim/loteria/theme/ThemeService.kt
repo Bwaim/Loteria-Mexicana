@@ -22,4 +22,6 @@ public class ThemeService @Inject internal constructor(
             themeRepository.setTheme(theme)
         }
     }
+
+    public fun getThemes(): List<Theme> = Theme.values().toList()
 }

@@ -14,11 +14,12 @@ buildscript {
         classpath(libs.firebase.crashlytics.gradle)
         classpath(libs.firebase.perf.gradle)
         classpath(libs.hilt.gradle)
+        classpath(libs.protobuf.gradle)
     }
 }
 
 plugins {
-    id("com.diffplug.spotless") version "6.0.4"
+    id("com.diffplug.spotless") version "6.0.5"
     id("com.github.ben-manes.versions") version "0.39.0"
     id("org.gradle.android.cache-fix") version "2.4.5" apply false
 }

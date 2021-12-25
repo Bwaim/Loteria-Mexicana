@@ -70,6 +70,7 @@ dependencies {
     implementation(project(":common:imageloading"))
     implementation(project(":common:initializers"))
     implementation(project(":common:theme:theme"))
+    implementation(project(":common:theme:theme-impl"))
 
     implementation(project(":settings"))
 

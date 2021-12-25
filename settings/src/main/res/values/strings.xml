@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings_title">Settings</string>
+
+    <string name="settings_app_theme_title">"Choose theme"</string>
+    <string name="settings_app_theme_light">"Light"</string>
+    <string name="settings_app_theme_dark">"Dark"</string>
+    <string name="settings_app_theme_battery">"Set by battery saver"</string>
+    <string name="settings_app_theme_system">"Use system default"</string>
 </resources>

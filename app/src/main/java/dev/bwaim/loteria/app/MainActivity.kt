@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.SideEffect
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,9 @@ public class MainActivity : ComponentActivity() {
     internal lateinit var themeActivityDelegate: ThemeActivityDelegate
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
+
         setContent {
             ProvideWindowInsets(consumeWindowInsets = false) {
                 LoteriaTheme(useDarkColors = themeActivityDelegate.shouldUseDarkColors()) {
@@ -36,7 +39,6 @@ public class MainActivity : ComponentActivity() {
                             darkIcons = useDarkIcons
                         )
                     }
-
                     AppNavigation()
                 }
             }

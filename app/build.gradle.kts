@@ -75,6 +75,7 @@ dependencies {
     implementation(project(":settings"))
 
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.splashscreen)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 

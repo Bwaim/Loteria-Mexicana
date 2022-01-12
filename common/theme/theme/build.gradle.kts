@@ -13,5 +13,5 @@ dependencies {
     testImplementation(libs.junit.library)
     testImplementation(libs.mockk.library)
     testImplementation(libs.kotlin.coroutines.test)
-    testImplementation(libs.androidx.test.truth)
+//    testImplementation(libs.androidx.test.truth)
 }

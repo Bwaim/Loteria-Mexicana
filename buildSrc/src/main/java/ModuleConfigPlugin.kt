@@ -39,7 +39,7 @@ open class ModuleConfigPlugin : Plugin<Project> {
 
             vectorDrawables.useSupportLibrary = true
 
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            testInstrumentationRunner = "dev.bwaim.loteria.test.android.HiltTestRunner"
         }
 
         testOptions.animationsDisabled = true

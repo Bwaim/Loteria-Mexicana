@@ -26,12 +26,12 @@ private typealias MainMenuActioner = (MainMenuAction) -> Unit
 @Composable
 public fun MainMenu(
     openSettings: () -> Unit,
-    startDraw: () -> Unit
+    openDraw: () -> Unit
 ) {
     MainMenu { action ->
         when (action) {
             OpenSettings -> openSettings()
-            StartDraw -> startDraw()
+            OpenDraw -> openDraw()
         }
     }
 }
@@ -51,7 +51,7 @@ private fun MainMenu(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            LoteriaButton(onClick = { actioner(StartDraw) }) {
+            LoteriaButton(onClick = { actioner(OpenDraw) }) {
                 LoteriaTextButton(text = stringResource(id = R.string.start_menu))
             }
         }

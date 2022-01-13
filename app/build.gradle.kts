@@ -72,6 +72,7 @@ dependencies {
     implementation(project(":common:theme:theme"))
     implementation(project(":common:theme:theme-impl"))
 
+    implementation(project(":draw"))
     implementation(project(":settings"))
 
     implementation(libs.androidx.activity.compose)
@@ -99,8 +100,11 @@ dependencies {
 
     implementation(libs.coil.library)
 
+    androidTestImplementation(project(":common:test:android"))
     androidTestImplementation(libs.junit.library)
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.compose.ui.test)
     debugImplementation(libs.compose.ui.test.manifest)
+    androidTestImplementation(libs.hilt.testing)
+    kaptAndroidTest(libs.hilt.compiler)
 }

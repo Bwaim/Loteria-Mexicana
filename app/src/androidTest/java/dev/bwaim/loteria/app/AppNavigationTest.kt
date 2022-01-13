@@ -4,21 +4,30 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import dev.bwaim.loteria.compose.theme.LoteriaTheme
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+@ExperimentalAnimationApi
+@HiltAndroidTest
 internal class AppNavigationTest {
 
-    @get:Rule
-    val composeTestRule = createComposeRule()
+    @get:Rule(order = 0)
+    val hiltAndroidRule = HiltAndroidRule(this)
 
+    @get:Rule(order = 1)
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
+
+    private lateinit var drawButtonLabel: String
+    private lateinit var drawScreenTitle: String
     private lateinit var settingsButtonLabel: String
     private lateinit var settingsScreenTitle: String
     private lateinit var mainScreenTitle: String
@@ -54,6 +63,28 @@ internal class AppNavigationTest {
         goBack()
     }
 
+    @ExperimentalAnimationApi
+    @Test
+    fun shouldNavigateToDraw_whenDrawClicked() {
+
+        testContent {
+            AppNavigation()
+        }
+
+        goToDraw()
+    }
+
+    @ExperimentalAnimationApi
+    @Test
+    fun shouldGoBackFromDraw_whenBackClicked() {
+        testContent {
+            AppNavigation()
+        }
+
+        goToDraw()
+        goBack()
+    }
+
     private fun testContent(call: @Composable () -> Unit) {
         composeTestRule.setContent {
             LoteriaTheme {
@@ -69,11 +100,18 @@ internal class AppNavigationTest {
         settingsScreenTitle = stringResource(id = R.string.settings_title)
         mainScreenTitle = stringResource(id = R.string.app_name)
         upArrowDescription = stringResource(id = R.string.toolbar_up_description)
+        drawButtonLabel = stringResource(id = R.string.start_menu)
+        drawScreenTitle = stringResource(id = R.string.draw_title)
     }
 
     private fun goToSettings() {
         composeTestRule.onNodeWithContentDescription(settingsButtonLabel).performClick()
         composeTestRule.onNodeWithText(settingsScreenTitle).assertIsDisplayed()
+    }
+
+    private fun goToDraw() {
+        composeTestRule.onNodeWithText(drawButtonLabel).performClick()
+        composeTestRule.onNodeWithText(drawScreenTitle).assertIsDisplayed()
     }
 
     private fun goBack() {

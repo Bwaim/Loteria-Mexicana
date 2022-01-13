@@ -2,4 +2,4 @@ package dev.bwaim.loteria.app
 
 internal sealed interface MainMenuAction
 internal object OpenSettings : MainMenuAction
-internal object StartDraw : MainMenuAction
+internal object OpenDraw : MainMenuAction

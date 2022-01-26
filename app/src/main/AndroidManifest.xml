@@ -4,7 +4,11 @@
     package="dev.bwaim.loteria.app"
     android:installLocation="auto">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:usesCleartextTraffic="true"
+
         android:name=".LoteriaApplication"
         android:allowBackup="true"
         android:autoRevokePermissions="allowed"

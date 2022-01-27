@@ -2,6 +2,8 @@ enableFeaturePreview("VERSION_CATALOGS")
 
 include(":app")
 
+include(":common:card:card")
+include(":common:card:card-impl")
 include(":common:compose")
 include(":common:core")
 include(":common:coroutines:coroutines")
@@ -13,6 +15,7 @@ include(":common:test:android")
 include(":common:test:test")
 include(":common:theme:theme")
 include(":common:theme:theme-impl")
+include(":common:ui-resources")
 
 include(":draw")
 include(":exampleFeature")

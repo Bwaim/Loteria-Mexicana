@@ -1,12 +1,5 @@
 package dev.bwaim.loteria.card
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
-import androidx.compose.foundation.Image
-
-//import fake.`package`.name.`for`.sync.R
-
 public data class Card(
     public val id: Int,
     public val name: String,

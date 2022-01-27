@@ -32,7 +32,7 @@ dependencies {
     implementation(libs.compose.material)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.hilt.library)
-    implementation(project(mapOf("path" to ":common:card:card")))
+    implementation(project(":common:card:card"))
     kapt(libs.hilt.compiler)
 
     implementation(libs.androidx.navigation.compose)

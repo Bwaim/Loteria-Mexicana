@@ -20,3 +20,10 @@ include(":common:ui-resources")
 include(":draw")
 include(":exampleFeature")
 include(":settings")
+
+
+include(":common:data")
+include(":common:data:database")
+include(":common:data:settings")
+include(":common:data:settings:settings")
+include(":common:data:settings:settings-impl")

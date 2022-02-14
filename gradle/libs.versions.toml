@@ -13,6 +13,7 @@ navigation = "2.4.0-beta02"
 okhttp = "5.0.0-alpha.3"
 protobuf = "4.0.0-rc-2"
 test = "1.5.0-alpha01"
+room = "2.4.1"
 
 [libraries]
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
@@ -102,3 +103,9 @@ protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 
 timber = "com.jakewharton.timber:timber:5.0.1"
+
+androidx-room = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+ksp-room = "androidx.room:room-compiler:room"
+
+ksp-gradle = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.6.10-1.0.2"

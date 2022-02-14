@@ -15,6 +15,7 @@ buildscript {
         classpath(libs.firebase.perf.gradle)
         classpath(libs.hilt.gradle)
         classpath(libs.protobuf.gradle)
+        classpath(libs.ksp.gradle)
     }
 }
 

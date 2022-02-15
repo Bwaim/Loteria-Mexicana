@@ -4,7 +4,6 @@
     <bytecodeTargetLevel target="11">
       <module name="Loteria-Mexicana.common.card.card.test" target="1.8" />
       <module name="Loteria-Mexicana.common.test.main" target="1.8" />
-      <module name="Loteria-Mexicana.common.test.test" target="1.8" />
       <module name="StudioProjects.Loteria-Mexicana.common.test.test.main" target="1.8" />
     </bytecodeTargetLevel>
   </component>

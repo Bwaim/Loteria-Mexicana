@@ -7,21 +7,20 @@ buildscript {
     }
 
     dependencies {
-        classpath(libs.kotlin.gradle)
         classpath(libs.android.gradle)
         classpath(libs.kotlin.gradle)
+        classpath(libs.hilt.gradle)
         classpath(libs.google.gms)
         classpath(libs.firebase.crashlytics.gradle)
         classpath(libs.firebase.perf.gradle)
-        classpath(libs.hilt.gradle)
         classpath(libs.protobuf.gradle)
     }
 }
 
 plugins {
-    id("com.diffplug.spotless") version "6.0.5"
-    id("com.github.ben-manes.versions") version "0.39.0"
-    id("org.gradle.android.cache-fix") version "2.4.5" apply false
+    id("com.diffplug.spotless") version "6.6.1"
+    id("com.github.ben-manes.versions") version "0.42.0"
+    id("org.gradle.android.cache-fix") version "2.5.3" apply false
 }
 
 allprojects {
@@ -36,7 +35,7 @@ subprojects {
     configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         kotlin {
             target("**/*.kt")
-            ktlint("0.43.2")
+            ktlint("0.45.2")
             trimTrailingWhitespace()
             indentWithSpaces()
             endWithNewline()

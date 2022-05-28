@@ -1,15 +1,19 @@
 package dev.bwaim.loteria.settings
 
 import androidx.annotation.VisibleForTesting
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.insets.ui.TopAppBar
 import dev.bwaim.loteria.compose.BackButton
 import dev.bwaim.loteria.compose.TopAppBarTitle
@@ -51,8 +55,9 @@ private fun Settings(
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = { SettingsAppBar(actioner) }
-    ) {
+    ) { contentPadding ->
         ListPreferenceWidget(
+            modifier = Modifier.padding(contentPadding),
             preferences = themesPreferences,
             currentValue = appTheme,
             onValueChanged = { actioner(OnThemeChanged(it.value as Theme)) }
@@ -64,10 +69,8 @@ private fun Settings(
 private fun SettingsAppBar(actioner: SettingsActioner) {
     TopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.settings_title)) },
-        contentPadding = rememberInsetsPaddingValues(
-            LocalWindowInsets.current.statusBars,
-            applyBottom = false,
-            additionalEnd = 16.dp
+        modifier = Modifier.windowInsetsPadding(
+            WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
         ),
         navigationIcon = {
             BackButton {
@@ -88,7 +91,8 @@ public fun Theme.getLabel(): String =
     }
 
 @Composable
-private fun Theme.toPreference(): Preference<Theme> = Preference(label = this.getLabel(), value = this)
+private fun Theme.toPreference(): Preference<Theme> =
+    Preference(label = this.getLabel(), value = this)
 
 @Composable
 private fun List<Theme>.toListPreferences(title: String): ListPreferenceValues<Theme> =

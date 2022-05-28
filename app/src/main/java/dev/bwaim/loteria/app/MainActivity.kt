@@ -7,7 +7,6 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.SideEffect
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.bwaim.loteria.compose.extensions.shouldUseDarkColors
@@ -27,20 +26,18 @@ public class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            ProvideWindowInsets(consumeWindowInsets = false) {
-                LoteriaTheme(useDarkColors = themeActivityDelegate.shouldUseDarkColors()) {
-                    val systemUiController = rememberSystemUiController()
-                    val useDarkIcons = MaterialTheme.colors.isLight
-                    val statusBarColor = MaterialTheme.colors.primaryVariant
+            LoteriaTheme(useDarkColors = themeActivityDelegate.shouldUseDarkColors()) {
+                val systemUiController = rememberSystemUiController()
+                val useDarkIcons = MaterialTheme.colors.isLight
+                val statusBarColor = MaterialTheme.colors.primaryVariant
 
-                    SideEffect {
-                        systemUiController.setStatusBarColor(
-                            color = statusBarColor,
-                            darkIcons = useDarkIcons
-                        )
-                    }
-                    AppNavigation()
+                SideEffect {
+                    systemUiController.setStatusBarColor(
+                        color = statusBarColor,
+                        darkIcons = useDarkIcons
+                    )
                 }
+                AppNavigation()
             }
         }
     }

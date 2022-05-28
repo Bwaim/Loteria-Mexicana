@@ -33,11 +33,13 @@ private typealias ListPreferenceActioner = (ListPreferenceAction) -> Unit
 
 @Composable
 public fun <T> ListPreferenceWidget(
+    modifier: Modifier = Modifier,
     preferences: ListPreferenceValues<T>,
     currentValue: Preference<T>,
     onValueChanged: (value: Preference<out Any?>) -> Unit
 ) {
     ListPreferenceUi(
+        modifier = modifier,
         preferences = preferences,
         currentValue = currentValue
     ) { action ->
@@ -51,6 +53,7 @@ public fun <T> ListPreferenceWidget(
 
 @Composable
 private fun <T> ListPreferenceUi(
+    modifier: Modifier = Modifier,
     preferences: ListPreferenceValues<T>,
     currentValue: Preference<T>,
     actioner: ListPreferenceActioner
@@ -59,7 +62,7 @@ private fun <T> ListPreferenceUi(
         mutableStateOf(false)
     }
     Column(
-        Modifier
+        modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 16.dp)
             .clickable { isDialogShown = true }

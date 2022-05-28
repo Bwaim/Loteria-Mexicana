@@ -45,7 +45,7 @@ internal object ImageLoaderModule {
                         .build()
                 }
                 .diskCache {
-                    DiskCache.Builder(this)
+                    DiskCache.Builder()
                         .directory(filesDir.resolve(CACHE_DIRECTORY_NAME))
                         .build()
                 }

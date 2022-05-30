@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.application")
+    id("loteriamexicana.android.application")
+    id("loteriamexicana.android.application.compose")
 
-    kotlin("android")
     kotlin("kapt")
 
     id("dagger.hilt.android.plugin")
@@ -9,26 +9,24 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("com.google.firebase.firebase-perf")
+
+    id("loteriamexicana.spotless")
 }
 
 android {
     defaultConfig {
         applicationId = "dev.bwaim.loteria"
-
         versionCode = 1
-        versionName = "1.0"
-    }
+        versionName = "1.0.0"
 
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
+        testInstrumentationRunner = "dev.bwaim.loteria.test.android.HiltTestRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
-        debug {
+        val debug by getting {
             extra.set("enableCrashlytics", false)
 
             applicationIdSuffix = ".debug"
@@ -39,7 +37,7 @@ android {
                 }
             }
         }
-        release {
+        val release by getting {
             extra.set("enableCrashlytics", true)
 
             isMinifyEnabled = true
@@ -55,10 +53,6 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-    }
-
-    kapt {
-        correctErrorTypes = true
     }
 }
 

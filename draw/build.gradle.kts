@@ -1,27 +1,13 @@
 plugins {
-    id("com.android.library")
-
-    kotlin("android")
-    kotlin("kapt")
-
+    id("loteriamexicana.android.library")
+    id("loteriamexicana.android.feature")
+    id("loteriamexicana.android.library.compose")
     id("dagger.hilt.android.plugin")
-}
-
-android {
-    kapt {
-        correctErrorTypes = true
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
-    }
+    id("loteriamexicana.spotless")
 }
 
 dependencies {
+    implementation(project(":common:card:card"))
     implementation(project(":common:compose"))
     implementation(project(":common:core"))
     implementation(project(":common:theme:theme"))
@@ -30,13 +16,4 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.compose.material)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.hilt.library)
-    implementation(project(":common:card:card"))
-    kapt(libs.hilt.compiler)
-
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
-
-    implementation(libs.accompanist.insets.ui)
 }

@@ -12,19 +12,19 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-private const val DATA_STORE_FILE_NAME = "theme_prefs.pb"
-
-@get:VisibleForTesting
-public val Context.dataStore: DataStore<ThemePreferences> by dataStore(
-    fileName = DATA_STORE_FILE_NAME,
-    serializer = ThemePreferencesSerializer
-)
+//private const val DATA_STORE_FILE_NAME = "theme_prefs.pb"
+//
+//@get:VisibleForTesting
+//public val Context.dataStore: DataStore<ThemePreferences> by dataStore(
+//    fileName = DATA_STORE_FILE_NAME,
+//    serializer = ThemePreferencesSerializer
+//)
 
 @VisibleForTesting
 public class ThemeRepositoryImpl @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val dataStore: DataStore<ThemePreferences>
 ) : ThemeRepository {
-    private val dataStore get() = context.dataStore
 
     override fun observeTheme(): Flow<Theme> {
         return dataStore

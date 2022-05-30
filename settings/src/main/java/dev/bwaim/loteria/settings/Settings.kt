@@ -8,16 +8,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Scaffold
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.google.accompanist.insets.ui.TopAppBar
 import dev.bwaim.loteria.compose.BackButton
 import dev.bwaim.loteria.compose.TopAppBarTitle
-import dev.bwaim.loteria.compose.collectAsStateWithLifecycle
 import dev.bwaim.loteria.compose.design.preference.model.ListPreferenceValues
 import dev.bwaim.loteria.compose.design.preference.model.Preference
 import dev.bwaim.loteria.compose.design.preference.ui.ListPreferenceWidget
@@ -31,7 +31,7 @@ public fun Settings(
     viewModel: SettingsViewModel = hiltViewModel(),
     navigateUp: () -> Unit
 ) {
-    val viewState by viewModel.viewState.collectAsStateWithLifecycle()
+    val viewState by viewModel.viewState.collectAsState()
     Settings(viewState) { action ->
         when (action) {
             NavigateUp -> navigateUp()

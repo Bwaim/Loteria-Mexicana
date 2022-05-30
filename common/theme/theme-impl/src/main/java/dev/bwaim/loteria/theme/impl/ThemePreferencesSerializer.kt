@@ -6,19 +6,19 @@ import androidx.datastore.core.Serializer
 import com.google.protobuf.InvalidProtocolBufferException
 import java.io.InputStream
 import java.io.OutputStream
+import javax.inject.Inject
 
 @VisibleForTesting
-public object ThemePreferencesSerializer : Serializer<ThemePreferences> {
+public class ThemePreferencesSerializer @Inject constructor() : Serializer<ThemePreferences> {
     override val defaultValue: ThemePreferences get() = ThemePreferences.getDefaultInstance()
 
     @Suppress("BlockingMethodInNonBlockingContext")
-    override suspend fun readFrom(input: InputStream): ThemePreferences {
-        return try {
+    override suspend fun readFrom(input: InputStream): ThemePreferences =
+        try {
             ThemePreferences.parseFrom(input)
         } catch (exception: InvalidProtocolBufferException) {
             throw CorruptionException("Cannot read proto.", exception)
         }
-    }
 
     @Suppress("BlockingMethodInNonBlockingContext")
     override suspend fun writeTo(t: ThemePreferences, output: OutputStream) {

@@ -1,5 +1,6 @@
 plugins {
     id("kotlin")
+    id("loteriamexicana.spotless")
 }
 
 dependencies {

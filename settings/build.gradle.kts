@@ -1,24 +1,9 @@
 plugins {
-    id("com.android.library")
-
-    kotlin("android")
-    kotlin("kapt")
-
+    id("loteriamexicana.android.library")
+    id("loteriamexicana.android.feature")
+    id("loteriamexicana.android.library.compose")
     id("dagger.hilt.android.plugin")
-}
-
-android {
-    kapt {
-        correctErrorTypes = true
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
-    }
+    id("loteriamexicana.spotless")
 }
 
 dependencies {
@@ -27,17 +12,8 @@ dependencies {
     implementation(project(":common:theme:theme"))
 
     implementation(libs.compose.material)
-    implementation(libs.compose.ui.tooling.preview)
 
-    implementation(libs.hilt.library)
-    kapt(libs.hilt.compiler)
-
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
-
-    implementation(libs.accompanist.insets.ui)
-
-    testImplementation(project(":common:test"))
+    testImplementation(project(":common:test:test"))
     testImplementation(libs.androidx.test.truth)
     testImplementation(libs.junit.library)
     testImplementation(libs.kotlin.coroutines.test)

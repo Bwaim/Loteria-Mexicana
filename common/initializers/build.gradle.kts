@@ -1,16 +1,8 @@
 plugins {
-    id("com.android.library")
-
-    kotlin("android")
+    id("loteriamexicana.android.library")
     kotlin("kapt")
-
     id("dagger.hilt.android.plugin")
-}
-
-android {
-    kapt {
-        correctErrorTypes = true
-    }
+    id("loteriamexicana.spotless")
 }
 
 dependencies {

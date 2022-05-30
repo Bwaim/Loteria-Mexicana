@@ -1,24 +1,11 @@
 plugins {
-    id("com.android.library")
-
-    kotlin("android")
-}
-
-android {
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
-    }
+    id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.compose")
+    id("loteriamexicana.spotless")
 }
 
 dependencies {
     implementation(project(":common:theme:theme"))
-
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.lifecycle.runtime)
 
     implementation(libs.compose.material)
     debugImplementation(libs.compose.ui.tooling.library)

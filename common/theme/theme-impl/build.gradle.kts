@@ -3,31 +3,31 @@ import com.google.protobuf.gradle.protobuf
 import com.google.protobuf.gradle.protoc
 
 plugins {
-    id("com.android.library")
-
-    kotlin("android")
+    id("loteriamexicana.android.library")
     kotlin("kapt")
-
     id("dagger.hilt.android.plugin")
-
-    id("com.google.protobuf")
+    alias(libs.plugins.protobuf)
+    id("loteriamexicana.spotless")
 }
 
 android {
-    kapt {
-        correctErrorTypes = true
+    defaultConfig {
+        consumerProguardFiles("consumer-proguard-rules.pro")
     }
 }
 
 protobuf {
     protoc {
-        artifact = libs.protobuf.protoc.toArtifactSpec()
+        artifact = libs.protobuf.protoc.get().toString()
     }
 
     generateProtoTasks {
         all().forEach { task ->
             task.builtins {
-                create("java") {
+                val java by registering {
+                    option("lite")
+                }
+                val kotlin by registering {
                     option("lite")
                 }
             }
@@ -43,7 +43,7 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.coroutines.core)
 
-    implementation(libs.protobuf.javalite)
+    implementation(libs.protobuf.kotlin.lite)
 
     implementation(libs.androidx.datastore)
 

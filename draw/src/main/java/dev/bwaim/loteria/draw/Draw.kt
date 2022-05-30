@@ -9,17 +9,17 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
-import com.google.accompanist.insets.ui.TopAppBar
 import dev.bwaim.loteria.compose.BackButton
 import dev.bwaim.loteria.compose.TopAppBarTitle
-import dev.bwaim.loteria.compose.collectAsStateWithLifecycle
 
 private typealias DrawActioner = (DrawAction) -> Unit
 
@@ -28,9 +28,9 @@ public fun Draw(
     viewModel: DrawViewModel = hiltViewModel(),
     navigateUp: () -> Unit
 ) {
-    val viewState by viewModel.viewState.collectAsStateWithLifecycle()
+    val viewState by viewModel.viewState.collectAsState()
 
-    val viewState2 = viewModel.viewState.collectAsStateWithLifecycle()
+    val viewState2 = viewModel.viewState.collectAsState()
     val value1: DrawState = viewState
     val value2: DrawState = viewState2.value
     Draw(viewState) { action ->

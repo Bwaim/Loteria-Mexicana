@@ -1,5 +1,3 @@
 plugins {
-    id("com.android.library")
-
-    kotlin("android")
+    id("loteriamexicana.android.library")
 }

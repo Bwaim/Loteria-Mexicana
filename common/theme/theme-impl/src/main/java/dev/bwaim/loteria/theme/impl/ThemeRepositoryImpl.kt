@@ -1,3 +1,19 @@
+/*
+ * Copyright 2022 Dev Bwaim team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dev.bwaim.loteria.theme.impl
 
 import android.content.Context
@@ -7,24 +23,24 @@ import androidx.datastore.dataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-private const val DATA_STORE_FILE_NAME = "theme_prefs.pb"
-
-@get:VisibleForTesting
-public val Context.dataStore: DataStore<ThemePreferences> by dataStore(
-    fileName = DATA_STORE_FILE_NAME,
-    serializer = ThemePreferencesSerializer
-)
+// private const val DATA_STORE_FILE_NAME = "theme_prefs.pb"
+//
+// @get:VisibleForTesting
+// public val Context.dataStore: DataStore<ThemePreferences> by dataStore(
+//    fileName = DATA_STORE_FILE_NAME,
+//    serializer = ThemePreferencesSerializer
+// )
 
 @VisibleForTesting
 public class ThemeRepositoryImpl @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val dataStore: DataStore<ThemePreferences>
 ) : ThemeRepository {
-    private val dataStore get() = context.dataStore
 
     override fun observeTheme(): Flow<Theme> {
         return dataStore

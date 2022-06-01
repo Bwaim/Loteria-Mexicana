@@ -25,8 +25,8 @@ import dagger.hilt.testing.TestInstallIn
 import dev.bwaim.loteria.theme.impl.DataStoreModule
 import dev.bwaim.loteria.theme.impl.ThemePreferences
 import dev.bwaim.loteria.theme.impl.ThemePreferencesSerializer
-import org.junit.rules.TemporaryFolder
 import javax.inject.Singleton
+import org.junit.rules.TemporaryFolder
 
 @Module
 @TestInstallIn(

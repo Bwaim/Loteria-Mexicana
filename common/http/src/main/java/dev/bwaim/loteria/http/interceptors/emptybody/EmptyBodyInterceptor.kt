@@ -17,13 +17,13 @@
 package dev.bwaim.loteria.http.interceptors.emptybody
 
 import androidx.annotation.VisibleForTesting
+import java.net.HttpURLConnection.HTTP_NO_CONTENT
+import java.net.HttpURLConnection.HTTP_RESET
+import javax.inject.Inject
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
-import java.net.HttpURLConnection.HTTP_NO_CONTENT
-import java.net.HttpURLConnection.HTTP_RESET
-import javax.inject.Inject
 
 internal class EmptyBodyInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {

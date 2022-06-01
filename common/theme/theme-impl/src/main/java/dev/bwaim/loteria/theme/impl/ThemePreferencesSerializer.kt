@@ -31,6 +31,7 @@ public class ThemePreferencesSerializer @Inject constructor() : Serializer<Theme
     @Suppress("BlockingMethodInNonBlockingContext")
     override suspend fun readFrom(input: InputStream): ThemePreferences =
         try {
+            @Suppress("BlockingMethodInNonBlockingContext")
             ThemePreferences.parseFrom(input)
         } catch (exception: InvalidProtocolBufferException) {
             throw CorruptionException("Cannot read proto.", exception)
@@ -38,6 +39,7 @@ public class ThemePreferencesSerializer @Inject constructor() : Serializer<Theme
 
     @Suppress("BlockingMethodInNonBlockingContext")
     override suspend fun writeTo(t: ThemePreferences, output: OutputStream) {
+        @Suppress("BlockingMethodInNonBlockingContext")
         t.writeTo(output)
     }
 }

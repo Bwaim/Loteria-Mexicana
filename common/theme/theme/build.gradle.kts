@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 plugins {
-    id("kotlin")
+    id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.jacoco")
     id("loteriamexicana.spotless")
 }
 
@@ -29,5 +30,5 @@ dependencies {
     testImplementation(libs.junit.library)
     testImplementation(libs.mockk.library)
     testImplementation(libs.kotlin.coroutines.test)
-//    testImplementation(libs.androidx.test.truth)
+    testImplementation(libs.androidx.test.truth)
 }

@@ -15,10 +15,15 @@
  */
 plugins {
     id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.jacoco")
     id("loteriamexicana.spotless")
 }
 
 dependencies {
+    implementation(project(":common:theme:theme-impl"))
+
     implementation(libs.androidx.test.runner)
     implementation(libs.hilt.testing)
+
+    implementation(libs.androidx.datastore)
 }

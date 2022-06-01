@@ -19,6 +19,7 @@ import com.google.protobuf.gradle.protoc
 
 plugins {
     id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.jacoco")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     alias(libs.plugins.protobuf)

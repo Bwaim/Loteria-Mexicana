@@ -17,8 +17,15 @@ plugins {
     id("loteriamexicana.android.library")
     id("loteriamexicana.android.feature")
     id("loteriamexicana.android.library.compose")
+    id("loteriamexicana.android.library.jacoco")
     id("dagger.hilt.android.plugin")
     id("loteriamexicana.spotless")
+}
+
+android {
+    defaultConfig {
+        testInstrumentationRunner = "dev.bwaim.loteria.test.android.HiltTestRunner"
+    }
 }
 
 dependencies {
@@ -35,6 +42,7 @@ dependencies {
     testImplementation(libs.mockk.library)
     testImplementation(libs.cash.turbine)
 
+    androidTestImplementation(project(":common:test:android"))
     androidTestImplementation(libs.junit.library)
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.compose.ui.test)

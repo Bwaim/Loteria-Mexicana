@@ -15,6 +15,7 @@
  */
 plugins {
     id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.jacoco")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("loteriamexicana.spotless")

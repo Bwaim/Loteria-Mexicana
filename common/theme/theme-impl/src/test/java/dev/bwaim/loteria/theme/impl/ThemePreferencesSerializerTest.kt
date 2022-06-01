@@ -34,6 +34,9 @@ import org.junit.Before
 import org.junit.Test
 
 internal class ThemePreferencesSerializerTest {
+
+    private val themePreferencesSerializer = ThemePreferencesSerializer()
+
     @Before
     fun setUp() {
         mockkStatic(ThemePreferences::class)
@@ -46,7 +49,7 @@ internal class ThemePreferencesSerializerTest {
 
     @Test
     fun shouldReturnDefaultInstance_whenDefaultValueAsked() {
-        val defaultValue = ThemePreferencesSerializer.defaultValue
+        val defaultValue = themePreferencesSerializer.defaultValue
 
         Truth.assertThat(defaultValue).isEqualTo(ThemePreferences.getDefaultInstance())
     }
@@ -59,7 +62,7 @@ internal class ThemePreferencesSerializerTest {
             .build()
         every { ThemePreferences.parseFrom(any<InputStream>()) } returns expectedThemePreferences
 
-        val theme = ThemePreferencesSerializer.readFrom(mockk())
+        val theme = themePreferencesSerializer.readFrom(mockk())
 
         Truth.assertThat(theme).isEqualTo(expectedThemePreferences)
     }
@@ -70,7 +73,7 @@ internal class ThemePreferencesSerializerTest {
             ThemePreferences.parseFrom(any<InputStream>())
         } throws InvalidProtocolBufferException("")
 
-        ThemePreferencesSerializer.readFrom(mockk())
+        themePreferencesSerializer.readFrom(mockk())
     }
 
     @Test
@@ -78,7 +81,7 @@ internal class ThemePreferencesSerializerTest {
         val themePreferences = spyk(ThemePreferences.getDefaultInstance())
         val outputStream = mockk<OutputStream>()
 
-        ThemePreferencesSerializer.writeTo(themePreferences, outputStream)
+        themePreferencesSerializer.writeTo(themePreferences, outputStream)
 
         verify { themePreferences.writeTo(outputStream) }
     }

@@ -16,6 +16,7 @@
 plugins {
     id("loteriamexicana.android.application")
     id("loteriamexicana.android.application.compose")
+    id("loteriamexicana.android.application.jacoco")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("com.google.gms.google-services")

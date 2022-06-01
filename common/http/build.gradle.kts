@@ -15,9 +15,16 @@
  */
 plugins {
     id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.jacoco")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("loteriamexicana.spotless")
+}
+
+android {
+    defaultConfig {
+        testInstrumentationRunner = "dev.bwaim.loteria.test.android.HiltTestRunner"
+    }
 }
 
 dependencies {
@@ -35,6 +42,7 @@ dependencies {
     testImplementation(libs.androidx.test.truth)
     testImplementation(libs.mockk.library)
 
+    androidTestImplementation(project(":common:test:android"))
     androidTestImplementation(libs.junit.library)
     androidTestImplementation(libs.mockk.android)
     androidTestImplementation(libs.androidx.test.runner)

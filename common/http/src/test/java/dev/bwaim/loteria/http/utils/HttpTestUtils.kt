@@ -27,7 +27,7 @@ internal object HttpTestUtils {
     fun createFakeResponse(
         code: Int = HttpURLConnection.HTTP_OK,
         request: Request = mockk(relaxed = true),
-        body: ResponseBody? = null
+        body: ResponseBody = mockk(relaxed = true)
     ) = Response.Builder()
         .request(request)
         .protocol(Protocol.HTTP_2)

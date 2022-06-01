@@ -16,29 +16,17 @@
 
 package dev.bwaim.loteria.theme.impl
 
-import android.content.Context
 import androidx.annotation.VisibleForTesting
 import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeRepository
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-
-// private const val DATA_STORE_FILE_NAME = "theme_prefs.pb"
-//
-// @get:VisibleForTesting
-// public val Context.dataStore: DataStore<ThemePreferences> by dataStore(
-//    fileName = DATA_STORE_FILE_NAME,
-//    serializer = ThemePreferencesSerializer
-// )
+import javax.inject.Inject
 
 @VisibleForTesting
 public class ThemeRepositoryImpl @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val dataStore: DataStore<ThemePreferences>
 ) : ThemeRepository {
 

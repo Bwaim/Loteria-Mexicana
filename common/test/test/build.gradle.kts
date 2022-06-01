@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 plugins {
-    id("kotlin")
+    id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.jacoco")
     id("loteriamexicana.spotless")
 }
 

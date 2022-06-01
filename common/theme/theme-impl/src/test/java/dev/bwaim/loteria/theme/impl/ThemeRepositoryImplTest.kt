@@ -47,9 +47,7 @@ internal class ThemeRepositoryImplTest {
 
         mockkStatic("dev.bwaim.loteria.theme.impl.ThemeRepositoryImplKt")
 
-        every { mockContext.dataStore } returns mockDataStore
-
-        themeRepository = ThemeRepositoryImpl(mockContext)
+        themeRepository = ThemeRepositoryImpl(mockContext, mockDataStore)
 
         mockkObject(BuildWrapper)
     }

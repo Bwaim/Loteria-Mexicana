@@ -39,12 +39,11 @@ public class ThemeRepositoryImpl @Inject constructor(
             }
     }
 
-    override suspend fun setTheme(theme: Theme) {
-        dataStore.updateData { prefs ->
-            prefs
-                .toBuilder()
-                .setTheme(theme.value)
-                .build()
+    override suspend fun setTheme(themeInput: Theme) {
+        dataStore.updateData {
+            it.copy {
+                theme = themeInput.value
+            }
         }
     }
 }

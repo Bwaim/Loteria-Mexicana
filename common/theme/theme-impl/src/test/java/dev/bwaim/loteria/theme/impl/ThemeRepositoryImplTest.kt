@@ -16,76 +16,61 @@
 
 package dev.bwaim.loteria.theme.impl
 
-import android.content.Context
-import androidx.datastore.core.DataStore
+import app.cash.turbine.test
 import com.google.common.truth.Truth
 import dev.bwaim.loteria.core.utils.BuildWrapper
+import dev.bwaim.loteria.test.android.testThemePreferencesDataStore
 import dev.bwaim.loteria.theme.Theme
-import io.mockk.MockKAnnotations
-import io.mockk.coVerify
 import io.mockk.every
-import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.mockkObject
-import io.mockk.mockkStatic
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.TemporaryFolder
 
 internal class ThemeRepositoryImplTest {
-    @RelaxedMockK
-    private lateinit var mockContext: Context
+    private lateinit var subject: ThemeRepositoryImpl
 
-    @RelaxedMockK
-    private lateinit var mockDataStore: DataStore<ThemePreferences>
-    private lateinit var themeRepository: ThemeRepositoryImpl
+    @get:Rule
+    val tmpFolder: TemporaryFolder = TemporaryFolder.builder().assureDeletion().build()
 
     @Before
     fun setUp() {
-        MockKAnnotations.init(this)
-
-        mockkStatic("dev.bwaim.loteria.theme.impl.ThemeRepositoryImplKt")
-
-        themeRepository = ThemeRepositoryImpl(mockContext, mockDataStore)
+        subject = ThemeRepositoryImpl(tmpFolder.testThemePreferencesDataStore())
 
         mockkObject(BuildWrapper)
     }
 
     @Test
-    fun shouldReturnThemeFlow_whenObserved() = runBlocking {
+    fun firstTheme_isThemePreferenceDefaultValue() = runTest {
         every { BuildWrapper.SDK_INT } returns 29
-        val expectedThemes = listOf(Theme.SYSTEM, Theme.LIGHT)
-        val expectedThemePreferences = expectedThemes.map { theme ->
-            ThemePreferences
-                .newBuilder()
-                .setTheme(theme.value)
-                .build()
-        }
-        every { mockDataStore.data } returns flowOf(*expectedThemePreferences.toTypedArray())
 
-        val themes = themeRepository.observeTheme().toList()
-
-        Truth.assertThat(themes).isEqualTo(expectedThemes)
+        Truth
+            .assertThat(subject.observeTheme().first())
+            .isEqualTo(ThemeHelper.defaultTheme)
     }
 
+    // This test fails on Windows : https://github.com/android/nowinandroid/issues/98
     @Test
-    fun shouldSaveTheme_whenSet() = runBlocking {
-        val theme = Theme.DARK
+    fun observeTheme_outputsThemePreferences() = runTest {
+        every { BuildWrapper.SDK_INT } returns 29
 
-        themeRepository.setTheme(theme)
+        val themeValue = Theme.DARK
 
-        coVerify {
-            mockDataStore.updateData(
-                coWithArg { transform ->
-                    val expectedThemePreferences = ThemePreferences
-                        .newBuilder()
-                        .setTheme(theme.value)
-                        .build()
-                    Truth.assertThat(transform(ThemePreferences.getDefaultInstance()))
-                        .isEqualTo(expectedThemePreferences)
-                }
-            )
+        subject.observeTheme().test {
+            Truth
+                .assertThat(awaitItem())
+                .isEqualTo(ThemeHelper.defaultTheme)
+
+            subject.setTheme(themeValue)
+
+            Truth
+                .assertThat(awaitItem())
+                .isEqualTo(themeValue)
+
+            cancel()
         }
     }
 }

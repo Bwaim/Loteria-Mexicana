@@ -46,6 +46,6 @@ object DataStoreModule {
             serializer = themePreferencesSerializer,
             scope = CoroutineScope(ioDispatcher + SupervisorJob())
         ) {
-            context.dataStoreFile("theme_prefs.pb")
+            context.dataStoreFile("theme_preferences.pb")
         }
 }

@@ -17,20 +17,21 @@
 package dev.bwaim.loteria.app
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.NoActivityResumedException
+import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import dev.bwaim.loteria.compose.theme.LoteriaTheme
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.TemporaryFolder
 
 @ExperimentalAnimationApi
 @HiltAndroidTest
@@ -42,6 +43,13 @@ internal class AppNavigationTest {
     @get:Rule(order = 1)
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
+    /**
+     * Create a temporary folder used to create a Data Store file. This guarantees that
+     * the file is removed in between each test, preventing a crash.
+     */
+    @BindValue @get:Rule(order = 2)
+    val tmpFolder: TemporaryFolder = TemporaryFolder.builder().assureDeletion().build()
+
     private lateinit var drawButtonLabel: String
     private lateinit var drawScreenTitle: String
     private lateinit var settingsButtonLabel: String
@@ -51,73 +59,70 @@ internal class AppNavigationTest {
 
     @Before
     fun setUp() {
+        composeTestRule.activity.apply {
+            drawButtonLabel = getString(R.string.start_menu)
+            drawScreenTitle = getString(R.string.draw_title)
+            settingsButtonLabel = getString(R.string.settings)
+            settingsScreenTitle = getString(R.string.settings_title)
+            mainScreenTitle = getString(R.string.app_name)
+            upArrowDescription = getString(R.string.toolbar_up_description)
+        }
     }
 
     @After
     fun tearDown() {
     }
 
-    @ExperimentalAnimationApi
     @Test
-    fun shouldNavigateToSettings_whenSettingsClicked() {
-
-        testContent {
-            AppNavigation()
+    fun firstScreen_isMain() {
+        composeTestRule.apply {
+            onNodeWithText(mainScreenTitle).assertIsDisplayed()
         }
-
-        goToSettings()
     }
 
-    @ExperimentalAnimationApi
     @Test
-    fun shouldGoBackFromSettings_whenBackClicked() {
-        testContent {
-            AppNavigation()
+    fun clickOnSettings_navigateToSettings() {
+        composeTestRule.apply {
+            goToSettings()
         }
-
-        goToSettings()
-        goBack()
     }
 
-    @ExperimentalAnimationApi
     @Test
-    fun shouldNavigateToDraw_whenDrawClicked() {
-
-        testContent {
-            AppNavigation()
+    fun navigation_navigateToPreviousScreen_restoreScreen() {
+        composeTestRule.apply {
+            onNodeWithText(mainScreenTitle).assertIsDisplayed()
+            goToSettings()
+            goBack()
         }
-
-        goToDraw()
     }
 
-    @ExperimentalAnimationApi
     @Test
-    fun shouldGoBackFromDraw_whenBackClicked() {
-        testContent {
-            AppNavigation()
-        }
-
-        goToDraw()
-        goBack()
-    }
-
-    private fun testContent(call: @Composable () -> Unit) {
-        composeTestRule.setContent {
-            LoteriaTheme {
-                SetLabels()
-                call()
-            }
+    fun clickOnDrawButton_navigateToDrawScreen() {
+        composeTestRule.apply {
+            goToDraw()
         }
     }
 
-    @Composable
-    private fun SetLabels() {
-        settingsButtonLabel = stringResource(id = R.string.settings)
-        settingsScreenTitle = stringResource(id = R.string.settings_title)
-        mainScreenTitle = stringResource(id = R.string.app_name)
-        upArrowDescription = stringResource(id = R.string.toolbar_up_description)
-        drawButtonLabel = stringResource(id = R.string.start_menu)
-        drawScreenTitle = stringResource(id = R.string.draw_title)
+    @Test
+    fun navigatePreviousFromDrawScreen_navigateToMain() {
+        composeTestRule.apply {
+            goToDraw()
+            goBack()
+        }
+    }
+
+    @Test(expected = NoActivityResumedException::class)
+    fun homeDestination_back_quitsApp() {
+        composeTestRule.apply {
+            // GIVEN the user navigates to the Settings destination
+            goToSettings()
+            // and then navigates to the Main destination
+            goBack()
+            onNodeWithText(mainScreenTitle).assertIsDisplayed()
+            // WHEN the user uses the system button/gesture to go back
+            Espresso.pressBack()
+            // THEN the app quits
+        }
     }
 
     private fun goToSettings() {
@@ -132,6 +137,5 @@ internal class AppNavigationTest {
 
     private fun goBack() {
         composeTestRule.onNodeWithContentDescription(upArrowDescription).performClick()
-        composeTestRule.onNodeWithText(mainScreenTitle).assertIsDisplayed()
     }
 }

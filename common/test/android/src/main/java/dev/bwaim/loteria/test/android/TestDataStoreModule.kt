@@ -48,5 +48,6 @@ fun TemporaryFolder.testThemePreferencesDataStore(
 ) = DataStoreFactory.create(
     serializer = themePreferencesSerializer,
 ) {
+    create()
     newFile("theme_preferences_test.pb")
 }

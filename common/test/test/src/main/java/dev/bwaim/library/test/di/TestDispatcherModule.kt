@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("loteriamexicana.android.library")
-    kotlin("kapt")
-    id("loteriamexicana.spotless")
-}
 
-dependencies {
-    implementation(project(":common:coroutines:coroutines"))
-    implementation(project(":common:coroutines:coroutines-android"))
+package dev.bwaim.library.test.di
 
-    implementation(libs.hilt.library)
-    kapt(libs.hilt.compiler)
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+import kotlinx.coroutines.test.TestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 
-    implementation(libs.hilt.testing)
-
-    implementation(libs.junit.library)
-    implementation(libs.kotlin.coroutines.test)
+@Module
+@InstallIn(SingletonComponent::class)
+object TestDispatcherModule {
+    @Provides
+    @Singleton
+    fun providesTestDispatcher(): TestDispatcher = UnconfinedTestDispatcher()
 }

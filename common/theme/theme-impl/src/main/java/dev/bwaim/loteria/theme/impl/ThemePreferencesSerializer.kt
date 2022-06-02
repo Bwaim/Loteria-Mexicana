@@ -28,7 +28,6 @@ import javax.inject.Inject
 public class ThemePreferencesSerializer @Inject constructor() : Serializer<ThemePreferences> {
     override val defaultValue: ThemePreferences get() = ThemePreferences.getDefaultInstance()
 
-    @Suppress("BlockingMethodInNonBlockingContext")
     override suspend fun readFrom(input: InputStream): ThemePreferences =
         try {
             @Suppress("BlockingMethodInNonBlockingContext")
@@ -37,7 +36,6 @@ public class ThemePreferencesSerializer @Inject constructor() : Serializer<Theme
             throw CorruptionException("Cannot read proto.", exception)
         }
 
-    @Suppress("BlockingMethodInNonBlockingContext")
     override suspend fun writeTo(t: ThemePreferences, output: OutputStream) {
         @Suppress("BlockingMethodInNonBlockingContext")
         t.writeTo(output)

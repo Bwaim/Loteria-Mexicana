@@ -18,71 +18,48 @@ package dev.bwaim.loteria.theme.impl
 
 import androidx.datastore.core.CorruptionException
 import com.google.common.truth.Truth
-import com.google.protobuf.InvalidProtocolBufferException
 import dev.bwaim.loteria.theme.Theme
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.mockkStatic
-import io.mockk.spyk
-import io.mockk.unmockkStatic
-import io.mockk.verify
-import java.io.InputStream
-import java.io.OutputStream
-import kotlinx.coroutines.runBlocking
-import org.junit.After
-import org.junit.Before
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
 internal class ThemePreferencesSerializerTest {
 
     private val themePreferencesSerializer = ThemePreferencesSerializer()
 
-    @Before
-    fun setUp() {
-        mockkStatic(ThemePreferences::class)
-    }
-
-    @After
-    fun tearDown() {
-        unmockkStatic(ThemePreferences::class)
+    @Test
+    fun defaultThemePreferences_isEmpty() {
+        Truth
+            .assertThat(
+                themePreferences {
+                    // Default value
+                }
+            )
+            .isEqualTo(themePreferencesSerializer.defaultValue)
     }
 
     @Test
-    fun shouldReturnDefaultInstance_whenDefaultValueAsked() {
-        val defaultValue = themePreferencesSerializer.defaultValue
+    fun writingAndReadingThemePreferences_outputsCorrectValue() = runTest {
+        val expectedThemePreferences = themePreferences {
+            theme = Theme.DARK.value
+        }
 
-        Truth.assertThat(defaultValue).isEqualTo(ThemePreferences.getDefaultInstance())
-    }
+        val outputStream = ByteArrayOutputStream()
 
-    @Test
-    fun shouldReturnThemePreferences_whenDeserializingSucceeds() = runBlocking {
-        val expectedThemePreferences = ThemePreferences
-            .newBuilder()
-            .setTheme(Theme.SYSTEM.value)
-            .build()
-        every { ThemePreferences.parseFrom(any<InputStream>()) } returns expectedThemePreferences
+        expectedThemePreferences.writeTo(outputStream)
 
-        val theme = themePreferencesSerializer.readFrom(mockk())
+        val inputStream = ByteArrayInputStream(outputStream.toByteArray())
 
-        Truth.assertThat(theme).isEqualTo(expectedThemePreferences)
+        val actualThemePreferences = themePreferencesSerializer.readFrom(inputStream)
+
+        Truth
+            .assertThat(actualThemePreferences)
+            .isEqualTo(expectedThemePreferences)
     }
 
     @Test(expected = CorruptionException::class)
-    fun shouldThrowCorruptionException_whenDeserializingFails(): Unit = runBlocking {
-        every {
-            ThemePreferences.parseFrom(any<InputStream>())
-        } throws InvalidProtocolBufferException("")
-
-        themePreferencesSerializer.readFrom(mockk())
-    }
-
-    @Test
-    fun shouldWriteToOutputStream_whenSerialisingThemePreferences() = runBlocking {
-        val themePreferences = spyk(ThemePreferences.getDefaultInstance())
-        val outputStream = mockk<OutputStream>()
-
-        themePreferencesSerializer.writeTo(themePreferences, outputStream)
-
-        verify { themePreferences.writeTo(outputStream) }
+    fun readingInvalidThemePreferences_throwsCorruptionException() = runTest {
+        themePreferencesSerializer.readFrom(ByteArrayInputStream(byteArrayOf(0)))
     }
 }

@@ -17,6 +17,8 @@ import com.google.protobuf.gradle.generateProtoTasks
 import com.google.protobuf.gradle.protobuf
 import com.google.protobuf.gradle.protoc
 
+// TODO: Remove once https://youtrack.jetbrains.com/issue/KTIJ-19369 is fixed
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("loteriamexicana.android.library")
     id("loteriamexicana.android.library.jacoco")
@@ -59,15 +61,17 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.coroutines.core)
 
+    implementation(libs.androidx.datastore)
     implementation(libs.protobuf.kotlin.lite)
 
-    implementation(libs.androidx.datastore)
-
-    kapt(libs.hilt.compiler)
     implementation(libs.hilt.library)
+    kapt(libs.hilt.compiler)
 
+    testImplementation(project(":common:test:android"))
+    testImplementation(project(":common:test:test"))
     testImplementation(libs.androidx.test.truth)
     testImplementation(libs.junit.library)
     testImplementation(libs.kotlin.coroutines.test)
     testImplementation(libs.mockk.library)
+    testImplementation(libs.cash.turbine)
 }

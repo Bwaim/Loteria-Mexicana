@@ -14,25 +14,29 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.coroutines.android
+package dev.bwaim.library.test.di
 
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.testing.TestInstallIn
 import dev.bwaim.loteria.coroutines.ApplicationScope
 import dev.bwaim.loteria.coroutines.ComputationDispatcher
 import dev.bwaim.loteria.coroutines.IODispatcher
 import dev.bwaim.loteria.coroutines.MainDispatcher
+import dev.bwaim.loteria.coroutines.android.ApplicationCoroutinesModule
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.test.TestDispatcher
 
 @Module
-@InstallIn(SingletonComponent::class)
-public object ApplicationCoroutinesModule {
+@TestInstallIn(
+    components = [SingletonComponent::class],
+    replaces = [ApplicationCoroutinesModule::class],
+)
+object TestDispatchersModule {
     @Provides
     @Singleton
     @ApplicationScope
@@ -42,13 +46,14 @@ public object ApplicationCoroutinesModule {
 
     @Provides
     @MainDispatcher
-    fun provideMainDispatcher(): CoroutineDispatcher = Dispatchers.Main.immediate
+    fun provideMainDispatcher(testDispatcher: TestDispatcher): CoroutineDispatcher = testDispatcher
 
     @Provides
     @IODispatcher
-    fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
+    fun provideIODispatcher(testDispatcher: TestDispatcher): CoroutineDispatcher = testDispatcher
 
     @Provides
     @ComputationDispatcher
-    fun provideComputationDispatcher(): CoroutineDispatcher = Dispatchers.Default
+    fun provideComputationDispatcher(testDispatcher: TestDispatcher): CoroutineDispatcher =
+        testDispatcher
 }

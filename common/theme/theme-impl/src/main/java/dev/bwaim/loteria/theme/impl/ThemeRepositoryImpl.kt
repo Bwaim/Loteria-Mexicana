@@ -20,10 +20,10 @@ import androidx.annotation.VisibleForTesting
 import androidx.datastore.core.DataStore
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
 @VisibleForTesting
 public class ThemeRepositoryImpl @Inject constructor(
@@ -39,12 +39,11 @@ public class ThemeRepositoryImpl @Inject constructor(
             }
     }
 
-    override suspend fun setTheme(theme: Theme) {
-        dataStore.updateData { prefs ->
-            prefs
-                .toBuilder()
-                .setTheme(theme.value)
-                .build()
+    override suspend fun setTheme(themeInput: Theme) {
+        dataStore.updateData {
+            it.copy {
+                theme = themeInput.value
+            }
         }
     }
 }

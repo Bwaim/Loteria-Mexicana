@@ -7,6 +7,7 @@ androidGradlePlugin = "7.2.1"
 androidxCore = "1.9.0-alpha04"
 androidxCustomView = "1.0.0-beta02"
 androidxDataStore = "1.0.0"
+androidxEspresso = "3.3.0"
 androidxHiltNavigationCompose = "1.0.0"
 androidxSplashscreen = "1.0.0-rc01"
 androidxStartup = "1.2.0-alpha01"
@@ -29,7 +30,7 @@ kotlin = "1.6.21"
 ktlint = "0.43.0"
 leakcanary = "2.9.1"
 lifecycle = "2.5.0-rc01"
-mockk = "1.12.4"
+mockk = "1.12.3"
 navigation = "2.5.0-rc01"
 okhttp = "5.0.0-alpha.7"
 protobuf = "3.20.0"
@@ -65,6 +66,7 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidxSplashscreen" }
 androidx-startup = { group = "androidx.startup", name = "startup-runtime", version.ref = "androidxStartup" }
 androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
+androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-test-rules = { module = "androidx.test:rules", version.ref = "test" }
 androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
 androidx-test-truth = { module = "androidx.test.ext:truth", version.ref = "test" }

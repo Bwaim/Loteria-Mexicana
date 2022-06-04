@@ -31,52 +31,53 @@ internal class ThemeHelperTest {
     }
 
     @Test
-    fun shouldReturnBatterySaver_whenApiIs28() {
+    fun defaultValueWithMaximumApi28_isBatterySaver() {
         every { BuildWrapper.SDK_INT } returns 28
 
-        Truth.assertThat(ThemeHelper.defaultTheme).isEqualTo(Theme.BATTERY_SAVER)
+        Truth
+            .assertThat(ThemeHelper.defaultTheme)
+            .isEqualTo(Theme.BATTERY_SAVER)
     }
 
     @Test
-    fun shouldReturnSystem_whenApiIs29() {
+    fun defaultValueWithMinimumApi29_isSystem() {
         every { BuildWrapper.SDK_INT } returns 29
 
-        Truth.assertThat(ThemeHelper.defaultTheme).isEqualTo(Theme.SYSTEM)
+        Truth
+            .assertThat(ThemeHelper.defaultTheme)
+            .isEqualTo(Theme.SYSTEM)
     }
 
     @Test
-    fun shouldReturnBatterySaver_whenPreferenceIsEmptyAndApiIs28() {
+    fun emptyTheme_outputsDefaultValue() {
         every { BuildWrapper.SDK_INT } returns 28
 
-        val theme = ThemeHelper.fromPreferences("")
+        val theme = ThemeHelper.fromPreferences(String())
 
-        Truth.assertThat(theme).isEqualTo(Theme.BATTERY_SAVER)
+        Truth
+            .assertThat(theme)
+            .isEqualTo(ThemeHelper.defaultTheme)
     }
 
     @Test
-    fun shouldReturnSystem_whenPreferenceIsEmptyAndApiIs29() {
-        every { BuildWrapper.SDK_INT } returns 29
-
-        val theme = ThemeHelper.fromPreferences("")
-
-        Truth.assertThat(theme).isEqualTo(Theme.SYSTEM)
-    }
-
-    @Test
-    fun shouldReturnBatterySaver_whenPreferenceIsSystemAndApiIs28() {
+    fun systemThemeOnMaximumApi28_outputsBatterySaver() {
         every { BuildWrapper.SDK_INT } returns 28
 
         val theme = ThemeHelper.fromPreferences(Theme.SYSTEM.value)
 
-        Truth.assertThat(theme).isEqualTo(Theme.BATTERY_SAVER)
+        Truth
+            .assertThat(theme)
+            .isEqualTo(Theme.BATTERY_SAVER)
     }
 
     @Test
-    fun shouldReturnSystem_whenPreferenceIsBatterySaverAndApiIs29() {
+    fun batterySaverThemeOnMinimumApi29_outputsSystem() {
         every { BuildWrapper.SDK_INT } returns 29
 
         val theme = ThemeHelper.fromPreferences(Theme.BATTERY_SAVER.value)
 
-        Truth.assertThat(theme).isEqualTo(Theme.SYSTEM)
+        Truth
+            .assertThat(theme)
+            .isEqualTo(Theme.SYSTEM)
     }
 }

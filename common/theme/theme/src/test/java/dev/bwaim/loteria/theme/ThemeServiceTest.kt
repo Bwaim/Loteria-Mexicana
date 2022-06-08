@@ -17,7 +17,6 @@
 package dev.bwaim.loteria.theme
 
 import com.google.common.truth.Truth
-import com.google.common.truth.Truth.assertThat
 import io.mockk.MockKAnnotations
 import io.mockk.coVerify
 import io.mockk.every
@@ -56,7 +55,7 @@ internal class ThemeServiceTest {
             .toList()
             .toTypedArray()
 
-        assertThat(themes).isEqualTo(expectedThemes)
+        Truth.assertThat(themes).isEqualTo(expectedThemes)
     }
 
     @Test

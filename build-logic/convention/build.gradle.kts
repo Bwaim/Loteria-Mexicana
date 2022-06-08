@@ -49,9 +49,29 @@ gradlePlugin {
             id = "loteriamexicana.android.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
+        register("androidTestCompose") {
+            id = "loteriamexicana.android.test.compose"
+            implementationClass = "AndroidTestComposeConventionPlugin"
+        }
+        register("hilt") {
+            id = "loteriamexicana.hilt"
+            implementationClass = "HiltConventionPlugin"
+        }
+        register("kotlin") {
+            id = "loteriamexicana.kotlin.library"
+            implementationClass = "KotlinLibraryConventionPlugin"
+        }
+        register("kotlinJacoco") {
+            id = "loteriamexicana.kotlin.library.jacoco"
+            implementationClass = "KotlinLibraryJacocoConventionPlugin"
+        }
         register("spotless") {
             id = "loteriamexicana.spotless"
             implementationClass = "SpotlessConventionPlugin"
+        }
+        register("unitTest") {
+            id = "loteriamexicana.test"
+            implementationClass = "UnitTestConventionPlugin"
         }
     }
 }

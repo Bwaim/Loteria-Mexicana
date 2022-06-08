@@ -15,7 +15,7 @@
  */
 plugins {
     id("loteriamexicana.android.library")
-    kotlin("kapt")
+    id("loteriamexicana.hilt")
     id("loteriamexicana.spotless")
 }
 
@@ -23,11 +23,7 @@ dependencies {
     implementation(project(":common:coroutines:coroutines"))
     implementation(project(":common:coroutines:coroutines-android"))
 
-    implementation(libs.hilt.library)
-    kapt(libs.hilt.compiler)
-
     implementation(libs.hilt.testing)
 
-    implementation(libs.junit.library)
     implementation(libs.kotlin.coroutines.test)
 }

@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 plugins {
-    id("loteriamexicana.android.library")
-    id("loteriamexicana.android.library.jacoco")
+    id("loteriamexicana.kotlin.library")
+    id("loteriamexicana.kotlin.library.jacoco")
     id("loteriamexicana.spotless")
 }
 
 dependencies {
     implementation(libs.dagger)
-
-    implementation(libs.kotlin.coroutines.core)
-    implementation(libs.kotlin.stdlib)
 }

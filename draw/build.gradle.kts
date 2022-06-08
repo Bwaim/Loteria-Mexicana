@@ -18,7 +18,7 @@ plugins {
     id("loteriamexicana.android.feature")
     id("loteriamexicana.android.library.compose")
     id("loteriamexicana.android.library.jacoco")
-    id("dagger.hilt.android.plugin")
+    id("loteriamexicana.hilt")
     id("loteriamexicana.spotless")
 }
 

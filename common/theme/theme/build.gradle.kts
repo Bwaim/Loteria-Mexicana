@@ -14,21 +14,18 @@
  * limitations under the License.
  */
 plugins {
-    id("loteriamexicana.android.library")
-    id("loteriamexicana.android.library.jacoco")
+    id("loteriamexicana.kotlin.library")
+    id("loteriamexicana.kotlin.library.jacoco")
     id("loteriamexicana.spotless")
+    id("loteriamexicana.test")
 }
 
 dependencies {
     implementation(project(":common:coroutines:coroutines"))
-
-    implementation(libs.kotlin.stdlib)
-    implementation(libs.kotlin.coroutines.core)
 
     implementation(libs.dagger)
 
     testImplementation(libs.junit.library)
     testImplementation(libs.mockk.library)
     testImplementation(libs.kotlin.coroutines.test)
-    testImplementation(libs.androidx.test.truth)
 }

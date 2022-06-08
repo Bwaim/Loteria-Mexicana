@@ -40,7 +40,7 @@ internal class EmptyBodyInterceptor @Inject constructor() : Interceptor {
             .code(200)
             .apply {
                 val body = response.body
-                if (body == null || body.contentLength() == 0L) {
+                if (body.contentLength() == 0L) {
                     body(EMPTY_BODY)
                 }
             }

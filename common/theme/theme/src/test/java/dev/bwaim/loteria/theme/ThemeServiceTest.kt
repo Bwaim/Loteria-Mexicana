@@ -16,8 +16,6 @@
 
 package dev.bwaim.loteria.theme
 
-import com.google.common.truth.Truth
-import com.google.common.truth.Truth.assertThat
 import io.mockk.MockKAnnotations
 import io.mockk.coVerify
 import io.mockk.every
@@ -27,6 +25,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
@@ -56,7 +55,7 @@ internal class ThemeServiceTest {
             .toList()
             .toTypedArray()
 
-        assertThat(themes).isEqualTo(expectedThemes)
+        Assert.assertArrayEquals(expectedThemes, themes)
     }
 
     @Test
@@ -74,6 +73,6 @@ internal class ThemeServiceTest {
 
         val result = themeService.getThemes()
 
-        Truth.assertThat(result).isEqualTo(expectedResult)
+        Assert.assertEquals(expectedResult, result)
     }
 }

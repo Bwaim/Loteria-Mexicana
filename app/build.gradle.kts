@@ -17,12 +17,12 @@ plugins {
     id("loteriamexicana.android.application")
     id("loteriamexicana.android.application.compose")
     id("loteriamexicana.android.application.jacoco")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
+    id("loteriamexicana.android.test.compose")
+    id("loteriamexicana.hilt")
+    id("loteriamexicana.spotless")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("com.google.firebase.firebase-perf")
-    id("loteriamexicana.spotless")
 }
 
 android {
@@ -96,9 +96,6 @@ dependencies {
     implementation(libs.accompanist.navigation.animation)
     implementation(libs.accompanist.systemuicontroller)
 
-    implementation(libs.hilt.library)
-    kapt(libs.hilt.compiler)
-
     implementation(libs.firebase.perf.library)
 
     debugImplementation(libs.leakcanary.library)
@@ -107,11 +104,7 @@ dependencies {
     implementation(libs.coil.library)
 
     androidTestImplementation(project(":common:test:android"))
-    androidTestImplementation(libs.junit.library)
     androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(libs.androidx.test.core)
-    androidTestImplementation(libs.compose.ui.test)
-    debugImplementation(libs.compose.ui.test.manifest)
     androidTestImplementation(libs.hilt.testing)
     kaptAndroidTest(libs.hilt.compiler)
 }

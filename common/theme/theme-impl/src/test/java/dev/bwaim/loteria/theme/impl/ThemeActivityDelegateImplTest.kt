@@ -16,7 +16,6 @@
 
 package dev.bwaim.loteria.theme.impl
 
-import com.google.common.truth.Truth
 import dev.bwaim.loteria.core.utils.BuildWrapper
 import dev.bwaim.loteria.theme.ThemeService
 import io.mockk.every
@@ -27,6 +26,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestScope
+import org.junit.Assert
 import org.junit.Test
 
 internal class ThemeActivityDelegateImplTest {
@@ -47,6 +47,9 @@ internal class ThemeActivityDelegateImplTest {
             .theme
             .first()
 
-        Truth.assertThat(theme).isEqualTo(ThemeHelper.defaultTheme)
+        Assert.assertEquals(
+            ThemeHelper.defaultTheme,
+            theme
+        )
     }
 }

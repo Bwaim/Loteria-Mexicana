@@ -15,8 +15,8 @@
  */
 plugins {
     id("loteriamexicana.android.library")
-    kotlin("kapt")
     id("loteriamexicana.android.library.jacoco")
+    id("loteriamexicana.hilt")
     id("loteriamexicana.spotless")
 }
 
@@ -24,11 +24,8 @@ dependencies {
     implementation(project(":common:theme:theme-impl"))
     implementation(project(":common:test:test"))
 
-    implementation(libs.hilt.library)
-    kapt(libs.hilt.compiler)
-
     implementation(libs.androidx.test.runner)
     implementation(libs.hilt.testing)
 
-    api(libs.androidx.datastore)
+    implementation(libs.androidx.datastore)
 }

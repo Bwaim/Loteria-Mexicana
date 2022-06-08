@@ -22,10 +22,10 @@ import com.google.protobuf.gradle.protoc
 plugins {
     id("loteriamexicana.android.library")
     id("loteriamexicana.android.library.jacoco")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
+    id("loteriamexicana.hilt")
     alias(libs.plugins.protobuf)
     id("loteriamexicana.spotless")
+    id("loteriamexicana.test")
 }
 
 android {
@@ -58,20 +58,11 @@ dependencies {
     implementation(project(":common:coroutines:coroutines"))
     implementation(project(":common:theme:theme"))
 
-    implementation(libs.kotlin.stdlib)
-    implementation(libs.kotlin.coroutines.core)
-
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.kotlin.lite)
 
-    implementation(libs.hilt.library)
-    kapt(libs.hilt.compiler)
-
     testImplementation(project(":common:test:android"))
     testImplementation(project(":common:test:test"))
-    testImplementation(libs.androidx.test.truth)
-    testImplementation(libs.junit.library)
     testImplementation(libs.kotlin.coroutines.test)
     testImplementation(libs.mockk.library)
-    testImplementation(libs.cash.turbine)
 }

@@ -16,7 +16,6 @@
 
 package dev.bwaim.loteria.http.interceptors.emptybody
 
-import com.google.common.truth.Truth.assertThat
 import dev.bwaim.loteria.http.interceptors.emptybody.EmptyBodyInterceptor.Companion.EMPTY_BODY
 import dev.bwaim.loteria.http.utils.HttpTestUtils.createFakeResponse
 import io.mockk.MockKAnnotations
@@ -26,6 +25,7 @@ import io.mockk.mockk
 import java.net.HttpURLConnection
 import okhttp3.Interceptor
 import okhttp3.Response
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
@@ -48,7 +48,10 @@ internal class EmptyBodyInterceptorTest {
 
         val body = emptyBodyInterceptor.intercept(mockChain).body
 
-        assertThat(body).isEqualTo(EMPTY_BODY)
+        Assert.assertEquals(
+            EMPTY_BODY,
+            body
+        )
     }
 
     @Test
@@ -62,7 +65,10 @@ internal class EmptyBodyInterceptorTest {
 
         val body = emptyBodyInterceptor.intercept(mockChain).body
 
-        assertThat(body).isEqualTo(EMPTY_BODY)
+        Assert.assertEquals(
+            EMPTY_BODY,
+            body
+        )
     }
 
     @Test
@@ -71,7 +77,10 @@ internal class EmptyBodyInterceptorTest {
 
         val code = emptyBodyInterceptor.intercept(mockChain).code
 
-        assertThat(code).isEqualTo(HttpURLConnection.HTTP_OK)
+        Assert.assertEquals(
+            HttpURLConnection.HTTP_OK,
+            code
+        )
     }
 
     @Test
@@ -80,7 +89,10 @@ internal class EmptyBodyInterceptorTest {
 
         val code = emptyBodyInterceptor.intercept(mockChain).code
 
-        assertThat(code).isEqualTo(HttpURLConnection.HTTP_OK)
+        Assert.assertEquals(
+            HttpURLConnection.HTTP_OK,
+            code
+        )
     }
 
     @Test
@@ -90,7 +102,10 @@ internal class EmptyBodyInterceptorTest {
 
         val response = emptyBodyInterceptor.intercept(mockChain)
 
-        assertThat(response).isEqualTo(fakeResponse)
+        Assert.assertEquals(
+            fakeResponse,
+            response
+        )
     }
 
     @Test
@@ -100,7 +115,10 @@ internal class EmptyBodyInterceptorTest {
 
         val response = emptyBodyInterceptor.intercept(mockChain)
 
-        assertThat(response).isEqualTo(fakeResponse)
+        Assert.assertEquals(
+            fakeResponse,
+            response
+        )
     }
 
     private fun mockChainProceed(response: Response) {

@@ -11,8 +11,8 @@ class UnitTestConventionPlugin : Plugin<Project> {
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
             dependencies {
+                add("testImplementation", libs.findLibrary("junit-library").get())
                 add("testImplementation", libs.findLibrary("kotlin.coroutines.test").get())
-                add("testImplementation", libs.findLibrary("androidx.test.truth").get())
                 add("testImplementation", libs.findLibrary("cash.turbine").get())
             }
         }

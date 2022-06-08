@@ -17,7 +17,6 @@
 package dev.bwaim.loteria.settings
 
 import app.cash.turbine.test
-import com.google.common.truth.Truth
 import dev.bwaim.library.test.MainCoroutineRule
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeService
@@ -30,6 +29,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.After
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -62,11 +62,18 @@ internal class SettingsViewModelTest {
         initViewModel()
 
         settingsViewModel.viewState.test {
-            Truth.assertThat(awaitItem()).isEqualTo(SettingsState())
-            Truth.assertThat(awaitItem())
-                .isEqualTo(SettingsState(appTheme = Theme.LIGHT, themes = themes))
-            Truth.assertThat(awaitItem())
-                .isEqualTo(SettingsState(appTheme = Theme.DARK, themes = themes))
+            Assert.assertEquals(
+                SettingsState(),
+                awaitItem()
+            )
+            Assert.assertEquals(
+                SettingsState(appTheme = Theme.LIGHT, themes = themes),
+                awaitItem()
+            )
+            Assert.assertEquals(
+                SettingsState(appTheme = Theme.DARK, themes = themes),
+                awaitItem()
+            )
         }
     }
 

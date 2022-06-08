@@ -17,11 +17,11 @@
 package dev.bwaim.loteria.theme.impl
 
 import androidx.datastore.core.CorruptionException
-import com.google.common.truth.Truth
 import dev.bwaim.loteria.theme.Theme
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Test
 
 internal class ThemePreferencesSerializerTest {
@@ -30,13 +30,12 @@ internal class ThemePreferencesSerializerTest {
 
     @Test
     fun defaultThemePreferences_isEmpty() {
-        Truth
-            .assertThat(
-                themePreferences {
-                    // Default value
-                }
-            )
-            .isEqualTo(themePreferencesSerializer.defaultValue)
+        Assert.assertEquals(
+            themePreferencesSerializer.defaultValue,
+            themePreferences {
+                // Default value
+            }
+        )
     }
 
     @Test
@@ -53,9 +52,10 @@ internal class ThemePreferencesSerializerTest {
 
         val actualThemePreferences = themePreferencesSerializer.readFrom(inputStream)
 
-        Truth
-            .assertThat(actualThemePreferences)
-            .isEqualTo(expectedThemePreferences)
+        Assert.assertEquals(
+            expectedThemePreferences,
+            actualThemePreferences
+        )
     }
 
     @Test(expected = CorruptionException::class)

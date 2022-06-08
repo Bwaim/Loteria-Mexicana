@@ -16,11 +16,11 @@
 
 package dev.bwaim.loteria.theme.impl
 
-import com.google.common.truth.Truth
 import dev.bwaim.loteria.core.utils.BuildWrapper
 import dev.bwaim.loteria.theme.Theme
 import io.mockk.every
 import io.mockk.mockkObject
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
@@ -34,18 +34,20 @@ internal class ThemeHelperTest {
     fun defaultValueWithMaximumApi28_isBatterySaver() {
         every { BuildWrapper.SDK_INT } returns 28
 
-        Truth
-            .assertThat(ThemeHelper.defaultTheme)
-            .isEqualTo(Theme.BATTERY_SAVER)
+        Assert.assertEquals(
+            Theme.BATTERY_SAVER,
+            ThemeHelper.defaultTheme
+        )
     }
 
     @Test
     fun defaultValueWithMinimumApi29_isSystem() {
         every { BuildWrapper.SDK_INT } returns 29
 
-        Truth
-            .assertThat(ThemeHelper.defaultTheme)
-            .isEqualTo(Theme.SYSTEM)
+        Assert.assertEquals(
+            Theme.SYSTEM,
+            ThemeHelper.defaultTheme
+        )
     }
 
     @Test
@@ -54,9 +56,10 @@ internal class ThemeHelperTest {
 
         val theme = ThemeHelper.fromPreferences(String())
 
-        Truth
-            .assertThat(theme)
-            .isEqualTo(ThemeHelper.defaultTheme)
+        Assert.assertEquals(
+            ThemeHelper.defaultTheme,
+            theme
+        )
     }
 
     @Test
@@ -65,9 +68,10 @@ internal class ThemeHelperTest {
 
         val theme = ThemeHelper.fromPreferences(Theme.SYSTEM.value)
 
-        Truth
-            .assertThat(theme)
-            .isEqualTo(Theme.BATTERY_SAVER)
+        Assert.assertEquals(
+            Theme.BATTERY_SAVER,
+            theme
+        )
     }
 
     @Test
@@ -76,8 +80,9 @@ internal class ThemeHelperTest {
 
         val theme = ThemeHelper.fromPreferences(Theme.BATTERY_SAVER.value)
 
-        Truth
-            .assertThat(theme)
-            .isEqualTo(Theme.SYSTEM)
+        Assert.assertEquals(
+            Theme.SYSTEM,
+            theme
+        )
     }
 }

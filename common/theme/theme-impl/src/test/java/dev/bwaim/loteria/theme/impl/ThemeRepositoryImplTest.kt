@@ -17,7 +17,6 @@
 package dev.bwaim.loteria.theme.impl
 
 import app.cash.turbine.test
-import com.google.common.truth.Truth
 import dev.bwaim.loteria.core.utils.BuildWrapper
 import dev.bwaim.loteria.test.android.testThemePreferencesDataStore
 import dev.bwaim.loteria.theme.Theme
@@ -25,6 +24,7 @@ import io.mockk.every
 import io.mockk.mockkObject
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -47,9 +47,10 @@ internal class ThemeRepositoryImplTest {
     fun firstTheme_isThemePreferenceDefaultValue() = runTest {
         every { BuildWrapper.SDK_INT } returns 29
 
-        Truth
-            .assertThat(subject.observeTheme().first())
-            .isEqualTo(ThemeHelper.defaultTheme)
+        Assert.assertEquals(
+            ThemeHelper.defaultTheme,
+            subject.observeTheme().first()
+        )
     }
 
     // This test fails on Windows : https://github.com/android/nowinandroid/issues/98
@@ -60,15 +61,17 @@ internal class ThemeRepositoryImplTest {
         val themeValue = Theme.DARK
 
         subject.observeTheme().test {
-            Truth
-                .assertThat(awaitItem())
-                .isEqualTo(ThemeHelper.defaultTheme)
+            Assert.assertEquals(
+                ThemeHelper.defaultTheme,
+                awaitItem()
+            )
 
             subject.setTheme(themeValue)
 
-            Truth
-                .assertThat(awaitItem())
-                .isEqualTo(themeValue)
+            Assert.assertEquals(
+                themeValue,
+                awaitItem()
+            )
 
             cancel()
         }

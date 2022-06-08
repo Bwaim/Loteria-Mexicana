@@ -27,9 +27,7 @@ dependencies {
 
     implementation(libs.compose.material3)
 
-    // TODO : Remove these dependency once we upgrade to Android Studio Dolphin b/228889042
-    // These dependencies are currently necessary to render Compose previews
-    debugImplementation(libs.androidx.customview.poolingcontainer)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     debugImplementation(libs.compose.ui.tooling.library)
     implementation(libs.compose.ui.tooling.preview)

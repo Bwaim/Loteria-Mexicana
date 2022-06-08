@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:OptIn(ExperimentalLifecycleComposeApi::class)
+
 package dev.bwaim.loteria.draw
 
 import androidx.compose.foundation.Image
@@ -27,11 +29,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import dev.bwaim.loteria.compose.BackButton
 import dev.bwaim.loteria.compose.TopAppBarTitle
@@ -41,7 +44,7 @@ public fun DrawRoute(
     viewModel: DrawViewModel = hiltViewModel(),
     onBackClick: () -> Unit
 ) {
-    val viewState by viewModel.viewState.collectAsState()
+    val viewState by viewModel.viewState.collectAsStateWithLifecycle()
     Draw(
         viewState = viewState,
         onBackClick = onBackClick

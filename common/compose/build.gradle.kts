@@ -26,6 +26,8 @@ dependencies {
     implementation(project(":common:theme:theme"))
 
     implementation(libs.androidx.core.library)
+    implementation(libs.androidx.lifecycle.runtime)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     implementation(libs.compose.material3)
     debugImplementation(libs.compose.ui.tooling.library)

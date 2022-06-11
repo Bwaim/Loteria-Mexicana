@@ -87,7 +87,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.compose.animation)
-    implementation(libs.compose.material)
+    implementation(libs.compose.material3)
     debugImplementation(libs.compose.ui.tooling.library)
     implementation(libs.compose.ui.tooling.preview)
 

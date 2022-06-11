@@ -17,22 +17,20 @@
 package dev.bwaim.loteria.compose.design.preference.ui
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.RadioButton
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment.Companion.CenterEnd
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -84,12 +82,10 @@ private fun <T> ListPreferenceUi(
             .clickable { isDialogShown = true }
     ) {
         Text(
-            text = preferences.title,
-            style = LoteriaTheme.typography.bodyLink
+            text = preferences.title
         )
         Text(
-            text = currentValue.label,
-            style = LoteriaTheme.typography.mention
+            text = currentValue.label
         )
     }
 
@@ -119,7 +115,6 @@ private fun <T> ListPreferenceDialog(
         title = {
             Text(
                 text = preferences.title,
-                style = LoteriaTheme.typography.bodyLink,
                 modifier = Modifier.fillMaxWidth()
             )
         },
@@ -149,29 +144,21 @@ private fun <T> ListPreferenceDialog(
                         )
                         Text(
                             text = preference.value.label,
-                            style = LoteriaTheme.typography.mention,
                             modifier = Modifier.align(CenterVertically)
                         )
                     }
                 }
             }
         },
-        buttons = {
-            Box(
+        confirmButton = {
+            TextButton(
+                onClick = onDismiss,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
             ) {
-                TextButton(
-                    onClick = onDismiss,
-                    modifier = Modifier
-                        .padding(horizontal = 24.dp)
-                        .align(CenterEnd)
-                ) {
-                    Text(
-                        text = stringResource(android.R.string.cancel),
-                        style = LoteriaTheme.typography.mentionLink
-                    )
-                }
+                Text(
+                    text = stringResource(android.R.string.cancel)
+                )
             }
         }
     )

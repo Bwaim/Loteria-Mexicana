@@ -28,17 +28,17 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.google.accompanist.insets.ui.TopAppBar
 import dev.bwaim.loteria.compose.TopAppBarTitle
-import dev.bwaim.loteria.compose.design.LoteriaButton
-import dev.bwaim.loteria.compose.design.LoteriaTextButton
 
 private typealias MainMenuActioner = (MainMenuAction) -> Unit
 
@@ -72,8 +72,8 @@ private fun MainMenu(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            LoteriaButton(onClick = { actioner(OpenDraw) }) {
-                LoteriaTextButton(text = stringResource(id = R.string.start_menu))
+            Button(onClick = { actioner(OpenDraw) }) {
+                Text(text = stringResource(id = R.string.start_menu))
             }
         }
     }

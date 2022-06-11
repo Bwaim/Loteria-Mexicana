@@ -39,7 +39,9 @@ fun Project.configureKotlinAndroid(
                 "-opt-in=kotlinx.coroutines.FlowPreview",
                 "-opt-in=kotlin.Experimental",
                 // Enable experimental kotlinx serialization APIs
-                "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
+                "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
+                // Enable experimental material 3 APIs
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
             )
 
             // Set JVM target to 1.8

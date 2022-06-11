@@ -31,5 +31,5 @@ dependencies {
     implementation(libs.coil.library)
     implementation(libs.coil.compose)
 
-    implementation(libs.compose.material)
+    implementation(libs.compose.material3)
 }

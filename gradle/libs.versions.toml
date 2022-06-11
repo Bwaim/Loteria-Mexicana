@@ -4,6 +4,7 @@ activity = "1.6.0-alpha03"
 androidCacheFix = "2.5.3"
 androidDesugarJdkLibs = "1.1.5"
 androidGradlePlugin = "7.2.1"
+androidxComposeMaterial3 = "1.0.0-alpha13"
 androidxCore = "1.9.0-alpha04"
 androidxCustomView = "1.0.0-beta02"
 androidxDataStore = "1.0.0"
@@ -30,6 +31,7 @@ kotlin = "1.6.21"
 ktlint = "0.43.0"
 leakcanary = "2.9.1"
 lifecycle = "2.5.0-rc01"
+material3 = "1.7.0-alpha02"
 mockk = "1.12.4"
 navigation = "2.5.0-rc01"
 okhttp = "5.0.0-alpha.8"
@@ -78,7 +80,8 @@ coil-library = { module = "io.coil-kt:coil", version.ref = "coil" }
 compose-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }
-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxComposeMaterial3" }
+compose-material3-windowSizeClass = {group = "androidx.compose.material3", name = "material3-window-size-class", version.ref="androidxComposeMaterial3"}
 compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 compose-ui-tooling-library = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
@@ -114,6 +117,8 @@ kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.re
 
 leakcanary-library = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 leakcanary-plumber = { module = "com.squareup.leakcanary:plumber-android", version.ref = "leakcanary" }
+
+material3 = { group = "com.google.android.material", name = "material", version.ref = "material3" }
 
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 mockk-library = { module = "io.mockk:mockk", version.ref = "mockk" }

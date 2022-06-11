@@ -42,7 +42,7 @@ public class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            LoteriaTheme(useDarkColors = themeActivityDelegate.shouldUseDarkColors()) {
+            LoteriaTheme(darkTheme = themeActivityDelegate.shouldUseDarkColors()) {
                 val systemUiController = rememberSystemUiController()
                 val useDarkIcons = MaterialTheme.colors.isLight
                 val statusBarColor = MaterialTheme.colors.primaryVariant

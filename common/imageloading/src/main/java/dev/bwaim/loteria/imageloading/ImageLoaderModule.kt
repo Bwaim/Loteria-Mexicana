@@ -22,7 +22,6 @@ import android.util.Log
 import androidx.core.content.getSystemService
 import coil.ImageLoader
 import coil.ImageLoaderFactory
-import coil.annotation.ExperimentalCoilApi
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.util.DebugLogger
@@ -41,7 +40,6 @@ import okhttp3.OkHttpClient
 private const val CACHE_DIRECTORY_NAME = "image_cache"
 private const val MEMORY_CACHE_PERCENT = 0.25
 
-@OptIn(ExperimentalCoilApi::class)
 @Module
 @InstallIn(SingletonComponent::class)
 internal object ImageLoaderModule {

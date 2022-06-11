@@ -23,9 +23,8 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -66,10 +65,8 @@ private fun Settings(
     val appTheme = viewState.appTheme.toPreference()
     val themesPreferences =
         viewState.themes.toListPreferences(stringResource(id = R.string.settings_app_theme_title))
-    val scaffoldState = rememberScaffoldState()
 
     Scaffold(
-        scaffoldState = scaffoldState,
         topBar = { SettingsAppBar(actioner) }
     ) { contentPadding ->
         ListPreferenceWidget(
@@ -83,7 +80,7 @@ private fun Settings(
 
 @Composable
 private fun SettingsAppBar(actioner: SettingsActioner) {
-    TopAppBar(
+    SmallTopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.settings_title)) },
         modifier = Modifier.windowInsetsPadding(
             WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)

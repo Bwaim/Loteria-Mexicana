@@ -23,10 +23,9 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallTopAppBar
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -61,10 +60,7 @@ private fun Draw(
     viewState: DrawState,
     actioner: DrawActioner
 ) {
-    val scaffoldState = rememberScaffoldState()
-
     Scaffold(
-        scaffoldState = scaffoldState,
         topBar = { SettingsAppBar(actioner) }
     ) { contentPadding ->
         Text(
@@ -77,7 +73,7 @@ private fun Draw(
 
 @Composable
 private fun SettingsAppBar(actioner: DrawActioner) {
-    TopAppBar(
+    SmallTopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.draw_title)) },
         modifier = Modifier.windowInsetsPadding(
             WindowInsets.safeDrawing.only(

@@ -29,7 +29,7 @@ dependencies {
     implementation(project(":common:core"))
     implementation(project(":common:theme:theme"))
 
-    implementation(libs.compose.material)
+    implementation(libs.compose.material3)
 
     testImplementation(project(":common:test:test"))
     testImplementation(libs.mockk.library)

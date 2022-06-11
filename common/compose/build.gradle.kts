@@ -25,7 +25,9 @@ plugins {
 dependencies {
     implementation(project(":common:theme:theme"))
 
-    implementation(libs.compose.material)
+    implementation(libs.androidx.core.library)
+
+    implementation(libs.compose.material3)
     debugImplementation(libs.compose.ui.tooling.library)
     implementation(libs.compose.ui.tooling.preview)
 

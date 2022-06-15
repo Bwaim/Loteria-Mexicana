@@ -1,7 +1,7 @@
 [versions]
 accompanist = "0.24.9-beta"
 activity = "1.6.0-alpha03"
-androidCacheFix = "2.5.3"
+androidCacheFix = "2.5.4"
 androidDesugarJdkLibs = "1.1.5"
 androidGradlePlugin = "7.2.1"
 androidxComposeMaterial3 = "1.0.0-alpha13"

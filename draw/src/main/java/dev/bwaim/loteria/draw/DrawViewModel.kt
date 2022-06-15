@@ -17,14 +17,11 @@
 package dev.bwaim.loteria.draw
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.bwaim.loteria.card.CardService
 import javax.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 public class DrawViewModel @Inject constructor(
@@ -36,13 +33,13 @@ public class DrawViewModel @Inject constructor(
     private val _viewState: MutableStateFlow<DrawState> = MutableStateFlow(DrawState())
     public val viewState: StateFlow<DrawState> = _viewState
 
-    init {
-        viewModelScope.launch {
-            val cards = cardService.getCards()
-            cards.forEach {
-                _viewState.value = DrawState(it)
-                delay(5000)
-            }
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            val cards = cardService.getCards()
+//            cards.forEach {
+//                _viewState.value = DrawState(it)
+//                delay(5000)
+//            }
+//        }
+//    }
 }

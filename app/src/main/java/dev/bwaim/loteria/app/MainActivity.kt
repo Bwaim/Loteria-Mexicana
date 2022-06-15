@@ -20,17 +20,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.SideEffect
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import androidx.core.view.WindowCompat
 import dagger.hilt.android.AndroidEntryPoint
+import dev.bwaim.loteria.app.ui.LoteriaApp
 import dev.bwaim.loteria.compose.extensions.shouldUseDarkColors
-import dev.bwaim.loteria.compose.theme.LoteriaTheme
 import dev.bwaim.loteria.theme.ThemeActivityDelegate
 import javax.inject.Inject
 
 @ExperimentalAnimationApi
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @AndroidEntryPoint
 public class MainActivity : ComponentActivity() {
 
@@ -41,20 +42,13 @@ public class MainActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        setContent {
-            LoteriaTheme(darkTheme = themeActivityDelegate.shouldUseDarkColors()) {
-                val systemUiController = rememberSystemUiController()
-                val useDarkIcons = MaterialTheme.colors.isLight
-                val statusBarColor = MaterialTheme.colors.primaryVariant
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
-                SideEffect {
-                    systemUiController.setStatusBarColor(
-                        color = statusBarColor,
-                        darkIcons = useDarkIcons
-                    )
-                }
-                AppNavigation()
-            }
+        setContent {
+            LoteriaApp(
+                shouldUseDarkColors = themeActivityDelegate.shouldUseDarkColors(),
+                windowSizeClass = calculateWindowSizeClass(activity = this)
+            )
         }
     }
 }

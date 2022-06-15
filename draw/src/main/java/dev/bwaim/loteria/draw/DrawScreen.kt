@@ -36,43 +36,38 @@ import coil.compose.rememberAsyncImagePainter
 import dev.bwaim.loteria.compose.BackButton
 import dev.bwaim.loteria.compose.TopAppBarTitle
 
-private typealias DrawActioner = (DrawAction) -> Unit
-
 @Composable
-public fun Draw(
+public fun DrawRoute(
     viewModel: DrawViewModel = hiltViewModel(),
-    navigateUp: () -> Unit
+    onBackClick: () -> Unit
 ) {
     val viewState by viewModel.viewState.collectAsState()
-
-    val viewState2 = viewModel.viewState.collectAsState()
-    val value1: DrawState = viewState
-    val value2: DrawState = viewState2.value
-    Draw(viewState) { action ->
-        when (action) {
-            NavigateUp -> navigateUp()
-        }
-    }
+    Draw(
+        viewState = viewState,
+        onBackClick = onBackClick
+    )
 }
 
 @Composable
 private fun Draw(
     viewState: DrawState,
-    actioner: DrawActioner
+    onBackClick: () -> Unit
 ) {
     Scaffold(
-        topBar = { SettingsAppBar(actioner) }
+        topBar = { SettingsAppBar(onBackClick) }
     ) { contentPadding ->
         Text(
             modifier = Modifier.padding(contentPadding),
             text = "DrawScreen"
         )
-        CoilImage(viewState.card)
+//        CoilImage(viewState.card)
     }
 }
 
 @Composable
-private fun SettingsAppBar(actioner: DrawActioner) {
+private fun SettingsAppBar(
+    onBackClick: () -> Unit
+) {
     SmallTopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.draw_title)) },
         modifier = Modifier.windowInsetsPadding(
@@ -81,9 +76,7 @@ private fun SettingsAppBar(actioner: DrawActioner) {
             )
         ),
         navigationIcon = {
-            BackButton {
-                actioner(NavigateUp)
-            }
+            BackButton { onBackClick() }
         }
     )
 }

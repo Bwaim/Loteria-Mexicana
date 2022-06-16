@@ -39,56 +39,52 @@ import dev.bwaim.loteria.compose.design.preference.ui.ListPreferenceWidget
 import dev.bwaim.loteria.core.utils.BuildWrapper
 import dev.bwaim.loteria.theme.Theme
 
-private typealias SettingsActioner = (SettingsAction) -> Unit
-
 @Composable
-public fun Settings(
+public fun SettingsRoute(
     viewModel: SettingsViewModel = hiltViewModel(),
-    navigateUp: () -> Unit
+    onBackClick: () -> Unit
 ) {
     val viewState by viewModel.viewState.collectAsState()
-    Settings(viewState) { action ->
-        when (action) {
-            NavigateUp -> navigateUp()
-            is OnThemeChanged -> {
-                viewModel.setTheme(action.value)
-            }
-        }
-    }
+    Settings(
+        viewState,
+        onBackClick,
+        viewModel::setTheme
+    )
 }
 
 @Composable
 private fun Settings(
     viewState: SettingsState,
-    actioner: SettingsActioner
+    onBackClick: () -> Unit,
+    onThemeChanged: (Theme) -> Unit
 ) {
     val appTheme = viewState.appTheme.toPreference()
     val themesPreferences =
         viewState.themes.toListPreferences(stringResource(id = R.string.settings_app_theme_title))
 
     Scaffold(
-        topBar = { SettingsAppBar(actioner) }
+        topBar = { SettingsAppBar(onBackClick) }
     ) { contentPadding ->
         ListPreferenceWidget(
             modifier = Modifier.padding(contentPadding),
             preferences = themesPreferences,
             currentValue = appTheme,
-            onValueChanged = { actioner(OnThemeChanged(it.value as Theme)) }
+            onValueChanged = { onThemeChanged(it.value as Theme) }
         )
     }
 }
 
 @Composable
-private fun SettingsAppBar(actioner: SettingsActioner) {
+private fun SettingsAppBar(
+    onBackClick: () -> Unit
+) {
     SmallTopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.settings_title)) },
         modifier = Modifier.windowInsetsPadding(
             WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
         ),
         navigationIcon = {
-            BackButton {
-                actioner(NavigateUp)
-            }
+            BackButton { onBackClick() }
         }
     )
 }

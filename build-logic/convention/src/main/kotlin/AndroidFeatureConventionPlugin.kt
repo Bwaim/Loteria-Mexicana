@@ -6,6 +6,7 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.project
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 
 class AndroidFeatureConventionPlugin : Plugin<Project> {
@@ -30,8 +31,13 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
             dependencies {
+                add("implementation", project(":common:navigation"))
+
+                add("implementation", libs.findLibrary("androidx.navigation.compose").get())
                 add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
+
+                add("implementation", libs.findLibrary("accompanist.navigation.animation").get())
 
                 add("implementation", libs.findLibrary("kotlin.coroutines.android").get())
 

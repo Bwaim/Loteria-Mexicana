@@ -75,6 +75,7 @@ dependencies {
     implementation(project(":common:http"))
     implementation(project(":common:imageloading"))
     implementation(project(":common:initializers"))
+    implementation(project(":common:navigation"))
     implementation(project(":common:theme:theme"))
     implementation(project(":common:theme:theme-impl"))
 
@@ -88,6 +89,7 @@ dependencies {
 
     implementation(libs.compose.animation)
     implementation(libs.compose.material3)
+    implementation(libs.compose.material3.windowSizeClass)
     debugImplementation(libs.compose.ui.tooling.library)
     implementation(libs.compose.ui.tooling.preview)
 

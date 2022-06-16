@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.app
+package dev.bwaim.loteria.app.mainmenu
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,32 +38,36 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.google.accompanist.insets.ui.TopAppBar
+import dev.bwaim.loteria.app.R
 import dev.bwaim.loteria.compose.TopAppBarTitle
 
-private typealias MainMenuActioner = (MainMenuAction) -> Unit
-
 @Composable
-public fun MainMenu(
-    openSettings: () -> Unit,
-    openDraw: () -> Unit
+public fun MainMenuRoute(
+    modifier: Modifier = Modifier,
+    navigateToSettings: () -> Unit,
+    navigateToDraw: () -> Unit
 ) {
-    MainMenu { action ->
-        when (action) {
-            OpenSettings -> openSettings()
-            OpenDraw -> openDraw()
-        }
-    }
+    MainMenu(
+        navigateToSettings = navigateToSettings,
+        navigateToDraw = navigateToDraw
+
+    )
 }
 
 @Composable
 private fun MainMenu(
-    actioner: MainMenuActioner
+    navigateToSettings: () -> Unit,
+    navigateToDraw: () -> Unit
 ) {
     val scaffoldState = rememberScaffoldState()
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = { MainMenuAppBar(actioner) }
+        topBar = {
+            MainMenuAppBar(
+                navigateToSettings = navigateToSettings
+            )
+        }
     ) { contentPadding ->
         Column(
             Modifier
@@ -72,7 +76,7 @@ private fun MainMenu(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Button(onClick = { actioner(OpenDraw) }) {
+            Button(onClick = { navigateToDraw() }) {
                 Text(text = stringResource(id = R.string.start_menu))
             }
         }
@@ -80,7 +84,9 @@ private fun MainMenu(
 }
 
 @Composable
-private fun MainMenuAppBar(actioner: MainMenuActioner) {
+private fun MainMenuAppBar(
+    navigateToSettings: () -> Unit,
+) {
     TopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.app_name)) },
         modifier = Modifier.windowInsetsPadding(
@@ -89,7 +95,7 @@ private fun MainMenuAppBar(actioner: MainMenuActioner) {
         ),
         actions = {
             IconButton(
-                onClick = { actioner(OpenSettings) }
+                onClick = { navigateToSettings() }
             ) {
                 Icon(
                     Icons.Filled.Settings,

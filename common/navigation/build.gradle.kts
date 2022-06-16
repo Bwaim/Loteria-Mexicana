@@ -13,11 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package dev.bwaim.loteria.settings
-
-import dev.bwaim.loteria.theme.Theme
-
-internal sealed interface SettingsAction
-internal object NavigateUp : SettingsAction
-internal data class OnThemeChanged(val value: Theme) : SettingsAction
+plugins {
+    id("loteriamexicana.kotlin.library")
+    id("loteriamexicana.kotlin.library.jacoco")
+    id("loteriamexicana.spotless")
+}

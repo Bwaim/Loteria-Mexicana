@@ -31,7 +31,7 @@ import dev.bwaim.loteria.settings.navigation.settingsGraph
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun LoteriaNavHost(
+public fun LoteriaNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
     startDestination: String = MainMenuDestination.route

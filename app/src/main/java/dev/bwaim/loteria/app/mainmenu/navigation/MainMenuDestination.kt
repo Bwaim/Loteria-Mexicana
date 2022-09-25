@@ -23,13 +23,13 @@ import com.google.accompanist.navigation.animation.navigation
 import dev.bwaim.loteria.app.mainmenu.MainMenuRoute
 import dev.bwaim.loteria.navigation.LoteriaNavigationDestination
 
-object MainMenuDestination : LoteriaNavigationDestination {
-    override val route = "main_menu_route"
-    override val destination = "main_menu_destination"
+public object MainMenuDestination : LoteriaNavigationDestination {
+    override val route: String = "main_menu_route"
+    override val destination: String = "main_menu_destination"
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.mainMenuGraph(
+public fun NavGraphBuilder.mainMenuGraph(
     navigateToSettings: () -> Unit,
     navigateToDraw: () -> Unit,
     nestedGraphs: NavGraphBuilder.() -> Unit

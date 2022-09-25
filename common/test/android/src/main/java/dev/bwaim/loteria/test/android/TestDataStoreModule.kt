@@ -33,7 +33,7 @@ import org.junit.rules.TemporaryFolder
     components = [SingletonComponent::class],
     replaces = [DataStoreModule::class]
 )
-object TestDataStoreModule {
+internal object TestDataStoreModule {
     @Provides
     @Singleton
     fun providesThemePreferencesDataStore(
@@ -43,9 +43,9 @@ object TestDataStoreModule {
         tmpFolder.testThemePreferencesDataStore(themePreferencesSerializer)
 }
 
-fun TemporaryFolder.testThemePreferencesDataStore(
+public fun TemporaryFolder.testThemePreferencesDataStore(
     themePreferencesSerializer: ThemePreferencesSerializer = ThemePreferencesSerializer()
-) = DataStoreFactory.create(
+): DataStore<ThemePreferences> = DataStoreFactory.create(
     serializer = themePreferencesSerializer,
 ) {
     create()

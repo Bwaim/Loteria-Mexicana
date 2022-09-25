@@ -33,11 +33,11 @@ import kotlinx.coroutines.SupervisorJob
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataStoreModule {
+public object DataStoreModule {
 
     @Provides
     @Singleton
-    fun providesThemePreferencesDataStore(
+    internal fun providesThemePreferencesDataStore(
         @ApplicationContext context: Context,
         @IODispatcher ioDispatcher: CoroutineDispatcher,
         themePreferencesSerializer: ThemePreferencesSerializer

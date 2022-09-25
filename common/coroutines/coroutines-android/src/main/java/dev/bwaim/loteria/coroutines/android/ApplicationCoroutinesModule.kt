@@ -36,19 +36,19 @@ public object ApplicationCoroutinesModule {
     @Provides
     @Singleton
     @ApplicationScope
-    fun provideApplicationScope(
+    internal fun provideApplicationScope(
         @MainDispatcher mainDispatcher: CoroutineDispatcher
     ): CoroutineScope = CoroutineScope(SupervisorJob() + mainDispatcher)
 
     @Provides
     @MainDispatcher
-    fun provideMainDispatcher(): CoroutineDispatcher = Dispatchers.Main.immediate
+    internal fun provideMainDispatcher(): CoroutineDispatcher = Dispatchers.Main.immediate
 
     @Provides
     @IODispatcher
-    fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
+    internal fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
 
     @Provides
     @ComputationDispatcher
-    fun provideComputationDispatcher(): CoroutineDispatcher = Dispatchers.Default
+    internal fun provideComputationDispatcher(): CoroutineDispatcher = Dispatchers.Default
 }

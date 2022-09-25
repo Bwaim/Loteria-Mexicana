@@ -22,13 +22,13 @@ import com.google.accompanist.navigation.animation.composable
 import dev.bwaim.loteria.draw.DrawRoute
 import dev.bwaim.loteria.navigation.LoteriaNavigationDestination
 
-object DrawDestination : LoteriaNavigationDestination {
-    override val route = "draw_route"
-    override val destination = "draw_destination"
+public object DrawDestination : LoteriaNavigationDestination {
+    override val route: String = "draw_route"
+    override val destination: String = "draw_destination"
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.drawGraph(
+public fun NavGraphBuilder.drawGraph(
     onBackClick: () -> Unit
 ) {
     composable(route = DrawDestination.route) {

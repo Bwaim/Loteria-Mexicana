@@ -26,7 +26,7 @@ import kotlinx.coroutines.test.UnconfinedTestDispatcher
 
 @Module
 @InstallIn(SingletonComponent::class)
-object TestDispatcherModule {
+internal object TestDispatcherModule {
     @Provides
     @Singleton
     fun providesTestDispatcher(): TestDispatcher = UnconfinedTestDispatcher()

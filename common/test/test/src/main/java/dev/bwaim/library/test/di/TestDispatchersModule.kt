@@ -36,7 +36,7 @@ import kotlinx.coroutines.test.TestDispatcher
     components = [SingletonComponent::class],
     replaces = [ApplicationCoroutinesModule::class],
 )
-object TestDispatchersModule {
+internal object TestDispatchersModule {
     @Provides
     @Singleton
     @ApplicationScope

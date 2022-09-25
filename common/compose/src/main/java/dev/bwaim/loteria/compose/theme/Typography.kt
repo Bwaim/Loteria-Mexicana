@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-val LoteriaTypography = Typography(
+internal val LoteriaTypography = Typography(
     displayLarge = TextStyle(
         fontWeight = FontWeight.W400,
         fontSize = 57.sp,

@@ -13,6 +13,10 @@ class KotlinLibraryConventionPlugin : Plugin<Project> {
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
+            extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension>("kotlin") {
+                explicitApi()
+            }
+
             dependencies {
                 add("implementation", libs.findLibrary("kotlin.stdlib").get())
                 add("implementation", libs.findLibrary("kotlin.coroutines.core").get())

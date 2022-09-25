@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.25.1"
-activity = "1.6.0-alpha05"
+activity = "1.6.0"
 androidCacheFix = "2.5.7"
 androidDesugarJdkLibs = "1.1.5"
 androidGradlePlugin = "7.3.0"

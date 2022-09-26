@@ -32,4 +32,6 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.compose.material3)
+
+    implementation(libs.androidx.lifecycle.runtime.compose)
 }

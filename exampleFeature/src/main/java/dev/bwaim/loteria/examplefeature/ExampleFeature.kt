@@ -14,23 +14,26 @@
  * limitations under the License.
  */
 
+@file:OptIn(ExperimentalLifecycleComposeApi::class)
+
 package dev.bwaim.loteria.examplefeature
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.bwaim.loteria.compose.theme.LoteriaTheme
 
 @Composable
 public fun ExampleFeature(
     viewModel: ExampleFeatureViewModel
 ) {
-    val state by viewModel.viewState.collectAsState()
+    val state by viewModel.viewState.collectAsStateWithLifecycle()
     ExampleFeature(viewState = state)
 }
 

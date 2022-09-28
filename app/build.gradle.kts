@@ -100,8 +100,9 @@ dependencies {
 
     implementation(libs.firebase.perf.library)
 
-    debugImplementation(libs.leakcanary.library)
-    implementation(libs.leakcanary.plumber)
+    // TODO deactivated till https://github.com/square/leakcanary/issues/2398 is solved
+//    debugImplementation(libs.leakcanary.library)
+//    implementation(libs.leakcanary.plumber)
 
     implementation(libs.coil.library)
 

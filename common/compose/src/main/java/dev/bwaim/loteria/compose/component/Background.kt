@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import dev.bwaim.loteria.compose.theme.LocalBackgroundTheme
 
 @Composable
-fun LoteriaBackground(
+public fun LoteriaBackground(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
 ) {

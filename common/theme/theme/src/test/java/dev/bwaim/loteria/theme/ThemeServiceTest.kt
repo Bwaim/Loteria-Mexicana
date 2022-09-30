@@ -16,62 +16,43 @@
 
 package dev.bwaim.loteria.theme
 
-import io.mockk.MockKAnnotations
-import io.mockk.coVerify
-import io.mockk.every
-import io.mockk.impl.annotations.RelaxedMockK
+import app.cash.turbine.test
+import dev.bwaim.loteria.theme.testdoubles.TestThemeRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
 internal class ThemeServiceTest {
-    @RelaxedMockK
-    private lateinit var themeRepository: ThemeRepository
-    private lateinit var themeService: ThemeService
+    private lateinit var subject: ThemeService
 
     @Before
     fun setUp() {
-        MockKAnnotations.init(this)
-
-        themeService = ThemeService(
+        subject = ThemeService(
             ioDispatcher = UnconfinedTestDispatcher(),
-            themeRepository = themeRepository
+            themeRepository = TestThemeRepository()
         )
     }
 
     @Test
-    fun shouldReturnThemeFlow_whenObserved() = runBlocking {
-        val expectedThemes = arrayOf(Theme.SYSTEM, Theme.LIGHT)
-        every { themeRepository.observeTheme() } returns flowOf(*expectedThemes)
-
-        val themes = themeService
-            .observeTheme()
-            .toList()
-            .toTypedArray()
-
-        Assert.assertArrayEquals(expectedThemes, themes)
-    }
+    fun themeService_observe_themeChanges() =
+        runTest {
+            subject.observeTheme().test {
+                Assert.assertEquals(Theme.LIGHT, awaitItem())
+                subject.setTheme(Theme.DARK)
+                Assert.assertEquals(Theme.DARK, awaitItem())
+                cancel()
+            }
+        }
 
     @Test
-    fun shouldSaveTheme_whenSet() = runBlocking {
-        val theme = Theme.SYSTEM
-
-        themeService.setTheme(theme)
-
-        coVerify { themeRepository.setTheme(theme) }
-    }
-
-    @Test
-    fun shouldReturnAllThemes_whenAsked() {
+    fun themeService_getThemes_returnAllThemes() {
         val expectedResult = listOf(Theme.LIGHT, Theme.DARK, Theme.SYSTEM, Theme.BATTERY_SAVER)
 
-        val result = themeService.getThemes()
+        val result = subject.getThemes()
 
         Assert.assertEquals(expectedResult, result)
     }

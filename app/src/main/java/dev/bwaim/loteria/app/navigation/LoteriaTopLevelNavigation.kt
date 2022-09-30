@@ -20,8 +20,8 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import dev.bwaim.loteria.app.mainmenu.navigation.MainMenuDestination
 
-class LoteriaTopLevelNavigation(private val navController: NavHostController) {
-    fun navigateTo(destination: TopLevelDestination) {
+public class LoteriaTopLevelNavigation(private val navController: NavHostController) {
+    public fun navigateTo(destination: TopLevelDestination) {
         navController.navigate(destination.route) {
             // Pop up to the start destination of the graph to
             // avoid building up a large stack of destinations
@@ -38,14 +38,14 @@ class LoteriaTopLevelNavigation(private val navController: NavHostController) {
     }
 }
 
-data class TopLevelDestination(
+public data class TopLevelDestination(
     val route: String,
 //    val selectedIcon: ImageVector,
 //    val unselectedIcon: ImageVector,
 //    val iconTextId: Int
 )
 
-val TOP_LEVEL_DESTINATIONS = listOf(
+internal val TOP_LEVEL_DESTINATIONS = listOf(
     TopLevelDestination(
         route = MainMenuDestination.route
     )

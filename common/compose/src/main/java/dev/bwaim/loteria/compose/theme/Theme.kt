@@ -82,7 +82,7 @@ private val DarkAndroidColorScheme = darkColorScheme(
 )
 
 @Composable
-fun LoteriaTheme(
+public fun LoteriaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     androidTheme: Boolean = false,

@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.Dp
  * including color, tonal elevation and gradient colors.
  */
 @Immutable
-data class BackgroundTheme(
+internal data class BackgroundTheme(
     val color: Color = Color.Unspecified,
     val tonalElevation: Dp = Dp.Unspecified,
     val primaryGradientColor: Color = Color.Unspecified,
@@ -38,4 +38,4 @@ data class BackgroundTheme(
 /**
  * A composition local for [BackgroundTheme].
  */
-val LocalBackgroundTheme = staticCompositionLocalOf { BackgroundTheme() }
+internal val LocalBackgroundTheme = staticCompositionLocalOf { BackgroundTheme() }

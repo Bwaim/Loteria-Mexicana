@@ -39,6 +39,11 @@ android {
         java.srcDir("build/generated/source/proto/$name/java")
         java.srcDir("build/generated/source/proto/$name/kotlin")
     }
+
+    // TODO remove this when protobuf version > 3.21.7
+    kotlinOptions {
+        freeCompilerArgs = freeCompilerArgs + "-Xexplicit-api=warning"
+    }
 }
 
 protobuf {

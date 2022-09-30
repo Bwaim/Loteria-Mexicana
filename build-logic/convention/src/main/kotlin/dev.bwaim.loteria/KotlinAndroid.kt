@@ -33,6 +33,7 @@ fun Project.configureKotlinAndroid(
             allWarningsAsErrors = properties["warningsAsErrors"] as? Boolean ?: false
 
             freeCompilerArgs = freeCompilerArgs + listOf(
+                "-Xexplicit-api=strict",
                 "-opt-in=kotlin.RequiresOptIn",
                 // Enable experimental coroutines APIs, including Flow
                 "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",

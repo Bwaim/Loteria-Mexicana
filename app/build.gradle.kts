@@ -79,8 +79,8 @@ dependencies {
     implementation(project(":common:theme:theme"))
     implementation(project(":common:theme:theme-impl"))
 
-    implementation(project(":draw"))
-    implementation(project(":settings"))
+    implementation(project(":features:draw"))
+    implementation(project(":features:settings"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.splashscreen)

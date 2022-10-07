@@ -24,6 +24,10 @@ plugins {
     id("loteriamexicana.test")
 }
 
+android {
+    namespace = "dev.bwaim.loteria.settings"
+}
+
 dependencies {
     implementation(project(":common:compose"))
     implementation(project(":common:core"))

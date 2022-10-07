@@ -22,6 +22,10 @@ plugins {
     id("loteriamexicana.spotless")
 }
 
+android {
+    namespace = "dev.bwaim.loteria.draw"
+}
+
 dependencies {
     implementation(project(":common:card:card"))
     implementation(project(":common:compose"))

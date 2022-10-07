@@ -20,6 +20,10 @@ plugins {
     id("loteriamexicana.spotless")
 }
 
+android {
+    namespace = "dev.bwaim.loteria.coroutines.android"
+}
+
 dependencies {
     implementation(project(":common:coroutines:coroutines"))
 

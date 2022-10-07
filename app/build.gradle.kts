@@ -26,6 +26,8 @@ plugins {
 }
 
 android {
+    namespace = "dev.bwaim.loteria.app"
+
     defaultConfig {
         applicationId = "dev.bwaim.loteria"
         versionCode = 1

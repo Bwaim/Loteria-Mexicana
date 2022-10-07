@@ -29,6 +29,8 @@ plugins {
 }
 
 android {
+    namespace = "dev.bwaim.loteria.theme.impl"
+
     defaultConfig {
         consumerProguardFiles("consumer-proguard-rules.pro")
     }

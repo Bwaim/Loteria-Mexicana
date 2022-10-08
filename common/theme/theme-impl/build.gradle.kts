@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import com.google.protobuf.gradle.generateProtoTasks
-import com.google.protobuf.gradle.protobuf
-import com.google.protobuf.gradle.protoc
 
 // TODO: Remove once https://youtrack.jetbrains.com/issue/KTIJ-19369 is fixed
 @Suppress("DSL_SCOPE_VIOLATION")
@@ -47,8 +44,8 @@ protobuf {
     }
 
     generateProtoTasks {
-        all().forEach { task ->
-            task.builtins {
+        all().configureEach {
+            builtins {
                 val java by registering {
                     option("lite")
                 }

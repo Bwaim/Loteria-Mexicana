@@ -35,5 +35,7 @@ internal object DatabaseModule {
             context,
             LoteriaDatabase::class.java,
             "Loteria-database"
-        ).build()
+        )
+            .createFromAsset("database/loteria.db")
+            .build()
 }

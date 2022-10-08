@@ -20,6 +20,10 @@ plugins {
     id("loteriamexicana.spotless")
 }
 
+android {
+    namespace = "dev.bwaim.loteria.test.android"
+}
+
 dependencies {
     implementation(project(":common:theme:theme-impl"))
     implementation(project(":common:test:test"))

@@ -29,15 +29,10 @@ plugins {
 }
 
 android {
+    namespace = "dev.bwaim.loteria.theme.impl"
+
     defaultConfig {
         consumerProguardFiles("consumer-proguard-rules.pro")
-    }
-
-    // TODO remove this when kotlin version > 1.7.10
-    //  https://youtrack.jetbrains.com/issue/KT-52761/Kotlin-170-breaks-kapt-processing-for-protobuf-generated-java-sources
-    sourceSets.all {
-        java.srcDir("build/generated/source/proto/$name/java")
-        java.srcDir("build/generated/source/proto/$name/kotlin")
     }
 
     // TODO remove this when protobuf version > 3.21.7

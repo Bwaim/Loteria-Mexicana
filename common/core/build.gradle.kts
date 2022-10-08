@@ -19,6 +19,10 @@ plugins {
     id("loteriamexicana.spotless")
 }
 
+android {
+    namespace = "dev.bwaim.loteria.core"
+}
+
 dependencies {
     implementation(libs.kotlin.stdlib)
 }

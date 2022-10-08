@@ -18,10 +18,11 @@ package dev.bwaim.loteria.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import dev.bwaim.loteria.card.set.db.CardSetEntity
 
 @Database(
     entities = [
-
+        CardSetEntity::class
     ],
     version = 1,
     exportSchema = true

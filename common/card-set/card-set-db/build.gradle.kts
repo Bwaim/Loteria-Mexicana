@@ -16,25 +16,13 @@
 plugins {
     id("loteriamexicana.android.library")
     id("loteriamexicana.android.library.jacoco")
-    id("loteriamexicana.hilt")
-    alias(libs.plugins.ksp)
     id("loteriamexicana.spotless")
 }
 
 android {
-    namespace = "dev.bwaim.loteria.database"
-
-    defaultConfig {
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
-    }
+    namespace = "dev.bwaim.loteria.card.set.db"
 }
 
 dependencies {
-    implementation(projects.common.cardSet.cardSetDb)
-
-    implementation(libs.room.runtime)
     implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
 }

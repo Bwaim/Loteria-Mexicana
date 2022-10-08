@@ -21,6 +21,7 @@ include(":app")
 
 include(":common:card:card")
 include(":common:card:card-impl")
+include(":common:card-set:card-set-db")
 include(":common:compose")
 include(":common:core")
 include(":common:coroutines:coroutines")

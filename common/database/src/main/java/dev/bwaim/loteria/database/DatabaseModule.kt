@@ -30,7 +30,7 @@ import javax.inject.Singleton
 internal object DatabaseModule {
     @Provides
     @Singleton
-    private fun provideLoteriaDatabase(@ApplicationContext context: Context): LoteriaDatabase =
+    internal fun provideLoteriaDatabase(@ApplicationContext context: Context): LoteriaDatabase =
         Room.databaseBuilder(
             context,
             LoteriaDatabase::class.java,

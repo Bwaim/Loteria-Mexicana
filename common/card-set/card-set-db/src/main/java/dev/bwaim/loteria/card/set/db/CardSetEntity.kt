@@ -13,28 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("loteriamexicana.android.library")
-    id("loteriamexicana.android.library.jacoco")
-    id("loteriamexicana.hilt")
-    alias(libs.plugins.ksp)
-    id("loteriamexicana.spotless")
-}
 
-android {
-    namespace = "dev.bwaim.loteria.database"
+package dev.bwaim.loteria.card.set.db
 
-    defaultConfig {
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
-    }
-}
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-dependencies {
-    implementation(projects.common.cardSet.cardSetDb)
-
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
-}
+@Entity(
+    tableName = "card_set"
+)
+public data class CardSetEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
+    val name: String
+)

@@ -74,6 +74,7 @@ dependencies {
     implementation(project(":common:compose"))
     implementation(project(":common:coroutines:coroutines"))
     implementation(project(":common:coroutines:coroutines-android"))
+    implementation(project(":common:database"))
     implementation(project(":common:http"))
     implementation(project(":common:imageloading"))
     implementation(project(":common:initializers"))

@@ -6,9 +6,12 @@ import {Database} from "sqlite3";
 import {populate} from "room-populate";
 import {CardSet} from "./data/CardSet"
 import * as cardSetDb from "./cardSetDb"
+import {Card} from "./data/Card"
+import * as cardDb from "./cardDb"
 import {duration} from "moment";
 
 const FILE_CARD_SET = "card_set.json";
+const FILE_CARD = "card.json";
 
 export async function initData(schemaPath: string, dataDir: string): Promise<string> {
     const schemaFile = await findLatestSchema(schemaPath);
@@ -25,6 +28,10 @@ export async function initData(schemaPath: string, dataDir: string): Promise<str
             await cardSetDb.populate(
                 db,
                 await readJsonData<Array<CardSet>>(Path.join(dataDir, FILE_CARD_SET))
+            );
+            await cardDb.populate(
+                db,
+                await readJsonData<Array<Card>>(Path.join(dataDir, FILE_CARD))
             );
         }
     );

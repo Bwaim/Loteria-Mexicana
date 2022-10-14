@@ -18,6 +18,7 @@ plugins {
     id("loteriamexicana.android.library.jacoco")
     id("loteriamexicana.hilt")
     id("loteriamexicana.spotless")
+    id("loteriamexicana.test")
 }
 
 android {
@@ -25,7 +26,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:core"))
-    implementation(project(":common:coroutines:coroutines"))
-    implementation(project(":common:card:card"))
+    implementation(projects.common.card.card)
+    implementation(projects.common.card.cardDb)
+    implementation(projects.common.core)
+    implementation(projects.common.coroutines.coroutines)
 }

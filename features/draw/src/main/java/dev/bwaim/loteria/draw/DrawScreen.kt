@@ -19,6 +19,7 @@
 package dev.bwaim.loteria.draw
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.only
@@ -32,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -59,10 +61,18 @@ private fun Draw(
     Scaffold(
         topBar = { SettingsAppBar(onBackClick) }
     ) { contentPadding ->
-        Text(
-            modifier = Modifier.padding(contentPadding),
-            text = "DrawScreen"
-        )
+        Column(
+            modifier = Modifier.padding(contentPadding)
+        ) {
+
+            viewState.cards.forEach { card ->
+                Text(
+                    modifier = Modifier.padding(bottom = 10.dp),
+                    text = card.name
+                )
+            }
+        }
+
 //        CoilImage(viewState.card)
     }
 }

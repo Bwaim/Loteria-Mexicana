@@ -71,19 +71,21 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:compose"))
-    implementation(project(":common:coroutines:coroutines"))
-    implementation(project(":common:coroutines:coroutines-android"))
-    implementation(project(":common:database"))
-    implementation(project(":common:http"))
-    implementation(project(":common:imageloading"))
-    implementation(project(":common:initializers"))
-    implementation(project(":common:navigation"))
-    implementation(project(":common:theme:theme"))
-    implementation(project(":common:theme:theme-impl"))
+    implementation(projects.common.card.card)
+    implementation(projects.common.card.cardImpl)
+    implementation(projects.common.compose)
+    implementation(projects.common.coroutines.coroutines)
+    implementation(projects.common.coroutines.coroutinesAndroid)
+    implementation(projects.common.database.database)
+    implementation(projects.common.http)
+    implementation(projects.common.imageloading)
+    implementation(projects.common.initializers)
+    implementation(projects.common.navigation)
+    implementation(projects.common.theme.theme)
+    implementation(projects.common.theme.themeImpl)
 
-    implementation(project(":features:draw"))
-    implementation(project(":features:settings"))
+    implementation(projects.features.draw)
+    implementation(projects.features.settings)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.splashscreen)

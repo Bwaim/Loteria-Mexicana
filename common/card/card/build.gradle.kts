@@ -17,6 +17,7 @@ plugins {
     id("loteriamexicana.kotlin.library")
     id("loteriamexicana.kotlin.library.jacoco")
     id("loteriamexicana.spotless")
+    id("loteriamexicana.test")
 }
 
 dependencies {

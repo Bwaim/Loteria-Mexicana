@@ -6,11 +6,11 @@ import * as fs from "fs"
 /**
  * DB schema path
  */
-const SCHEMA_PATH = path.join(__dirname, "..", "..", "common", "database", "schemas", "dev.bwaim.loteria.database.LoteriaDatabase");
+const SCHEMA_PATH = path.join(__dirname, "..", "..", "common", "database", "database", "schemas", "dev.bwaim.loteria.database.LoteriaDatabase");
 /**
  * DB destination file
  */
-const DST_PATH = path.join(__dirname, "..", "..", "common", "database", "src", "main", "assets", "database", "loteria.db");
+const DST_PATH = path.join(__dirname, "..", "..", "common", "database", "database", "src", "main", "assets", "database", "loteria.db");
 /**
  * DB version file
  */

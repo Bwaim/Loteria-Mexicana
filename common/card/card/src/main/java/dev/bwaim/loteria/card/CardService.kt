@@ -19,18 +19,14 @@ package dev.bwaim.loteria.card
 import dev.bwaim.loteria.coroutines.IODispatcher
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 
 public class CardService @Inject internal constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-//    private val cardRepository: CardRepository
+    private val cardRepository: CardRepository
 ) {
-    //    public fun observeCard(): Flow<Card> {
-//        return cardRepository
-//            .observeCard()
-//            .flowOn(ioDispatcher)
-//    }
-    public suspend fun getCards(): List<Int> = withContext(ioDispatcher) {
-        Card.cardList
-    }
+    public fun observeCards(): Flow<List<Card>> = cardRepository
+        .observeCards()
+        .flowOn(ioDispatcher)
 }

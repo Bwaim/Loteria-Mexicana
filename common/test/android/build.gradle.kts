@@ -25,11 +25,18 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:theme:theme-impl"))
-    implementation(project(":common:test:test"))
+    implementation(projects.common.coroutines.coroutines)
+    implementation(projects.common.coroutines.coroutinesAndroid)
+    implementation(projects.common.database.database)
+    implementation(projects.common.theme.themeImpl)
+    implementation(projects.common.test.test)
+
+    implementation(libs.kotlin.coroutines.test)
 
     implementation(libs.androidx.test.runner)
     implementation(libs.hilt.testing)
 
     implementation(libs.androidx.datastore)
+
+    implementation(libs.room.runtime)
 }

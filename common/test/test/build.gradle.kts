@@ -14,20 +14,14 @@
  * limitations under the License.
  */
 plugins {
-    id("loteriamexicana.android.library")
-    id("loteriamexicana.hilt")
+    id("loteriamexicana.kotlin.library")
     id("loteriamexicana.spotless")
 }
 
-android {
-    namespace = "dev.bwaim.loteria.test"
-}
-
 dependencies {
-    implementation(project(":common:coroutines:coroutines"))
-    implementation(project(":common:coroutines:coroutines-android"))
-
-    implementation(libs.hilt.testing)
+    implementation(projects.common.card.card)
 
     implementation(libs.kotlin.coroutines.test)
+
+    implementation(libs.junit.library)
 }

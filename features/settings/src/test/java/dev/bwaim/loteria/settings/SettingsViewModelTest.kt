@@ -17,7 +17,7 @@
 package dev.bwaim.loteria.settings
 
 import app.cash.turbine.test
-import dev.bwaim.library.test.MainCoroutineRule
+import dev.bwaim.loteria.test.MainCoroutineRule
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeService
 import io.mockk.MockKAnnotations

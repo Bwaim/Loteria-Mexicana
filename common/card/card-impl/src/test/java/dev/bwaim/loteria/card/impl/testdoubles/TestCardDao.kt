@@ -27,7 +27,7 @@ internal class TestCardDao : CardDao {
         listOf(
             CardEntity(
                 id = 1,
-                name = "El gallo"
+                name = "CARD_1"
             )
         )
     )

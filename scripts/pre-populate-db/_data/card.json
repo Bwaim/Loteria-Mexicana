@@ -1,6 +1,218 @@
 [
   {
     "id": 1,
-    "name": "El gallo"
+    "name": "CARD_1"
+  },
+  {
+    "id": 2,
+    "name": "CARD_2"
+  },
+  {
+    "id": 3,
+    "name": "CARD_3"
+  },
+  {
+    "id": 4,
+    "name": "CARD_4"
+  },
+  {
+    "id": 5,
+    "name": "CARD_5"
+  },
+  {
+    "id": 6,
+    "name": "CARD_6"
+  },
+  {
+    "id": 7,
+    "name": "CARD_7"
+  },
+  {
+    "id": 8,
+    "name": "CARD_8"
+  },
+  {
+    "id": 9,
+    "name": "CARD_9"
+  },
+  {
+    "id": 10,
+    "name": "CARD_10"
+  },
+  {
+    "id": 11,
+    "name": "CARD_11"
+  },
+  {
+    "id": 12,
+    "name": "CARD_12"
+  },
+  {
+    "id": 13,
+    "name": "CARD_13"
+  },
+  {
+    "id": 14,
+    "name": "CARD_14"
+  },
+  {
+    "id": 15,
+    "name": "CARD_15"
+  },
+  {
+    "id": 16,
+    "name": "CARD_16"
+  },
+  {
+    "id": 17,
+    "name": "CARD_17"
+  },
+  {
+    "id": 18,
+    "name": "CARD_18"
+  },
+  {
+    "id": 19,
+    "name": "CARD_19"
+  },
+  {
+    "id": 20,
+    "name": "CARD_20"
+  },
+  {
+    "id": 21,
+    "name": "CARD_21"
+  },
+  {
+    "id": 22,
+    "name": "CARD_22"
+  },
+  {
+    "id": 23,
+    "name": "CARD_23"
+  },
+  {
+    "id": 24,
+    "name": "CARD_24"
+  },
+  {
+    "id": 25,
+    "name": "CARD_25"
+  },
+  {
+    "id": 26,
+    "name": "CARD_26"
+  },
+  {
+    "id": 27,
+    "name": "CARD_27"
+  },
+  {
+    "id": 28,
+    "name": "CARD_28"
+  },
+  {
+    "id": 29,
+    "name": "CARD_29"
+  },
+  {
+    "id": 30,
+    "name": "CARD_30"
+  },
+  {
+    "id": 31,
+    "name": "CARD_31"
+  },
+  {
+    "id": 32,
+    "name": "CARD_32"
+  },
+  {
+    "id": 33,
+    "name": "CARD_33"
+  },
+  {
+    "id": 34,
+    "name": "CARD_34"
+  },
+  {
+    "id": 35,
+    "name": "CARD_35"
+  },
+  {
+    "id": 36,
+    "name": "CARD_36"
+  },
+  {
+    "id": 37,
+    "name": "CARD_37"
+  },
+  {
+    "id": 38,
+    "name": "CARD_38"
+  },
+  {
+    "id": 39,
+    "name": "CARD_39"
+  },
+  {
+    "id": 40,
+    "name": "CARD_40"
+  },
+  {
+    "id": 41,
+    "name": "CARD_41"
+  },
+  {
+    "id": 42,
+    "name": "CARD_42"
+  },
+  {
+    "id": 43,
+    "name": "CARD_43"
+  },
+  {
+    "id": 44,
+    "name": "CARD_44"
+  },
+  {
+    "id": 45,
+    "name": "CARD_45"
+  },
+  {
+    "id": 46,
+    "name": "CARD_46"
+  },
+  {
+    "id": 47,
+    "name": "CARD_47"
+  },
+  {
+    "id": 48,
+    "name": "CARD_48"
+  },
+  {
+    "id": 49,
+    "name": "CARD_49"
+  },
+  {
+    "id": 50,
+    "name": "CARD_50"
+  },
+  {
+    "id": 51,
+    "name": "CARD_51"
+  },
+  {
+    "id": 52,
+    "name": "CARD_52"
+  },
+  {
+    "id": 53,
+    "name": "CARD_53"
+  },
+  {
+    "id": 54,
+    "name": "CARD_54"
   }
 ]

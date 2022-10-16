@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2022 Dev Bwaim team
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="card_1">El gallo</string>
+    <string name="card_2">El diablito</string>
+    <string name="card_3">La dama</string>
+    <string name="card_4">El catrín</string>
+    <string name="card_5">El paraguas</string>
+    <string name="card_6">La sirena</string>
+    <string name="card_7">La escalera</string>
+    <string name="card_8">La botella</string>
+    <string name="card_9">El barril</string>
+    <string name="card_10">El árbol</string>
+    <string name="card_11">El melón</string>
+    <string name="card_12">El valiente</string>
+    <string name="card_13">El gorrito</string>
+    <string name="card_14">La muerte</string>
+    <string name="card_15">La pera</string>
+    <string name="card_16">La bandera</string>
+    <string name="card_17">El bandolón</string>
+    <string name="card_18">El violoncello</string>
+    <string name="card_19">La garza</string>
+    <string name="card_20">El pajaro</string>
+    <string name="card_21">La mano</string>
+    <string name="card_22">La bota</string>
+    <string name="card_23">La luna</string>
+    <string name="card_24">El cotorro</string>
+    <string name="card_25">El borracho</string>
+    <string name="card_26">El negrito</string>
+    <string name="card_27">El corazón</string>
+    <string name="card_28">La sandía</string>
+    <string name="card_29">El tambor</string>
+    <string name="card_30">El camaron</string>
+    <string name="card_31">Las jaras</string>
+    <string name="card_32">El músico</string>
+    <string name="card_33">La araña</string>
+    <string name="card_34">El soldado</string>
+    <string name="card_35">La estrella</string>
+    <string name="card_36">El cazo</string>
+    <string name="card_37">El mundo</string>
+    <string name="card_38">El apache</string>
+    <string name="card_39">El nopal</string>
+    <string name="card_40">El alacrán</string>
+    <string name="card_41">La rosa</string>
+    <string name="card_42">La calavera</string>
+    <string name="card_43">La campaña</string>
+    <string name="card_44">El cantarito</string>
+    <string name="card_45">El venado</string>
+    <string name="card_46">El sol</string>
+    <string name="card_47">La corona</string>
+    <string name="card_48">La chalupa</string>
+    <string name="card_49">El pino</string>
+    <string name="card_50">El pescado</string>
+    <string name="card_51">La palma</string>
+    <string name="card_52">La maceta</string>
+    <string name="card_53">El arpa</string>
+    <string name="card_54">La rana</string>
+</resources>

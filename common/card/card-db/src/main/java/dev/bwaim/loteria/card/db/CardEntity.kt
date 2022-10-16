@@ -19,6 +19,7 @@ package dev.bwaim.loteria.card.db
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import dev.bwaim.loteria.card.Card
+import dev.bwaim.loteria.localization.CardName
 
 @Entity(
     tableName = "card"
@@ -31,5 +32,5 @@ public data class CardEntity(
 
 public fun CardEntity.asExternalModel(): Card = Card(
     id = id,
-    name = name
+    nameId = CardName.valueOf(name).stringId
 )

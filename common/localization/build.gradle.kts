@@ -13,13 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+plugins {
+    id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.jacoco")
+    id("loteriamexicana.spotless")
+    id("loteriamexicana.test")
+}
 
-package dev.bwaim.loteria.card
+android {
+    namespace = "dev.bwaim.loteria.localization"
+}
 
-import androidx.annotation.StringRes
-
-public data class Card(
-    public val id: Int,
-    @StringRes
-    public val nameId: Int
-)
+dependencies {
+    implementation(libs.androidx.annotation)
+}

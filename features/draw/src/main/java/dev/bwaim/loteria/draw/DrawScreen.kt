@@ -22,10 +22,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
@@ -62,13 +65,17 @@ private fun Draw(
         topBar = { SettingsAppBar(onBackClick) }
     ) { contentPadding ->
         Column(
-            modifier = Modifier.padding(contentPadding)
+            modifier = Modifier
+                .padding(contentPadding)
+                .padding(horizontal = 10.dp)
+                .fillMaxWidth()
+                .verticalScroll(state = rememberScrollState())
         ) {
 
-            viewState.cards.forEach { card ->
+            viewState.cards.forEachIndexed { index, card ->
                 Text(
                     modifier = Modifier.padding(bottom = 10.dp),
-                    text = card.name
+                    text = "$index - ${stringResource(id = card.nameId)}"
                 )
             }
         }

@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.card
+package dev.bwaim.loteria.localization
 
-import androidx.annotation.StringRes
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-public data class Card(
-    public val id: Int,
-    @StringRes
-    public val nameId: Int
-)
+internal class CardNameTest {
+
+    @Test
+    fun name_map_to_card_name() {
+        assertEquals(
+            CardName.CARD_1,
+            CardName.valueOf("CARD_1")
+        )
+    }
+}

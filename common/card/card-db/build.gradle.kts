@@ -27,6 +27,7 @@ android {
 dependencies {
     implementation(projects.common.card.card)
     implementation(projects.common.database.common)
+    implementation(projects.common.localization)
 
     implementation(libs.room.ktx)
 }

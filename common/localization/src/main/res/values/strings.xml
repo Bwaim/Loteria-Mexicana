@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2022 Dev Bwaim team
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="card_1">The rooster</string>
+    <string name="card_2">The little devil</string>
+    <string name="card_3">The Lady</string>
+    <string name="card_4">The Catrin</string>
+    <string name="card_5">The umbrella</string>
+    <string name="card_7">The scale</string>
+    <string name="card_8">The bottle</string>
+    <string name="card_9">The barrel</string>
+    <string name="card_10">The tree</string>
+    <string name="card_11">The melon</string>
+    <string name="card_12">The brave</string>
+    <string name="card_13">The little hat</string>
+    <string name="card_14">The death</string>
+    <string name="card_15">The pear</string>
+    <string name="card_16">The flag</string>
+    <string name="card_17">The Bandolon</string>
+    <string name="card_18">The cello</string>
+    <string name="card_19">The heron</string>
+    <string name="card_20">The bird</string>
+    <string name="card_21">The hand</string>
+    <string name="card_22">The boot</string>
+    <string name="card_23">The moon</string>
+    <string name="card_24">The parrot</string>
+    <string name="card_25">The drunk</string>
+    <string name="card_26">The black</string>
+    <string name="card_27">The heart</string>
+    <string name="card_28">The watermelon</string>
+    <string name="card_29">The drum</string>
+    <string name="card_30">The shrimp</string>
+    <string name="card_31">The arrows</string>
+    <string name="card_32">The musician</string>
+    <string name="card_33">The spider</string>
+    <string name="card_34">The soldier</string>
+    <string name="card_35">The star</string>
+    <string name="card_36">The saucepan</string>
+    <string name="card_37">The world</string>
+    <string name="card_38">The apache</string>
+    <string name="card_39">The nopal</string>
+    <string name="card_40">The scorpion</string>
+    <string name="card_41">The rose</string>
+    <string name="card_42">The skull</string>
+    <string name="card_43">The bell</string>
+    <string name="card_44">The pitcher</string>
+    <string name="card_45">The deer</string>
+    <string name="card_46">The sun</string>
+    <string name="card_47">The crown</string>
+    <string name="card_48">The boat</string>
+    <string name="card_49">The pine</string>
+    <string name="card_50">The fish</string>
+    <string name="card_51">The palm</string>
+    <string name="card_52">The flower pot</string>
+    <string name="card_53">The harp</string>
+    <string name="card_54">The frog</string>
+    <string name="card_6">The mermaid</string>
+</resources>

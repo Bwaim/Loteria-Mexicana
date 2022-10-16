@@ -16,6 +16,7 @@
 
 package dev.bwaim.loteria.card.db
 
+import dev.bwaim.loteria.localization.CardName
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -25,12 +26,12 @@ internal class CardEntityTest {
     fun card_entity_can_be_mapped_to_card() {
         val cardEntity = CardEntity(
             id = 0,
-            name = "test"
+            name = "CARD_1"
         )
 
         val card = cardEntity.asExternalModel()
 
         assertEquals(0, card.id)
-        assertEquals("test", card.name)
+        assertEquals(CardName.CARD_1.stringId, card.nameId)
     }
 }

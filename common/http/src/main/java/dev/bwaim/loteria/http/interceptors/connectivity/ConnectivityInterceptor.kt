@@ -20,7 +20,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
-import android.os.Build
 import androidx.core.content.getSystemService
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -34,17 +33,10 @@ internal class ConnectivityInterceptor @Inject constructor(
     private var connected = false
 
     init {
-        if (Build.VERSION.SDK_INT >= 24) {
-            connectivityManager.registerDefaultNetworkCallback(this)
-        }
+        connectivityManager.registerDefaultNetworkCallback(this)
     }
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        if (Build.VERSION.SDK_INT < 24) {
-            @SuppressWarnings("Deprecated")
-            connected = connectivityManager.activeNetworkInfo?.isConnected ?: false
-        }
-
         if (!connected) {
             throw NoConnectivityException()
         }

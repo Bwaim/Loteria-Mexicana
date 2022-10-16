@@ -17,7 +17,6 @@
 package dev.bwaim.loteria.initializers
 
 import android.content.Context
-import android.os.Build
 import androidx.startup.Initializer
 import java.util.regex.Pattern
 import timber.log.Timber
@@ -55,18 +54,10 @@ internal class TimberInitializer : Initializer<Unit> {
             }
             tag = tag.substring(tag.lastIndexOf('.') + 1)
             // Tag length limit was removed in API 24.
-            return if (tag.length <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= 24) {
-                tag
-            } else {
-                tag.substring(
-                    0,
-                    MAX_TAG_LENGTH
-                )
-            }
+            return tag
         }
 
         private companion object {
-            const val MAX_TAG_LENGTH = 23
             const val CALL_STACK_INDEX = 7
             val ANONYMOUS_CLASS: Pattern = Pattern.compile("(\\$\\d+)+$")
         }

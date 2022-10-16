@@ -41,8 +41,8 @@ internal class CardServiceTest {
     fun cardService_cards_stream_is_backed_by_card_repository() = runTest {
         cardRepository.sendCards(
             listOf(
-                Card(0, "card1"),
-                Card(1, "card2")
+                Card(0, 1),
+                Card(1, 2)
             )
         )
         Assert.assertEquals(

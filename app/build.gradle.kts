@@ -37,6 +37,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        resourceConfigurations.addAll(listOf("en", "es", "fr"))
     }
 
     buildTypes {
@@ -88,6 +90,7 @@ dependencies {
     implementation(projects.features.settings)
 
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.splashscreen)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)

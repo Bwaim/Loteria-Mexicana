@@ -30,8 +30,8 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -88,7 +88,7 @@ private fun Draw(
 private fun SettingsAppBar(
     onBackClick: () -> Unit
 ) {
-    SmallTopAppBar(
+    TopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.draw_title)) },
         modifier = Modifier.windowInsetsPadding(
             WindowInsets.safeDrawing.only(

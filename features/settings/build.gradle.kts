@@ -19,6 +19,7 @@ plugins {
     id("loteriamexicana.android.library.compose")
     id("loteriamexicana.android.library.jacoco")
     id("loteriamexicana.android.test")
+    id("loteriamexicana.android.test.compose")
     id("loteriamexicana.hilt")
     id("loteriamexicana.spotless")
     id("loteriamexicana.test")
@@ -29,14 +30,15 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:compose"))
-    implementation(project(":common:core"))
-    implementation(project(":common:theme:theme"))
+    implementation(projects.common.compose)
+    implementation(projects.common.core)
+    implementation(projects.common.locale.locale)
+    implementation(projects.common.theme.theme)
 
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.runtime.compose)
 
     implementation(libs.compose.material3)
 
     testImplementation(project(":common:test:test"))
-    testImplementation(libs.mockk.library)
 }

@@ -14,23 +14,13 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.theme.testdoubles
+package dev.bwaim.loteria.locale
 
-import dev.bwaim.loteria.theme.Theme
-import dev.bwaim.loteria.theme.ThemeRepository
+import java.util.Locale
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.update
 
-internal class TestThemeRepository : ThemeRepository {
+public interface LocaleRepository {
 
-    private var themesStateFlow = MutableStateFlow(Theme.LIGHT)
-
-    override fun observeTheme(): Flow<Theme> = themesStateFlow
-
-    override suspend fun setTheme(theme: Theme) {
-        themesStateFlow.update { _ ->
-            theme
-        }
-    }
+    public fun observeLocale(): Flow<Locale>
+    public suspend fun setLocale(locale: Locale)
 }

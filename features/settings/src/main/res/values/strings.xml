@@ -22,4 +22,6 @@
     <string name="settings_app_theme_dark">"Dark"</string>
     <string name="settings_app_theme_battery">"Set by battery saver"</string>
     <string name="settings_app_theme_system">"Use system default"</string>
+
+    <string name="settings_language_title">"Choose language"</string>
 </resources>

@@ -13,16 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("loteriamexicana.kotlin.library")
-    id("loteriamexicana.spotless")
-}
 
-dependencies {
-    implementation(projects.common.locale.locale)
-    implementation(projects.common.theme.theme)
+package dev.bwaim.loteria.test.repository
 
-    implementation(libs.kotlin.coroutines.test)
+import dev.bwaim.loteria.locale.LocaleRepository
+import java.util.Locale
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 
-    implementation(libs.junit.library)
+public class TestLocaleRepository : LocaleRepository {
+
+    private var localeStateFlow = MutableStateFlow(Locale("fr"))
+
+    override fun observeLocale(): Flow<Locale> = localeStateFlow
+
+    override suspend fun setLocale(locale: Locale) {
+        localeStateFlow.update {
+            locale
+        }
+    }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.theme.impl
+package dev.bwaim.loteria.locale.impl
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -33,19 +33,19 @@ import kotlinx.coroutines.SupervisorJob
 
 @Module
 @InstallIn(SingletonComponent::class)
-public object DataStoreModule {
+public object LocaleDataStoreModule {
 
     @Provides
     @Singleton
-    internal fun providesThemePreferencesDataStore(
+    internal fun providesLocalePreferencesDataStore(
         @ApplicationContext context: Context,
         @IODispatcher ioDispatcher: CoroutineDispatcher,
-        themePreferencesSerializer: ThemePreferencesSerializer
-    ): DataStore<ThemePreferences> =
+        localePreferencesSerializer: LocalePreferencesSerializer
+    ): DataStore<LocalePreferences> =
         DataStoreFactory.create(
-            serializer = themePreferencesSerializer,
+            serializer = localePreferencesSerializer,
             scope = CoroutineScope(ioDispatcher + SupervisorJob())
         ) {
-            context.dataStoreFile("theme_preferences.pb")
+            context.dataStoreFile("locale_preferences.pb")
         }
 }

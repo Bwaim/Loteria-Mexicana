@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.theme
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
+package dev.bwaim.loteria.locale
 
 import app.cash.turbine.test
-import dev.bwaim.loteria.test.repository.TestThemeRepository
+import dev.bwaim.loteria.test.repository.TestLocaleRepository
+import java.util.Locale
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -25,35 +28,25 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
-internal class ThemeServiceTest {
-    private lateinit var subject: ThemeService
+internal class LocaleServiceTest {
+    private lateinit var subject: LocaleService
 
     @Before
     fun setUp() {
-        subject = ThemeService(
+        subject = LocaleService(
             ioDispatcher = UnconfinedTestDispatcher(),
-            themeRepository = TestThemeRepository()
+            localeRepository = TestLocaleRepository()
         )
     }
 
     @Test
-    fun themeService_observe_themeChanges() =
+    fun localeService_observe_localeChanges() =
         runTest {
-            subject.observeTheme().test {
-                Assert.assertEquals(Theme.DARK, awaitItem())
-                subject.setTheme(Theme.LIGHT)
-                Assert.assertEquals(Theme.LIGHT, awaitItem())
+            subject.observeLocale().test {
+                Assert.assertEquals(Locale("fr"), awaitItem())
+                subject.setLocale(Locale("es"))
+                Assert.assertEquals(Locale("es"), awaitItem())
                 cancel()
             }
         }
-
-    @Test
-    fun themeService_getThemes_returnAllThemes() {
-        val expectedResult = listOf(Theme.LIGHT, Theme.DARK, Theme.SYSTEM, Theme.BATTERY_SAVER)
-
-        val result = subject.getThemes()
-
-        Assert.assertEquals(expectedResult, result)
-    }
 }

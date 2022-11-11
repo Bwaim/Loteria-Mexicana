@@ -22,32 +22,32 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
-import dev.bwaim.loteria.theme.impl.DataStoreModule
-import dev.bwaim.loteria.theme.impl.ThemePreferences
-import dev.bwaim.loteria.theme.impl.ThemePreferencesSerializer
+import dev.bwaim.loteria.locale.impl.LocaleDataStoreModule
+import dev.bwaim.loteria.locale.impl.LocalePreferences
+import dev.bwaim.loteria.locale.impl.LocalePreferencesSerializer
 import javax.inject.Singleton
 import org.junit.rules.TemporaryFolder
 
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [DataStoreModule::class]
+    replaces = [LocaleDataStoreModule::class]
 )
-internal object TestDataStoreModule {
+internal object TestLocaleDataStoreModule {
     @Provides
     @Singleton
-    fun providesThemePreferencesDataStore(
-        themePreferencesSerializer: ThemePreferencesSerializer,
+    fun providesLocalePreferencesDataStore(
+        localePreferencesSerializer: LocalePreferencesSerializer,
         tmpFolder: TemporaryFolder
-    ): DataStore<ThemePreferences> =
-        tmpFolder.testThemePreferencesDataStore(themePreferencesSerializer)
+    ): DataStore<LocalePreferences> =
+        tmpFolder.testLocalePreferencesDataStore(localePreferencesSerializer)
 }
 
-public fun TemporaryFolder.testThemePreferencesDataStore(
-    themePreferencesSerializer: ThemePreferencesSerializer = ThemePreferencesSerializer()
-): DataStore<ThemePreferences> = DataStoreFactory.create(
-    serializer = themePreferencesSerializer,
+public fun TemporaryFolder.testLocalePreferencesDataStore(
+    localePreferencesSerializer: LocalePreferencesSerializer = LocalePreferencesSerializer()
+): DataStore<LocalePreferences> = DataStoreFactory.create(
+    serializer = localePreferencesSerializer,
 ) {
     create()
-    newFile("theme_preferences_test.pb")
+    newFile("locale_preferences_test.pb")
 }

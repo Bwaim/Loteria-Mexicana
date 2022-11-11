@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("loteriamexicana.kotlin.library")
-    id("loteriamexicana.spotless")
-}
 
-dependencies {
-    implementation(projects.common.locale.locale)
-    implementation(projects.common.theme.theme)
+package dev.bwaim.loteria.locale.impl
 
-    implementation(libs.kotlin.coroutines.test)
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import dev.bwaim.loteria.locale.LocaleRepository
 
-    implementation(libs.junit.library)
+@Module
+@InstallIn(SingletonComponent::class)
+internal interface LocaleRepositoryModule {
+    @get:Binds
+    val LocaleRepositoryImpl.bindLocaleRepository: LocaleRepository
 }

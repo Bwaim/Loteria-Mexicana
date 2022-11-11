@@ -15,14 +15,13 @@
  */
 plugins {
     id("loteriamexicana.kotlin.library")
+    id("loteriamexicana.kotlin.library.jacoco")
     id("loteriamexicana.spotless")
+    id("loteriamexicana.test")
 }
 
 dependencies {
-    implementation(projects.common.locale.locale)
-    implementation(projects.common.theme.theme)
+    implementation(project(":common:coroutines:coroutines"))
 
-    implementation(libs.kotlin.coroutines.test)
-
-    implementation(libs.junit.library)
+    implementation(libs.dagger)
 }

@@ -19,8 +19,10 @@ package dev.bwaim.loteria.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.bwaim.loteria.locale.LocaleService
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeService
+import java.util.Locale
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -31,7 +33,8 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 public class SettingsViewModel @Inject constructor(
-    private val themeService: ThemeService
+    private val themeService: ThemeService,
+    private val localeService: LocaleService
 ) : ViewModel() {
 
     public val viewState: StateFlow<SettingsState> = combine(
@@ -42,11 +45,17 @@ public class SettingsViewModel @Inject constructor(
             appTheme = appTheme,
             themes = themes
         )
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, SettingsState())
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SettingsState())
 
     public fun setTheme(theme: Theme) {
         viewModelScope.launch {
             themeService.setTheme(theme)
+        }
+    }
+
+    public fun updateLocale(locale: Locale) {
+        viewModelScope.launch {
+            localeService.setLocale(locale)
         }
     }
 }

@@ -14,30 +14,35 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.theme
+package dev.bwaim.loteria.locale
 
 import dev.bwaim.loteria.coroutines.IODispatcher
+import java.util.Locale
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
-public class ThemeService @Inject public constructor(
+public class LocaleService @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val themeRepository: ThemeRepository
+    private val localeRepository: LocaleRepository
 ) {
-    public fun observeTheme(): Flow<Theme> {
-        return themeRepository
-            .observeTheme()
+
+    public suspend fun getLocale(): Locale = withContext(ioDispatcher) {
+        observeLocale().first()
+    }
+
+    public fun observeLocale(): Flow<Locale> {
+        return localeRepository
+            .observeLocale()
             .flowOn(ioDispatcher)
     }
 
-    public suspend fun setTheme(theme: Theme) {
+    public suspend fun setLocale(locale: Locale) {
         withContext(ioDispatcher) {
-            themeRepository.setTheme(theme)
+            localeRepository.setLocale(locale)
         }
     }
-
-    public fun getThemes(): List<Theme> = Theme.values().toList()
 }

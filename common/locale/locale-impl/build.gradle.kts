@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// TODO: Remove once https://youtrack.jetbrains.com/issue/KTIJ-19369 is fixed
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("loteriamexicana.android.library")
     id("loteriamexicana.android.library.jacoco")
@@ -26,7 +23,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.bwaim.loteria.theme.impl"
+    namespace = "dev.bwaim.loteria.locale.impl"
 
     defaultConfig {
         consumerProguardFiles("consumer-proguard-rules.pro")
@@ -58,15 +55,14 @@ protobuf {
 }
 
 dependencies {
-    implementation(projects.common.core)
+
     implementation(projects.common.coroutines.coroutines)
-    implementation(projects.common.theme.theme)
+    implementation(projects.common.locale.locale)
 
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.kotlin.lite)
 
     testImplementation(projects.common.test.android)
-    testImplementation(projects.common.test.test)
     testImplementation(libs.kotlin.coroutines.test)
     testImplementation(libs.mockk.library)
 }

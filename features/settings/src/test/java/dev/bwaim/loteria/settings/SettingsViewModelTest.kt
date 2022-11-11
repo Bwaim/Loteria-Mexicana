@@ -16,20 +16,18 @@
 
 package dev.bwaim.loteria.settings
 
-import app.cash.turbine.test
-import dev.bwaim.loteria.test.MainCoroutineRule
+import dev.bwaim.loteria.locale.LocaleService
+import dev.bwaim.loteria.test.MainDispatcherRule
+import dev.bwaim.loteria.test.repository.TestLocaleRepository
+import dev.bwaim.loteria.test.repository.TestThemeRepository
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeService
-import io.mockk.MockKAnnotations
-import io.mockk.clearMocks
-import io.mockk.coVerify
-import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
-import org.junit.After
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -38,60 +36,64 @@ import org.junit.Test
 internal class SettingsViewModelTest {
     @ExperimentalCoroutinesApi
     @get:Rule
-    var mainCoroutineRule = MainCoroutineRule()
+    var mainDispatcherRule = MainDispatcherRule()
 
-    private lateinit var settingsViewModel: SettingsViewModel
+    private lateinit var viewModel: SettingsViewModel
 
-    @MockK(relaxUnitFun = true)
-    lateinit var mockThemeService: ThemeService
-
-    private val themes = listOf(Theme.LIGHT, Theme.DARK)
+    private val themeService: ThemeService =
+        ThemeService(UnconfinedTestDispatcher(), TestThemeRepository())
+    private val localeService: LocaleService =
+        LocaleService(UnconfinedTestDispatcher(), TestLocaleRepository())
 
     @Before
     fun setUp() {
-        MockKAnnotations.init(this)
-    }
-
-    @After
-    fun tearDown() {
-        clearMocks(mockThemeService)
-    }
-
-    @Test
-    fun shouldUpdateState_whenThemeChanged() = runTest {
-        initViewModel()
-
-        settingsViewModel.viewState.test {
-            Assert.assertEquals(
-                SettingsState(),
-                awaitItem()
-            )
-            Assert.assertEquals(
-                SettingsState(appTheme = Theme.LIGHT, themes = themes),
-                awaitItem()
-            )
-            Assert.assertEquals(
-                SettingsState(appTheme = Theme.DARK, themes = themes),
-                awaitItem()
-            )
-        }
+        viewModel = SettingsViewModel(
+            themeService = themeService,
+            localeService = localeService
+        )
     }
 
     @Test
-    fun setTheme_whenSet() {
-        initViewModel()
-
-        settingsViewModel.setTheme(Theme.SYSTEM)
-
-        mainCoroutineRule.dispatcher.scheduler.advanceUntilIdle()
-
-        coVerify(exactly = 1) { mockThemeService.setTheme(Theme.SYSTEM) }
+    fun stateIsInitiallyDefaultValue() = runTest {
+        assertEquals(
+            SettingsState(),
+            viewModel.viewState.value
+        )
     }
 
-    private fun initViewModel() {
-        every { mockThemeService.getThemes() } returns themes
-        every { mockThemeService.observeTheme() } returns flowOf(Theme.LIGHT, Theme.DARK)
+    @Test
+    fun stateHasSavedValueAfterLoadingTheme() = runTest {
+        val collectJob =
+            launch(UnconfinedTestDispatcher()) { viewModel.viewState.collect() }
 
-        settingsViewModel = SettingsViewModel(mockThemeService)
+        assertEquals(
+            SettingsState(
+                appTheme = Theme.DARK,
+                themes = listOf(Theme.LIGHT, Theme.DARK, Theme.SYSTEM, Theme.BATTERY_SAVER)
+            ),
+            viewModel.viewState.value
+        )
+
+        collectJob.cancel()
+    }
+
+    @Test
+    fun themeUpdatesAfterChangingTheme() = runTest {
+        val collectJob =
+            launch(UnconfinedTestDispatcher()) { viewModel.viewState.collect() }
+
+        assertEquals(
+            Theme.DARK,
+            viewModel.viewState.value.appTheme
+        )
+
+        viewModel.setTheme(Theme.SYSTEM)
+
+        assertEquals(
+            Theme.SYSTEM,
+            viewModel.viewState.value.appTheme
+        )
+
+        collectJob.cancel()
     }
 }

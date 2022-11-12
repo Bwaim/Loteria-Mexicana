@@ -24,6 +24,15 @@ plugins {
 
 android {
     namespace = "dev.bwaim.loteria.http"
+
+    packagingOptions {
+        resources {
+            excludes += setOf(
+                "/META-INF/LICENSE.md",
+                "/META-INF/LICENSE-notice.md"
+            )
+        }
+    }
 }
 
 dependencies {
@@ -33,4 +42,6 @@ dependencies {
     implementation(libs.okhttp.logging)
 
     testImplementation(libs.mockk.library)
+
+    androidTestImplementation(libs.mockk.android)
 }

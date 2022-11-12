@@ -23,7 +23,7 @@ internal class ConnectivityInterceptorTest {
 //    @RelaxedMockK
 //    private lateinit var mockContext: Context
 //
-//    private lateinit var connectivityInterceptor: ConnectivityInterceptor
+//    private lateinit var subject: ConnectivityInterceptor
 //
 //    @Before
 //    fun setUp() {
@@ -33,45 +33,36 @@ internal class ConnectivityInterceptorTest {
 //            mockContext.getSystemService<ConnectivityManager>()
 //        } returns mockConnectivityManager
 //
-//        connectivityInterceptor = ConnectivityInterceptor(mockContext)
+//        subject = ConnectivityInterceptor(mockContext)
 //    }
 //
 //    @Test(expected = NoConnectivityException::class)
 //    fun noConnectivityExceptionThrown_whenDeviceNotConnectedToInternet() {
 //        mockConnectivity(false)
 //
-//        connectivityInterceptor.intercept(mockk(relaxed = true))
+//        subject.intercept(mockk(relaxed = true))
 //    }
 //
 //    @Test
 //    fun requestProceeded_whenDeviceConnectedToInternet() {
 //        mockConnectivity(true)
 //        val fakeRequest = createFakeRequest()
-//        val chain = mockk<Interceptor.Chain>(relaxed = true).apply {
-//            every { request() } returns fakeRequest
-//        }
+//        val chain = mockk<Interceptor.Chain>(relaxed = true)
+//        every { chain.request() } returns fakeRequest
 //
-//        connectivityInterceptor.intercept(chain)
+//        subject.intercept(chain)
 //
 //        verify {
 //            chain.proceed(fakeRequest)
 //        }
 //    }
 //
-//    private fun mockConnectivity(connected: Boolean) {
-//        if (Build.VERSION.SDK_INT < 24) {
-//            every {
-//                mockConnectivityManager.activeNetworkInfo
-//            } returns mockk<NetworkInfo>(relaxed = true).apply {
-//                every { isConnectedOrConnecting } returns connected
-//            }
-//        } else {
-//            val mockNetworkCapabilities = mockk<NetworkCapabilities>()
-//            every {
-//                mockNetworkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-//            } returns connected
-//            connectivityInterceptor.onCapabilitiesChanged(mockk<Network>(), mockNetworkCapabilities)
-//        }
+//    private inline fun mockConnectivity(connected: Boolean) {
+//        val mockNetworkCapabilities = mockk<NetworkCapabilities>()
+//        every {
+//            mockNetworkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+//        } returns connected
+//        subject.onCapabilitiesChanged(mockk(), mockNetworkCapabilities)
 //    }
 //
 //    private fun createFakeRequest(

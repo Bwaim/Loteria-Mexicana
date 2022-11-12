@@ -18,12 +18,8 @@
 
 package dev.bwaim.loteria.locale
 
-import app.cash.turbine.test
-import dev.bwaim.loteria.test.repository.TestLocaleRepository
 import java.util.Locale
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -33,20 +29,19 @@ internal class LocaleServiceTest {
 
     @Before
     fun setUp() {
-        subject = LocaleService(
-            ioDispatcher = UnconfinedTestDispatcher(),
-            localeRepository = TestLocaleRepository()
-        )
+        subject = LocaleService()
     }
 
     @Test
-    fun localeService_observe_localeChanges() =
-        runTest {
-            subject.observeLocale().test {
-                Assert.assertEquals(Locale("fr"), awaitItem())
-                subject.setLocale(Locale("es"))
-                Assert.assertEquals(Locale("es"), awaitItem())
-                cancel()
-            }
-        }
+    fun localeService_getLocales_returnAllLocales() {
+        val expectedResult = listOf(
+            Locale("es"),
+            Locale.ENGLISH,
+            Locale.FRENCH
+        )
+
+        val result = subject.getLocales()
+
+        Assert.assertEquals(expectedResult, result)
+    }
 }

@@ -18,10 +18,10 @@ package dev.bwaim.loteria.settings
 
 import dev.bwaim.loteria.locale.LocaleService
 import dev.bwaim.loteria.test.MainDispatcherRule
-import dev.bwaim.loteria.test.repository.TestLocaleRepository
 import dev.bwaim.loteria.test.repository.TestThemeRepository
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeService
+import java.util.Locale
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -42,8 +42,7 @@ internal class SettingsViewModelTest {
 
     private val themeService: ThemeService =
         ThemeService(UnconfinedTestDispatcher(), TestThemeRepository())
-    private val localeService: LocaleService =
-        LocaleService(UnconfinedTestDispatcher(), TestLocaleRepository())
+    private val localeService: LocaleService = LocaleService()
 
     @Before
     fun setUp() {
@@ -62,14 +61,19 @@ internal class SettingsViewModelTest {
     }
 
     @Test
-    fun stateHasSavedValueAfterLoadingTheme() = runTest {
+    fun stateHasSavedValueAfterLoading() = runTest {
         val collectJob =
             launch(UnconfinedTestDispatcher()) { viewModel.viewState.collect() }
 
         assertEquals(
             SettingsState(
                 appTheme = Theme.DARK,
-                themes = listOf(Theme.LIGHT, Theme.DARK, Theme.SYSTEM, Theme.BATTERY_SAVER)
+                themes = listOf(Theme.LIGHT, Theme.DARK, Theme.SYSTEM, Theme.BATTERY_SAVER),
+                availableLocales = listOf(
+                    Locale("es"),
+                    Locale.ENGLISH,
+                    Locale.FRENCH
+                )
             ),
             viewModel.viewState.value
         )

@@ -84,7 +84,6 @@ dependencies {
     implementation(projects.common.imageloading)
     implementation(projects.common.initializers)
     implementation(projects.common.locale.locale)
-    implementation(projects.common.locale.localeImpl)
     implementation(projects.common.navigation)
     implementation(projects.common.theme.theme)
     implementation(projects.common.theme.themeImpl)
@@ -112,9 +111,8 @@ dependencies {
 
     implementation(libs.firebase.perf.library)
 
-    // TODO deactivated till https://github.com/square/leakcanary/issues/2398 is solved
-//    debugImplementation(libs.leakcanary.library)
-//    implementation(libs.leakcanary.plumber)
+    debugImplementation(libs.leakcanary.library)
+    implementation(libs.leakcanary.plumber)
 
     implementation(libs.coil.library)
 

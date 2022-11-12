@@ -33,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.core.os.LocaleListCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -56,7 +57,7 @@ public fun SettingsRoute(
         viewState,
         onBackClick = onBackClick,
         onThemeChanged = viewModel::setTheme,
-        onLocaleChange = viewModel::updateLocale
+        onLocaleChange = { AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(it)) }
     )
 }
 
@@ -68,8 +69,8 @@ internal fun SettingsScreen(
     onLocaleChange: (Locale) -> Unit
 ) {
     val appTheme = viewState.appTheme.toPreference()
-    val themesPreferences =
-        viewState.themes.toListPreferences(stringResource(id = R.string.settings_app_theme_title))
+    val themesPreferences = viewState.themes.toThemeListPreferences()
+    val localesPreferences = viewState.availableLocales.toLocaleListPreferences()
 
     Scaffold(
         topBar = { SettingsAppBar(onBackClick) }
@@ -84,7 +85,7 @@ internal fun SettingsScreen(
             )
 
             ListPreferenceWidget(
-                preferences = getLocales(),
+                preferences = localesPreferences,
                 currentValue = getCurrentLocale(),
                 onValueChanged = { onLocaleChange(it.value as Locale) }
             )
@@ -122,9 +123,9 @@ private fun Theme.toPreference(): Preference<Theme> =
     Preference(label = this.getLabel(), value = this)
 
 @Composable
-private fun List<Theme>.toListPreferences(title: String): ListPreferenceValues<Theme> =
+private fun List<Theme>.toThemeListPreferences(): ListPreferenceValues<Theme> =
     ListPreferenceValues(
-        title = title,
+        title = stringResource(id = R.string.settings_app_theme_title),
         entries = this
             .filter { it.isAvailable() }
             .associate {
@@ -142,11 +143,13 @@ private fun Theme.isAvailable(): Boolean =
 
 @Composable
 private fun getCurrentLocale(): Preference<Locale> =
-    Locale.getDefault().toPreference()
+    (AppCompatDelegate.getApplicationLocales()[0] ?: Locale.getDefault()).toPreference()
 
 @Composable
-private fun getLocales(): ListPreferenceValues<Locale> {
-    val applicationLocales = AppCompatDelegate.getApplicationLocales()
+private fun List<Locale>.toLocaleListPreferences(): ListPreferenceValues<Locale> {
+    val applicationLocales = LocaleListCompat.create(
+        *(this.toTypedArray())
+    )
     val locales: MutableMap<String, Preference<Locale>> = mutableMapOf()
     for (i in 0 until applicationLocales.size()) {
         with(applicationLocales[i]) {

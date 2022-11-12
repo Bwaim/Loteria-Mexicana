@@ -28,7 +28,6 @@ dependencies {
     implementation(projects.common.coroutines.coroutines)
     implementation(projects.common.coroutines.coroutinesAndroid)
     implementation(projects.common.database.database)
-    implementation(projects.common.locale.localeImpl)
     implementation(projects.common.theme.themeImpl)
     implementation(projects.common.test.test)
 

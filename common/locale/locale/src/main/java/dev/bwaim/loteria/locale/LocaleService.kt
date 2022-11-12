@@ -16,33 +16,13 @@
 
 package dev.bwaim.loteria.locale
 
-import dev.bwaim.loteria.coroutines.IODispatcher
 import java.util.Locale
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.withContext
 
-public class LocaleService @Inject constructor(
-    @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val localeRepository: LocaleRepository
-) {
-
-    public suspend fun getLocale(): Locale = withContext(ioDispatcher) {
-        observeLocale().first()
-    }
-
-    public fun observeLocale(): Flow<Locale> {
-        return localeRepository
-            .observeLocale()
-            .flowOn(ioDispatcher)
-    }
-
-    public suspend fun setLocale(locale: Locale) {
-        withContext(ioDispatcher) {
-            localeRepository.setLocale(locale)
-        }
-    }
+public class LocaleService @Inject constructor() {
+    public fun getLocales(): List<Locale> = listOf(
+        Locale("es"),
+        Locale.ENGLISH,
+        Locale.FRENCH
+    )
 }

@@ -27,7 +27,7 @@
         android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Loteria.Launcher"
+        android:theme="@style/Theme.Loteria.Splash"
         tools:targetApi="tiramisu">
 
         <activity

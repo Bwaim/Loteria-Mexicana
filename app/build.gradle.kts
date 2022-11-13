@@ -37,6 +37,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        resourceConfigurations.addAll(listOf("en", "es", "fr"))
     }
 
     buildTypes {
@@ -74,12 +76,14 @@ dependencies {
     implementation(projects.common.card.card)
     implementation(projects.common.card.cardImpl)
     implementation(projects.common.compose)
+    implementation(projects.common.core)
     implementation(projects.common.coroutines.coroutines)
     implementation(projects.common.coroutines.coroutinesAndroid)
     implementation(projects.common.database.database)
     implementation(projects.common.http)
     implementation(projects.common.imageloading)
     implementation(projects.common.initializers)
+    implementation(projects.common.locale.locale)
     implementation(projects.common.navigation)
     implementation(projects.common.theme.theme)
     implementation(projects.common.theme.themeImpl)
@@ -88,9 +92,11 @@ dependencies {
     implementation(projects.features.settings)
 
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.splashscreen)
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.splashscreen)
 
     implementation(libs.compose.animation)
     implementation(libs.compose.material3)
@@ -105,9 +111,8 @@ dependencies {
 
     implementation(libs.firebase.perf.library)
 
-    // TODO deactivated till https://github.com/square/leakcanary/issues/2398 is solved
-//    debugImplementation(libs.leakcanary.library)
-//    implementation(libs.leakcanary.plumber)
+    debugImplementation(libs.leakcanary.library)
+    implementation(libs.leakcanary.plumber)
 
     implementation(libs.coil.library)
 

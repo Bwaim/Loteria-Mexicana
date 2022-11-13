@@ -17,8 +17,10 @@
 package dev.bwaim.loteria.settings
 
 import dev.bwaim.loteria.theme.Theme
+import java.util.Locale
 
 public data class SettingsState(
     val appTheme: Theme = Theme.LIGHT,
-    val themes: List<Theme> = emptyList()
+    val themes: List<Theme> = emptyList(),
+    val availableLocales: List<Locale> = emptyList()
 )

@@ -19,6 +19,8 @@
 package dev.bwaim.loteria.settings
 
 import androidx.annotation.VisibleForTesting
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.only
@@ -26,11 +28,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.core.os.LocaleListCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -41,6 +44,7 @@ import dev.bwaim.loteria.compose.design.preference.model.Preference
 import dev.bwaim.loteria.compose.design.preference.ui.ListPreferenceWidget
 import dev.bwaim.loteria.core.utils.BuildWrapper
 import dev.bwaim.loteria.theme.Theme
+import java.util.Locale
 
 @Composable
 public fun SettingsRoute(
@@ -48,32 +52,44 @@ public fun SettingsRoute(
     onBackClick: () -> Unit
 ) {
     val viewState by viewModel.viewState.collectAsStateWithLifecycle()
-    Settings(
+
+    SettingsScreen(
         viewState,
-        onBackClick,
-        viewModel::setTheme
+        onBackClick = onBackClick,
+        onThemeChanged = viewModel::setTheme,
+        onLocaleChange = { AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(it)) }
     )
 }
 
 @Composable
-private fun Settings(
+internal fun SettingsScreen(
     viewState: SettingsState,
     onBackClick: () -> Unit,
-    onThemeChanged: (Theme) -> Unit
+    onThemeChanged: (Theme) -> Unit,
+    onLocaleChange: (Locale) -> Unit
 ) {
     val appTheme = viewState.appTheme.toPreference()
-    val themesPreferences =
-        viewState.themes.toListPreferences(stringResource(id = R.string.settings_app_theme_title))
+    val themesPreferences = viewState.themes.toThemeListPreferences()
+    val localesPreferences = viewState.availableLocales.toLocaleListPreferences()
 
     Scaffold(
         topBar = { SettingsAppBar(onBackClick) }
     ) { contentPadding ->
-        ListPreferenceWidget(
-            modifier = Modifier.padding(contentPadding),
-            preferences = themesPreferences,
-            currentValue = appTheme,
-            onValueChanged = { onThemeChanged(it.value as Theme) }
-        )
+        Column(
+            modifier = Modifier.padding(contentPadding)
+        ) {
+            ListPreferenceWidget(
+                preferences = themesPreferences,
+                currentValue = appTheme,
+                onValueChanged = { onThemeChanged(it.value as Theme) }
+            )
+
+            ListPreferenceWidget(
+                preferences = localesPreferences,
+                currentValue = getCurrentLocale(),
+                onValueChanged = { onLocaleChange(it.value as Locale) }
+            )
+        }
     }
 }
 
@@ -81,7 +97,7 @@ private fun Settings(
 private fun SettingsAppBar(
     onBackClick: () -> Unit
 ) {
-    SmallTopAppBar(
+    TopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.settings_title)) },
         modifier = Modifier.windowInsetsPadding(
             WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
@@ -107,9 +123,9 @@ private fun Theme.toPreference(): Preference<Theme> =
     Preference(label = this.getLabel(), value = this)
 
 @Composable
-private fun List<Theme>.toListPreferences(title: String): ListPreferenceValues<Theme> =
+private fun List<Theme>.toThemeListPreferences(): ListPreferenceValues<Theme> =
     ListPreferenceValues(
-        title = title,
+        title = stringResource(id = R.string.settings_app_theme_title),
         entries = this
             .filter { it.isAvailable() }
             .associate {
@@ -124,3 +140,29 @@ private fun Theme.isAvailable(): Boolean =
         Theme.SYSTEM -> BuildWrapper.isAtLeastQ
         Theme.BATTERY_SAVER -> !BuildWrapper.isAtLeastQ
     }
+
+@Composable
+private fun getCurrentLocale(): Preference<Locale> =
+    (AppCompatDelegate.getApplicationLocales()[0] ?: Locale.getDefault()).toPreference()
+
+@Composable
+private fun List<Locale>.toLocaleListPreferences(): ListPreferenceValues<Locale> {
+    val applicationLocales = LocaleListCompat.create(
+        *(this.toTypedArray())
+    )
+    val locales: MutableMap<String, Preference<Locale>> = mutableMapOf()
+    for (i in 0 until applicationLocales.size()) {
+        with(applicationLocales[i]) {
+            this?.run {
+                locales.put(getDisplayLanguage(this), this.toPreference())
+            }
+        }
+    }
+    return ListPreferenceValues(
+        title = stringResource(id = R.string.settings_language_title),
+        entries = locales
+    )
+}
+
+private fun Locale.toPreference(): Preference<Locale> =
+    Preference(label = getDisplayLanguage(this), value = this)

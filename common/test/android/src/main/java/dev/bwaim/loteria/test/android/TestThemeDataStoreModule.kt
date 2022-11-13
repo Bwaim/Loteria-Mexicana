@@ -22,7 +22,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
-import dev.bwaim.loteria.theme.impl.DataStoreModule
+import dev.bwaim.loteria.theme.impl.ThemeDataStoreModule
 import dev.bwaim.loteria.theme.impl.ThemePreferences
 import dev.bwaim.loteria.theme.impl.ThemePreferencesSerializer
 import javax.inject.Singleton
@@ -31,9 +31,9 @@ import org.junit.rules.TemporaryFolder
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [DataStoreModule::class]
+    replaces = [ThemeDataStoreModule::class]
 )
-internal object TestDataStoreModule {
+internal object TestThemeDataStoreModule {
     @Provides
     @Singleton
     fun providesThemePreferencesDataStore(

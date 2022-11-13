@@ -17,9 +17,11 @@
 <resources>
     <string name="settings_title">Paramètres</string>
 
-    <string name="settings_app_theme_title">"Je choisis le thème"</string>
+    <string name="settings_app_theme_title">"Choisir le thème"</string>
     <string name="settings_app_theme_light">"Clair"</string>
     <string name="settings_app_theme_dark">"Sombre"</string>
     <string name="settings_app_theme_battery">"Défini par l'économiseur de batterie"</string>
     <string name="settings_app_theme_system">"Utiliser le mode système"</string>
+
+    <string name="settings_language_title">"Choisir la langue"</string>
 </resources>

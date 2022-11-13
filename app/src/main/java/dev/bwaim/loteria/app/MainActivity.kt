@@ -17,8 +17,8 @@
 package dev.bwaim.loteria.app
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -33,7 +33,7 @@ import javax.inject.Inject
 @ExperimentalAnimationApi
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @AndroidEntryPoint
-public class MainActivity : ComponentActivity() {
+public class MainActivity : AppCompatActivity() {
 
     @Inject
     internal lateinit var themeActivityDelegate: ThemeActivityDelegate

@@ -16,7 +16,7 @@
 -->
 <resources>
 
-    <style name="Theme.Loteria.App" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.Loteria.App" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/purple_700</item>
     </style>
 

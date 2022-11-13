@@ -14,14 +14,8 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <string name="settings_title">Ajustes</string>
-
-    <string name="settings_app_theme_title">"Escoge un tema"</string>
-    <string name="settings_app_theme_light">"Claro"</string>
-    <string name="settings_app_theme_dark">"Oscuro"</string>
-    <string name="settings_app_theme_battery">"Establecido por ahorro de batería"</string>
-    <string name="settings_app_theme_system">"Usar sistema predeterminado"</string>
-
-    <string name="settings_language_title">"Escoge idioma"</string>
-</resources>
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en"/>
+    <locale android:name="es"/>
+    <locale android:name="fr"/>
+</locale-config>

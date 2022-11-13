@@ -17,7 +17,7 @@
 package dev.bwaim.loteria.theme
 
 import app.cash.turbine.test
-import dev.bwaim.loteria.theme.testdoubles.TestThemeRepository
+import dev.bwaim.loteria.test.repository.TestThemeRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -41,9 +41,9 @@ internal class ThemeServiceTest {
     fun themeService_observe_themeChanges() =
         runTest {
             subject.observeTheme().test {
-                Assert.assertEquals(Theme.LIGHT, awaitItem())
-                subject.setTheme(Theme.DARK)
                 Assert.assertEquals(Theme.DARK, awaitItem())
+                subject.setTheme(Theme.LIGHT)
+                Assert.assertEquals(Theme.LIGHT, awaitItem())
                 cancel()
             }
         }

@@ -58,15 +58,15 @@ protobuf {
 }
 
 dependencies {
-    implementation(project(":common:core"))
-    implementation(project(":common:coroutines:coroutines"))
-    implementation(project(":common:theme:theme"))
+    implementation(projects.common.core)
+    implementation(projects.common.coroutines.coroutines)
+    implementation(projects.common.theme.theme)
 
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.kotlin.lite)
 
-    testImplementation(project(":common:test:android"))
-    testImplementation(project(":common:test:test"))
+    testImplementation(projects.common.test.android)
+    testImplementation(projects.common.test.test)
     testImplementation(libs.kotlin.coroutines.test)
     testImplementation(libs.mockk.library)
 }

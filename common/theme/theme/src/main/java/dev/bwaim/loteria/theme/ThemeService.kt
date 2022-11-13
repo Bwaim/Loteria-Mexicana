@@ -23,7 +23,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
-public class ThemeService @Inject internal constructor(
+public class ThemeService @Inject public constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val themeRepository: ThemeRepository
 ) {

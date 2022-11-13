@@ -13,24 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+plugins {
+    id("loteriamexicana.kotlin.library")
+    id("loteriamexicana.kotlin.library.jacoco")
+    id("loteriamexicana.spotless")
+    id("loteriamexicana.test")
+}
 
-package dev.bwaim.loteria.theme.testdoubles
+dependencies {
+    implementation(project(":common:coroutines:coroutines"))
 
-import dev.bwaim.loteria.theme.Theme
-import dev.bwaim.loteria.theme.ThemeRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.update
-
-internal class TestThemeRepository : ThemeRepository {
-
-    private var themesStateFlow = MutableStateFlow(Theme.LIGHT)
-
-    override fun observeTheme(): Flow<Theme> = themesStateFlow
-
-    override suspend fun setTheme(theme: Theme) {
-        themesStateFlow.update { _ ->
-            theme
-        }
-    }
+    implementation(libs.dagger)
 }

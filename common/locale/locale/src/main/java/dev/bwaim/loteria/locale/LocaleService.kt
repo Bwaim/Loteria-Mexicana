@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("loteriamexicana.kotlin.library")
-    id("loteriamexicana.spotless")
-}
 
-dependencies {
-    implementation(projects.common.locale.locale)
-    implementation(projects.common.theme.theme)
+package dev.bwaim.loteria.locale
 
-    implementation(libs.kotlin.coroutines.test)
+import java.util.Locale
+import javax.inject.Inject
 
-    implementation(libs.junit.library)
+public class LocaleService @Inject constructor() {
+    public fun getLocales(): List<Locale> = listOf(
+        Locale("es"),
+        Locale.ENGLISH,
+        Locale.FRENCH
+    )
 }

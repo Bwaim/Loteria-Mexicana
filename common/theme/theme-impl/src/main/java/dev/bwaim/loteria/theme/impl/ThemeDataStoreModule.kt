@@ -33,7 +33,7 @@ import kotlinx.coroutines.SupervisorJob
 
 @Module
 @InstallIn(SingletonComponent::class)
-public object DataStoreModule {
+public object ThemeDataStoreModule {
 
     @Provides
     @Singleton

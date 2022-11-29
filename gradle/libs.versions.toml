@@ -1,5 +1,5 @@
 [versions]
-accompanist = "0.27.1"
+accompanist = "0.28.0"
 activity = "1.6.1"
 androidCacheFix = "2.5.7"
 androidDesugarJdkLibs = "2.0.0"

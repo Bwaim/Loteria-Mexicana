@@ -25,11 +25,11 @@ import dev.bwaim.loteria.coroutines.ComputationDispatcher
 import dev.bwaim.loteria.coroutines.IODispatcher
 import dev.bwaim.loteria.coroutines.MainDispatcher
 import dev.bwaim.loteria.coroutines.android.ApplicationCoroutinesModule
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.test.TestDispatcher
+import javax.inject.Singleton
 
 @Module
 @TestInstallIn(
@@ -41,7 +41,7 @@ internal object TestDispatchersModule {
     @Singleton
     @ApplicationScope
     fun provideApplicationScope(
-        @MainDispatcher mainDispatcher: CoroutineDispatcher
+        @MainDispatcher mainDispatcher: CoroutineDispatcher,
     ): CoroutineScope = CoroutineScope(SupervisorJob() + mainDispatcher)
 
     @Provides

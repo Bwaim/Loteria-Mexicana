@@ -44,35 +44,34 @@ import dev.bwaim.loteria.compose.TopAppBarTitle
 @Composable
 public fun DrawRoute(
     viewModel: DrawViewModel = hiltViewModel(),
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     val viewState by viewModel.viewState.collectAsStateWithLifecycle()
     Draw(
         viewState = viewState,
-        onBackClick = onBackClick
+        onBackClick = onBackClick,
     )
 }
 
 @Composable
 private fun Draw(
     viewState: DrawState,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     Scaffold(
-        topBar = { SettingsAppBar(onBackClick) }
+        topBar = { SettingsAppBar(onBackClick) },
     ) { contentPadding ->
         Column(
             modifier = Modifier
                 .padding(contentPadding)
                 .padding(horizontal = 10.dp)
                 .fillMaxWidth()
-                .verticalScroll(state = rememberScrollState())
+                .verticalScroll(state = rememberScrollState()),
         ) {
-
             viewState.cards.forEachIndexed { index, card ->
                 Text(
                     modifier = Modifier.padding(bottom = 10.dp),
-                    text = "$index - ${stringResource(id = card.nameId)}"
+                    text = "$index - ${stringResource(id = card.nameId)}",
                 )
             }
         }
@@ -83,18 +82,18 @@ private fun Draw(
 
 @Composable
 private fun SettingsAppBar(
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     TopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.draw_title)) },
         modifier = Modifier.windowInsetsPadding(
             WindowInsets.safeDrawing.only(
-                WindowInsetsSides.Horizontal + WindowInsetsSides.Top
-            )
+                WindowInsetsSides.Horizontal + WindowInsetsSides.Top,
+            ),
         ),
         navigationIcon = {
             BackButton { onBackClick() }
-        }
+        },
     )
 }
 

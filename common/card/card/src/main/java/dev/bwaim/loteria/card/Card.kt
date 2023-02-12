@@ -21,5 +21,5 @@ import androidx.annotation.StringRes
 public data class Card(
     public val id: Int,
     @StringRes
-    public val nameId: Int
+    public val nameId: Int,
 )

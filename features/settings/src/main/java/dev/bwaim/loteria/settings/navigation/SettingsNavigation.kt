@@ -29,11 +29,11 @@ public object SettingsDestination : LoteriaNavigationDestination {
 
 @OptIn(ExperimentalAnimationApi::class)
 public fun NavGraphBuilder.settingsGraph(
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     composable(route = SettingsDestination.route) {
         SettingsRoute(
-            onBackClick = onBackClick
+            onBackClick = onBackClick,
         )
     }
 }

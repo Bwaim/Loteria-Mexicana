@@ -33,7 +33,7 @@ internal class ThemeServiceTest {
     fun setUp() {
         subject = ThemeService(
             ioDispatcher = UnconfinedTestDispatcher(),
-            themeRepository = TestThemeRepository()
+            themeRepository = TestThemeRepository(),
         )
     }
 

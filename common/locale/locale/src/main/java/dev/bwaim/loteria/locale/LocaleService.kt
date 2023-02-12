@@ -23,6 +23,6 @@ public class LocaleService @Inject constructor() {
     public fun getLocales(): List<Locale> = listOf(
         Locale("es"),
         Locale.ENGLISH,
-        Locale.FRENCH
+        Locale.FRENCH,
     )
 }

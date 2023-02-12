@@ -32,16 +32,16 @@ public object MainMenuDestination : LoteriaNavigationDestination {
 public fun NavGraphBuilder.mainMenuGraph(
     navigateToSettings: () -> Unit,
     navigateToDraw: () -> Unit,
-    nestedGraphs: NavGraphBuilder.() -> Unit
+    nestedGraphs: NavGraphBuilder.() -> Unit,
 ) {
     navigation(
         route = MainMenuDestination.route,
-        startDestination = MainMenuDestination.destination
+        startDestination = MainMenuDestination.destination,
     ) {
         composable(route = MainMenuDestination.destination) {
             MainMenuRoute(
                 navigateToSettings = navigateToSettings,
-                navigateToDraw = navigateToDraw
+                navigateToDraw = navigateToDraw,
             )
         }
         nestedGraphs()

@@ -19,5 +19,5 @@ package dev.bwaim.loteria.draw
 import dev.bwaim.loteria.card.Card
 
 public data class DrawState(
-    val cards: List<Card> = emptyList()
+    val cards: List<Card> = emptyList(),
 )

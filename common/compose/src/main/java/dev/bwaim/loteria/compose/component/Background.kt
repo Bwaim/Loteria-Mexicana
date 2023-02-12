@@ -30,7 +30,7 @@ import dev.bwaim.loteria.compose.theme.LocalBackgroundTheme
 @Composable
 public fun LoteriaBackground(
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val color = LocalBackgroundTheme.current.color
     val tonalElevation = LocalBackgroundTheme.current.tonalElevation

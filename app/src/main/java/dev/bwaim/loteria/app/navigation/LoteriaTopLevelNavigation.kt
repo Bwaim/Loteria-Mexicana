@@ -47,6 +47,6 @@ public data class TopLevelDestination(
 
 internal val TOP_LEVEL_DESTINATIONS = listOf(
     TopLevelDestination(
-        route = MainMenuDestination.route
-    )
+        route = MainMenuDestination.route,
+    ),
 )

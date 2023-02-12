@@ -39,7 +39,7 @@ import dev.bwaim.loteria.compose.theme.LoteriaTheme
 @Composable
 internal fun LoteriaApp(
     shouldUseDarkColors: Boolean,
-    windowSizeClass: WindowSizeClass
+    windowSizeClass: WindowSizeClass,
 ) {
     LoteriaTheme(darkTheme = shouldUseDarkColors) {
         val navController = rememberAnimatedNavController()
@@ -54,13 +54,13 @@ internal fun LoteriaApp(
             Scaffold(
                 modifier = Modifier,
                 containerColor = Color.Transparent,
-                contentColor = MaterialTheme.colorScheme.onBackground
+                contentColor = MaterialTheme.colorScheme.onBackground,
             ) { padding ->
                 LoteriaNavHost(
                     navController = navController,
                     modifier = Modifier
                         .padding(padding)
-                        .consumedWindowInsets(padding)
+                        .consumedWindowInsets(padding),
                 )
             }
         }

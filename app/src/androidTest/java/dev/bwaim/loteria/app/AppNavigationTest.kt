@@ -47,7 +47,8 @@ internal class AppNavigationTest {
      * Create a temporary folder used to create a Data Store file. This guarantees that
      * the file is removed in between each test, preventing a crash.
      */
-    @BindValue @get:Rule(order = 2)
+    @BindValue
+    @get:Rule(order = 2)
     val tmpFolder: TemporaryFolder = TemporaryFolder.builder().assureDeletion().build()
 
     private lateinit var drawButtonLabel: String

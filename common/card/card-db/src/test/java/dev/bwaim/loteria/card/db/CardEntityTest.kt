@@ -26,7 +26,7 @@ internal class CardEntityTest {
     fun card_entity_can_be_mapped_to_card() {
         val cardEntity = CardEntity(
             id = 0,
-            name = "CARD_1"
+            name = "CARD_1",
         )
 
         val card = cardEntity.asExternalModel()

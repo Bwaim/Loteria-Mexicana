@@ -18,11 +18,11 @@
 
 package dev.bwaim.loteria.locale
 
-import java.util.Locale
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import java.util.Locale
 
 internal class LocaleServiceTest {
     private lateinit var subject: LocaleService
@@ -37,7 +37,7 @@ internal class LocaleServiceTest {
         val expectedResult = listOf(
             Locale("es"),
             Locale.ENGLISH,
-            Locale.FRENCH
+            Locale.FRENCH,
         )
 
         val result = subject.getLocales()

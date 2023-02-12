@@ -24,11 +24,11 @@ import dev.bwaim.loteria.coroutines.ApplicationScope
 import dev.bwaim.loteria.coroutines.ComputationDispatcher
 import dev.bwaim.loteria.coroutines.IODispatcher
 import dev.bwaim.loteria.coroutines.MainDispatcher
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -37,7 +37,7 @@ public object ApplicationCoroutinesModule {
     @Singleton
     @ApplicationScope
     internal fun provideApplicationScope(
-        @MainDispatcher mainDispatcher: CoroutineDispatcher
+        @MainDispatcher mainDispatcher: CoroutineDispatcher,
     ): CoroutineScope = CoroutineScope(SupervisorJob() + mainDispatcher)
 
     @Provides

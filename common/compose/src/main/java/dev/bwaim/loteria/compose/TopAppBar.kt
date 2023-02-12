@@ -40,6 +40,6 @@ public fun TopAppBarTitle(text: String) {
     Text(
         text = text,
         overflow = TextOverflow.Ellipsis,
-        maxLines = 1
+        maxLines = 1,
     )
 }

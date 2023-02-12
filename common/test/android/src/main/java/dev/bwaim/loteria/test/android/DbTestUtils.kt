@@ -27,6 +27,6 @@ public fun createDb(): LoteriaDatabase {
     val context = ApplicationProvider.getApplicationContext<Context>()
     return Room.inMemoryDatabaseBuilder(
         context,
-        LoteriaDatabase::class.java
+        LoteriaDatabase::class.java,
     ).build()
 }

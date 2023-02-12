@@ -52,7 +52,7 @@ private val LightAndroidColorScheme = lightColorScheme(
     onSurface = Wenge10,
     surfaceVariant = BlackCoral90,
     onSurfaceVariant = BlackCoral30,
-    outline = BlackCoral50
+    outline = BlackCoral50,
 )
 
 private val DarkAndroidColorScheme = darkColorScheme(
@@ -78,7 +78,7 @@ private val DarkAndroidColorScheme = darkColorScheme(
     onSurface = Wenge80,
     surfaceVariant = BlackCoral30,
     onSurfaceVariant = BlackCoral80,
-    outline = BlackCoral60
+    outline = BlackCoral60,
 )
 
 @Composable
@@ -86,7 +86,7 @@ public fun LoteriaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     androidTheme: Boolean = false,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -101,14 +101,14 @@ public fun LoteriaTheme(
 
     val backgroundTheme = when {
         androidTheme && darkTheme -> BackgroundTheme(
-            color = Color.Black
+            color = Color.Black,
         )
         androidTheme -> BackgroundTheme(
-            color = Wenge95
+            color = Wenge95,
         )
         darkTheme -> BackgroundTheme(
             color = colorScheme.surface,
-            tonalElevation = 2.dp
+            tonalElevation = 2.dp,
         )
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> BackgroundTheme(
             color = colorScheme.surface,
@@ -116,7 +116,7 @@ public fun LoteriaTheme(
             primaryGradientColor = colorScheme.primary.lighten(0.95f),
             secondaryGradientColor = colorScheme.secondary.lighten(0.95f),
             tertiaryGradientColor = colorScheme.tertiary.lighten(0.95f),
-            neutralGradientColor = colorScheme.surface.lighten(0.95f)
+            neutralGradientColor = colorScheme.surface.lighten(0.95f),
         )
         else -> BackgroundTheme(
             color = colorScheme.surface,
@@ -124,14 +124,14 @@ public fun LoteriaTheme(
             primaryGradientColor = Purple95,
             secondaryGradientColor = Orange95,
             tertiaryGradientColor = Blue95,
-            neutralGradientColor = DarkPurpleGray95
+            neutralGradientColor = DarkPurpleGray95,
         )
     }
     CompositionLocalProvider(LocalBackgroundTheme provides backgroundTheme) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = LoteriaTypography,
-            content = content
+            content = content,
         )
     }
 }

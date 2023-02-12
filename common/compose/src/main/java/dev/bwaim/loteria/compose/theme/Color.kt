@@ -74,7 +74,7 @@ internal fun Color.lighten(luminance: Float): Color {
         (red * 256).roundToInt(),
         (green * 256).roundToInt(),
         (blue * 256).roundToInt(),
-        hsl
+        hsl,
     )
     hsl[2] = luminance
     return Color(ColorUtils.HSLToColor(hsl))

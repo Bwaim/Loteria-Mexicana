@@ -34,6 +34,6 @@ internal object ViewModelCoroutinesModule {
     @ViewModelScoped
     @ViewModelScope
     fun provideViewModelScope(
-        @MainDispatcher mainDispatcher: CoroutineDispatcher
+        @MainDispatcher mainDispatcher: CoroutineDispatcher,
     ) = CoroutineScope(SupervisorJob() + mainDispatcher)
 }

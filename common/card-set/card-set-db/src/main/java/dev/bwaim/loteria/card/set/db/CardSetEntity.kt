@@ -20,10 +20,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "card_set"
+    tableName = "card_set",
 )
 public data class CardSetEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val name: String
+    val name: String,
 )

@@ -29,7 +29,7 @@ internal class ThemeTest {
         arrayOf(Theme.LIGHT.value, Theme.LIGHT),
         arrayOf(Theme.DARK.value, Theme.DARK),
         arrayOf(Theme.SYSTEM.value, Theme.SYSTEM),
-        arrayOf(Theme.BATTERY_SAVER.value, Theme.BATTERY_SAVER)
+        arrayOf(Theme.BATTERY_SAVER.value, Theme.BATTERY_SAVER),
     )
 
     @Test

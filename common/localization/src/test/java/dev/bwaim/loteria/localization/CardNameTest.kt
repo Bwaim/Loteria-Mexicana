@@ -25,7 +25,7 @@ internal class CardNameTest {
     fun name_map_to_card_name() {
         assertEquals(
             CardName.CARD_1,
-            CardName.valueOf("CARD_1")
+            CardName.valueOf("CARD_1"),
         )
     }
 }

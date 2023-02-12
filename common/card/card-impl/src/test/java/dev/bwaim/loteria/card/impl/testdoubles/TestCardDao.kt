@@ -27,9 +27,9 @@ internal class TestCardDao : CardDao {
         listOf(
             CardEntity(
                 id = 1,
-                name = "CARD_1"
-            )
-        )
+                name = "CARD_1",
+            ),
+        ),
     )
 
     override fun observeCards(): Flow<List<CardEntity>> = entitiesStateFlow

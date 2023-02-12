@@ -34,7 +34,7 @@ import dev.bwaim.loteria.settings.navigation.settingsGraph
 public fun LoteriaNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = MainMenuDestination.route
+    startDestination: String = MainMenuDestination.route,
 ) {
     AnimatedNavHost(
         navController = navController,
@@ -47,7 +47,7 @@ public fun LoteriaNavHost(
             nestedGraphs = {
                 settingsGraph(onBackClick = { navController.popBackStack() })
                 drawGraph(onBackClick = { navController.popBackStack() })
-            }
+            },
         )
     }
 }

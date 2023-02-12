@@ -20,15 +20,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.bwaim.loteria.card.CardService
-import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
 @HiltViewModel
 public class DrawViewModel @Inject constructor(
-    cardService: CardService
+    cardService: CardService,
 ) : ViewModel() {
 
     public val viewState: StateFlow<DrawState> = cardService.observeCards()

@@ -47,7 +47,6 @@ internal class ListPreferenceWidgetTest {
 
     @Test
     fun shouldChange() {
-
         testContent {
             var currentPref by remember {
                 mutableStateOf(pref1)
@@ -58,7 +57,7 @@ internal class ListPreferenceWidgetTest {
                 onValueChanged = {
                     currentPref =
                         Preference(label = it.label, value = it.value) as Preference<String>
-                }
+                },
             )
         }
 

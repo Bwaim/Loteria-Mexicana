@@ -25,26 +25,26 @@ import dagger.hilt.testing.TestInstallIn
 import dev.bwaim.loteria.theme.impl.ThemeDataStoreModule
 import dev.bwaim.loteria.theme.impl.ThemePreferences
 import dev.bwaim.loteria.theme.impl.ThemePreferencesSerializer
-import javax.inject.Singleton
 import org.junit.rules.TemporaryFolder
+import javax.inject.Singleton
 
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [ThemeDataStoreModule::class]
+    replaces = [ThemeDataStoreModule::class],
 )
 internal object TestThemeDataStoreModule {
     @Provides
     @Singleton
     fun providesThemePreferencesDataStore(
         themePreferencesSerializer: ThemePreferencesSerializer,
-        tmpFolder: TemporaryFolder
+        tmpFolder: TemporaryFolder,
     ): DataStore<ThemePreferences> =
         tmpFolder.testThemePreferencesDataStore(themePreferencesSerializer)
 }
 
 public fun TemporaryFolder.testThemePreferencesDataStore(
-    themePreferencesSerializer: ThemePreferencesSerializer = ThemePreferencesSerializer()
+    themePreferencesSerializer: ThemePreferencesSerializer = ThemePreferencesSerializer(),
 ): DataStore<ThemePreferences> = DataStoreFactory.create(
     serializer = themePreferencesSerializer,
 ) {

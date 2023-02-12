@@ -40,7 +40,7 @@ internal class ThemeActivityDelegateImplTest {
         }
         val themeActivityDelegate = ThemeActivityDelegateImpl(
             applicationScope = TestScope(),
-            themeService = mockThemeService
+            themeService = mockThemeService,
         )
 
         val theme = themeActivityDelegate
@@ -49,7 +49,7 @@ internal class ThemeActivityDelegateImplTest {
 
         Assert.assertEquals(
             ThemeHelper.defaultTheme,
-            theme
+            theme,
         )
     }
 }

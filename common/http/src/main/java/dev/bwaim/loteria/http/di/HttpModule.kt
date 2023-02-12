@@ -25,12 +25,12 @@ import dagger.hilt.components.SingletonComponent
 import dev.bwaim.loteria.http.BuildConfig
 import dev.bwaim.loteria.http.interceptors.connectivity.ConnectivityInterceptor
 import dev.bwaim.loteria.http.interceptors.emptybody.EmptyBodyInterceptor
-import java.io.File
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import java.io.File
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 private const val TIMEOUT = 30_000L // in ms
 
@@ -42,7 +42,7 @@ internal object HttpModule {
     fun provideOkHttpClient(
         @ApplicationContext context: Context,
         connectivityInterceptor: ConnectivityInterceptor,
-        emptyBodyInterceptor: EmptyBodyInterceptor
+        emptyBodyInterceptor: EmptyBodyInterceptor,
     ) = OkHttpClient.Builder()
         .connectTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
         .readTimeout(TIMEOUT, TimeUnit.MILLISECONDS)

@@ -38,7 +38,7 @@ internal class CardDaoTest {
     fun cardDao_fetches_list_of_cards() = runTest {
         val cardEntities = listOf(
             testCard(1, "El gallo"),
-            testCard(2, "El diablito")
+            testCard(2, "El diablito"),
         )
 
         cardDao.upsertCards(cardEntities)
@@ -47,15 +47,15 @@ internal class CardDaoTest {
 
         assertEquals(
             listOf(1, 2),
-            savedCardEntities.map { it.id }
+            savedCardEntities.map { it.id },
         )
     }
 
     private fun testCard(
         id: Int,
-        name: String
+        name: String,
     ): CardEntity = CardEntity(
         id = id,
-        name = name
+        name = name,
     )
 }

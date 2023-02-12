@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-@file:OptIn(ExperimentalLifecycleComposeApi::class)
-
 package dev.bwaim.loteria.compose.extensions
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeActivityDelegate

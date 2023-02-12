@@ -18,8 +18,8 @@ package dev.bwaim.loteria.initializers
 
 import android.content.Context
 import androidx.startup.Initializer
-import java.util.regex.Pattern
 import timber.log.Timber
+import java.util.regex.Pattern
 
 internal class TimberInitializer : Initializer<Unit> {
     override fun create(context: Context) {

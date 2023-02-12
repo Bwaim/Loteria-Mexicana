@@ -32,10 +32,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.bwaim.loteria.coroutines.IODispatcher
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
+import javax.inject.Singleton
 
 private const val CACHE_DIRECTORY_NAME = "image_cache"
 private const val MEMORY_CACHE_PERCENT = 0.25
@@ -48,7 +48,7 @@ internal object ImageLoaderModule {
     fun provideImageLoader(
         @ApplicationContext context: Context,
         @IODispatcher ioDispatcher: CoroutineDispatcher,
-        okHttpClientLazy: Lazy<OkHttpClient>
+        okHttpClientLazy: Lazy<OkHttpClient>,
     ) = ImageLoaderFactory {
         with(context) {
             ImageLoader.Builder(this)

@@ -46,7 +46,7 @@ internal class CardRepositoryImplTest {
                 .first()
                 .map(CardEntity::asExternalModel),
             subject.observeCards()
-                .first()
+                .first(),
         )
     }
 }

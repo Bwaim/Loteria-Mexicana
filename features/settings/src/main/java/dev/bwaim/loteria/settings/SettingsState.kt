@@ -22,5 +22,5 @@ import java.util.Locale
 public data class SettingsState(
     val appTheme: Theme = Theme.LIGHT,
     val themes: List<Theme> = emptyList(),
-    val availableLocales: List<Locale> = emptyList()
+    val availableLocales: List<Locale> = emptyList(),
 )

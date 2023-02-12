@@ -35,13 +35,13 @@ internal object DatabaseModule {
         Room.databaseBuilder(
             context,
             LoteriaDatabase::class.java,
-            "Loteria-database"
+            "Loteria-database",
         )
             .createFromAsset("database/loteria.db")
             .build()
 
     @Provides
     internal fun provideCardDao(
-        database: LoteriaDatabase
+        database: LoteriaDatabase,
     ): CardDao = database.cardDao()
 }

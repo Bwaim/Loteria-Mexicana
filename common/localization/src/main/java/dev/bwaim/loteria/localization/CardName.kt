@@ -73,7 +73,7 @@ public enum class CardName(@StringRes public val stringId: Int) {
     CARD_51(string.card_51),
     CARD_52(string.card_52),
     CARD_53(string.card_53),
-    CARD_54(string.card_54)
+    CARD_54(string.card_54),
     ;
 
     public companion object {

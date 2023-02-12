@@ -26,10 +26,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.bwaim.loteria.coroutines.IODispatcher
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -40,11 +40,11 @@ public object ThemeDataStoreModule {
     internal fun providesThemePreferencesDataStore(
         @ApplicationContext context: Context,
         @IODispatcher ioDispatcher: CoroutineDispatcher,
-        themePreferencesSerializer: ThemePreferencesSerializer
+        themePreferencesSerializer: ThemePreferencesSerializer,
     ): DataStore<ThemePreferences> =
         DataStoreFactory.create(
             serializer = themePreferencesSerializer,
-            scope = CoroutineScope(ioDispatcher + SupervisorJob())
+            scope = CoroutineScope(ioDispatcher + SupervisorJob()),
         ) {
             context.dataStoreFile("theme_preferences.pb")
         }

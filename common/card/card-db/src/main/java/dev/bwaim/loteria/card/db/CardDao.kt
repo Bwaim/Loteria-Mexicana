@@ -40,6 +40,6 @@ public interface CardDao {
     public suspend fun upsertCards(cardEntities: List<CardEntity>): Unit = upsert(
         items = cardEntities,
         insertMany = ::insertOrIgnoreCards,
-        updateMany = ::updateCard
+        updateMany = ::updateCard,
     )
 }

@@ -22,12 +22,12 @@ import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.mockk
-import java.net.HttpURLConnection
 import okhttp3.Interceptor
 import okhttp3.Response
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import java.net.HttpURLConnection
 
 internal class EmptyBodyInterceptorTest {
     @RelaxedMockK
@@ -50,7 +50,7 @@ internal class EmptyBodyInterceptorTest {
 
         Assert.assertEquals(
             EMPTY_BODY,
-            body
+            body,
         )
     }
 
@@ -59,15 +59,15 @@ internal class EmptyBodyInterceptorTest {
         mockChainProceed(
             createFakeResponse(
                 code = HttpURLConnection.HTTP_NO_CONTENT,
-                body = mockk(relaxed = true)
-            )
+                body = mockk(relaxed = true),
+            ),
         )
 
         val body = emptyBodyInterceptor.intercept(mockChain).body
 
         Assert.assertEquals(
             EMPTY_BODY,
-            body
+            body,
         )
     }
 
@@ -79,7 +79,7 @@ internal class EmptyBodyInterceptorTest {
 
         Assert.assertEquals(
             HttpURLConnection.HTTP_OK,
-            code
+            code,
         )
     }
 
@@ -91,7 +91,7 @@ internal class EmptyBodyInterceptorTest {
 
         Assert.assertEquals(
             HttpURLConnection.HTTP_OK,
-            code
+            code,
         )
     }
 
@@ -104,7 +104,7 @@ internal class EmptyBodyInterceptorTest {
 
         Assert.assertEquals(
             fakeResponse,
-            response
+            response,
         )
     }
 
@@ -117,7 +117,7 @@ internal class EmptyBodyInterceptorTest {
 
         Assert.assertEquals(
             fakeResponse,
-            response
+            response,
         )
     }
 

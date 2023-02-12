@@ -46,7 +46,7 @@ import java.util.Locale
 @Composable
 public fun SettingsRoute(
     viewModel: SettingsViewModel = hiltViewModel(),
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     val viewState by viewModel.viewState.collectAsStateWithLifecycle()
 
@@ -54,7 +54,7 @@ public fun SettingsRoute(
         viewState,
         onBackClick = onBackClick,
         onThemeChanged = viewModel::setTheme,
-        onLocaleChange = { AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(it)) }
+        onLocaleChange = { AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(it)) },
     )
 }
 
@@ -63,28 +63,28 @@ internal fun SettingsScreen(
     viewState: SettingsState,
     onBackClick: () -> Unit,
     onThemeChanged: (Theme) -> Unit,
-    onLocaleChange: (Locale) -> Unit
+    onLocaleChange: (Locale) -> Unit,
 ) {
     val appTheme = viewState.appTheme.toPreference()
     val themesPreferences = viewState.themes.toThemeListPreferences()
     val localesPreferences = viewState.availableLocales.toLocaleListPreferences()
 
     Scaffold(
-        topBar = { SettingsAppBar(onBackClick) }
+        topBar = { SettingsAppBar(onBackClick) },
     ) { contentPadding ->
         Column(
-            modifier = Modifier.padding(contentPadding)
+            modifier = Modifier.padding(contentPadding),
         ) {
             ListPreferenceWidget(
                 preferences = themesPreferences,
                 currentValue = appTheme,
-                onValueChanged = { onThemeChanged(it.value as Theme) }
+                onValueChanged = { onThemeChanged(it.value as Theme) },
             )
 
             ListPreferenceWidget(
                 preferences = localesPreferences,
                 currentValue = getCurrentLocale(),
-                onValueChanged = { onLocaleChange(it.value as Locale) }
+                onValueChanged = { onLocaleChange(it.value as Locale) },
             )
         }
     }
@@ -92,16 +92,16 @@ internal fun SettingsScreen(
 
 @Composable
 private fun SettingsAppBar(
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     TopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.settings_title)) },
         modifier = Modifier.windowInsetsPadding(
-            WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+            WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top),
         ),
         navigationIcon = {
             BackButton { onBackClick() }
-        }
+        },
     )
 }
 
@@ -127,7 +127,7 @@ private fun List<Theme>.toThemeListPreferences(): ListPreferenceValues<Theme> =
             .filter { it.isAvailable() }
             .associate {
                 it.getLabel() to it.toPreference()
-            }
+            },
     )
 
 private fun Theme.isAvailable(): Boolean =
@@ -145,7 +145,7 @@ private fun getCurrentLocale(): Preference<Locale> =
 @Composable
 private fun List<Locale>.toLocaleListPreferences(): ListPreferenceValues<Locale> {
     val applicationLocales = LocaleListCompat.create(
-        *(this.toTypedArray())
+        *(this.toTypedArray()),
     )
     val locales: MutableMap<String, Preference<Locale>> = mutableMapOf()
     for (i in 0 until applicationLocales.size()) {
@@ -157,7 +157,7 @@ private fun List<Locale>.toLocaleListPreferences(): ListPreferenceValues<Locale>
     }
     return ListPreferenceValues(
         title = stringResource(id = R.string.settings_language_title),
-        entries = locales
+        entries = locales,
     )
 }
 

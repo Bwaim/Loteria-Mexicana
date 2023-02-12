@@ -36,7 +36,7 @@ internal class ThemeHelperTest {
 
         Assert.assertEquals(
             Theme.BATTERY_SAVER,
-            ThemeHelper.defaultTheme
+            ThemeHelper.defaultTheme,
         )
     }
 
@@ -46,7 +46,7 @@ internal class ThemeHelperTest {
 
         Assert.assertEquals(
             Theme.SYSTEM,
-            ThemeHelper.defaultTheme
+            ThemeHelper.defaultTheme,
         )
     }
 
@@ -58,7 +58,7 @@ internal class ThemeHelperTest {
 
         Assert.assertEquals(
             ThemeHelper.defaultTheme,
-            theme
+            theme,
         )
     }
 
@@ -70,7 +70,7 @@ internal class ThemeHelperTest {
 
         Assert.assertEquals(
             Theme.BATTERY_SAVER,
-            theme
+            theme,
         )
     }
 
@@ -82,7 +82,7 @@ internal class ThemeHelperTest {
 
         Assert.assertEquals(
             Theme.SYSTEM,
-            theme
+            theme,
         )
     }
 }

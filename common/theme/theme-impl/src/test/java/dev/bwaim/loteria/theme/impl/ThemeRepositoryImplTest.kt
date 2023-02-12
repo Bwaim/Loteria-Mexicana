@@ -49,7 +49,7 @@ internal class ThemeRepositoryImplTest {
 
         Assert.assertEquals(
             ThemeHelper.defaultTheme,
-            subject.observeTheme().first()
+            subject.observeTheme().first(),
         )
     }
 
@@ -63,14 +63,14 @@ internal class ThemeRepositoryImplTest {
         subject.observeTheme().test {
             Assert.assertEquals(
                 ThemeHelper.defaultTheme,
-                awaitItem()
+                awaitItem(),
             )
 
             subject.setTheme(themeValue)
 
             Assert.assertEquals(
                 themeValue,
-                awaitItem()
+                awaitItem(),
             )
 
             cancel()

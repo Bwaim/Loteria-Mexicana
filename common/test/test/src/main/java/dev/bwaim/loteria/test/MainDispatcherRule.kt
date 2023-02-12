@@ -27,7 +27,7 @@ import org.junit.runner.Description
 
 @ExperimentalCoroutinesApi
 public class MainDispatcherRule(
-    public val testDispatcher: TestDispatcher = UnconfinedTestDispatcher()
+    public val testDispatcher: TestDispatcher = UnconfinedTestDispatcher(),
 ) :
     TestWatcher() {
     override fun starting(description: Description) {

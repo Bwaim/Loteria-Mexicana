@@ -17,15 +17,15 @@
 package dev.bwaim.loteria.theme
 
 import dev.bwaim.loteria.coroutines.IODispatcher
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 public class ThemeService @Inject public constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val themeRepository: ThemeRepository
+    private val themeRepository: ThemeRepository,
 ) {
     public fun observeTheme(): Flow<Theme> {
         return themeRepository

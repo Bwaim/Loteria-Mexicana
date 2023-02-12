@@ -50,12 +50,12 @@ public fun <T> ListPreferenceWidget(
     modifier: Modifier = Modifier,
     preferences: ListPreferenceValues<T>,
     currentValue: Preference<T>,
-    onValueChanged: (value: Preference<out Any?>) -> Unit
+    onValueChanged: (value: Preference<out Any?>) -> Unit,
 ) {
     ListPreferenceUi(
         modifier = modifier,
         preferences = preferences,
-        currentValue = currentValue
+        currentValue = currentValue,
     ) { action ->
         when (action) {
             is OnValueChanged<*> -> {
@@ -70,7 +70,7 @@ private fun <T> ListPreferenceUi(
     modifier: Modifier = Modifier,
     preferences: ListPreferenceValues<T>,
     currentValue: Preference<T>,
-    actioner: ListPreferenceActioner
+    actioner: ListPreferenceActioner,
 ) {
     var isDialogShown by remember {
         mutableStateOf(false)
@@ -79,13 +79,13 @@ private fun <T> ListPreferenceUi(
         modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 16.dp)
-            .clickable { isDialogShown = true }
+            .clickable { isDialogShown = true },
     ) {
         Text(
-            text = preferences.title
+            text = preferences.title,
         )
         Text(
-            text = currentValue.label
+            text = currentValue.label,
         )
     }
 
@@ -97,7 +97,7 @@ private fun <T> ListPreferenceUi(
             onSelected = { preference ->
                 actioner(OnValueChanged(preference))
                 isDialogShown = false
-            }
+            },
         )
     }
 }
@@ -107,21 +107,20 @@ private fun <T> ListPreferenceDialog(
     preferences: ListPreferenceValues<T>,
     currentValue: Preference<T>,
     onDismiss: () -> Unit,
-    onSelected: (Preference<T>) -> Unit
+    onSelected: (Preference<T>) -> Unit,
 ) {
-
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(
                 text = preferences.title,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
         },
         text = {
             Column(
                 Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
             ) {
                 preferences.entries.forEach { preference ->
                     val isSelected = preference.key == currentValue.label
@@ -135,16 +134,16 @@ private fun <T> ListPreferenceDialog(
                             .fillMaxWidth()
                             .selectable(
                                 selected = isSelected,
-                                onClick = { onSelectedAction() }
-                            )
+                                onClick = { onSelectedAction() },
+                            ),
                     ) {
                         RadioButton(
                             selected = isSelected,
-                            onClick = { onSelectedAction() }
+                            onClick = { onSelectedAction() },
                         )
                         Text(
                             text = preference.value.label,
-                            modifier = Modifier.align(CenterVertically)
+                            modifier = Modifier.align(CenterVertically),
                         )
                     }
                 }
@@ -154,13 +153,13 @@ private fun <T> ListPreferenceDialog(
             TextButton(
                 onClick = onDismiss,
                 modifier = Modifier
-                    .padding(horizontal = 24.dp)
+                    .padding(horizontal = 24.dp),
             ) {
                 Text(
-                    text = stringResource(android.R.string.cancel)
+                    text = stringResource(android.R.string.cancel),
                 )
             }
-        }
+        },
     )
 }
 
@@ -171,17 +170,17 @@ private fun PreviewListPreference() {
     val preferences = mapOf(
         "pref1" to Preference(label = "pref1", value = "pref1Value"),
         "pref2" to currentValue,
-        "pref3" to Preference(label = "pref3", value = "pref3Value")
+        "pref3" to Preference(label = "pref3", value = "pref3Value"),
     )
     val listPreference = ListPreferenceValues(
         title = "MyListPref",
-        entries = preferences
+        entries = preferences,
     )
     LoteriaTheme {
         ListPreferenceWidget(
             preferences = listPreference,
             currentValue = currentValue,
-            onValueChanged = { }
+            onValueChanged = { },
         )
     }
 }
@@ -193,18 +192,18 @@ private fun PreviewAlertListPref() {
     val preferences = mapOf(
         "pref1" to Preference(label = "pref1", value = "pref1Value"),
         "pref2" to currentValue,
-        "pref3" to Preference(label = "pref3", value = "pref3Value")
+        "pref3" to Preference(label = "pref3", value = "pref3Value"),
     )
     val listPreference = ListPreferenceValues(
         title = "MyListPref",
-        entries = preferences
+        entries = preferences,
     )
     LoteriaTheme {
         ListPreferenceDialog(
             preferences = listPreference,
             currentValue = currentValue,
             onDismiss = { },
-            onSelected = { }
+            onSelected = { },
         )
     }
 }

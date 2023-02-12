@@ -26,10 +26,10 @@ import dev.bwaim.loteria.card.set.db.CardSetEntity
 @Database(
     entities = [
         CardEntity::class,
-        CardSetEntity::class
+        CardSetEntity::class,
     ],
     version = 1,
-    exportSchema = true
+    exportSchema = true,
 )
 @VisibleForTesting
 public abstract class LoteriaDatabase : RoomDatabase() {

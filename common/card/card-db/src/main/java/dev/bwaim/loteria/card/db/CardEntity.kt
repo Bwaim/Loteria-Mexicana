@@ -22,15 +22,15 @@ import dev.bwaim.loteria.card.Card
 import dev.bwaim.loteria.localization.CardName
 
 @Entity(
-    tableName = "card"
+    tableName = "card",
 )
 public data class CardEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val name: String
+    val name: String,
 )
 
 public fun CardEntity.asExternalModel(): Card = Card(
     id = id,
-    nameId = CardName.valueOf(name).stringId
+    nameId = CardName.valueOf(name).stringId,
 )

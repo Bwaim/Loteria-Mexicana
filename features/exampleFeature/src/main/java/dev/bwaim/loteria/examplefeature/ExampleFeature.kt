@@ -28,7 +28,7 @@ import dev.bwaim.loteria.compose.theme.LoteriaTheme
 
 @Composable
 public fun ExampleFeature(
-    viewModel: ExampleFeatureViewModel
+    viewModel: ExampleFeatureViewModel,
 ) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
     ExampleFeature(viewState = state)
@@ -36,10 +36,10 @@ public fun ExampleFeature(
 
 @Composable
 public fun ExampleFeature(
-    viewState: ExampleFeatureState
+    viewState: ExampleFeatureState,
 ) {
     Surface(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         Greeting(viewState.name)
     }

@@ -18,11 +18,11 @@ package dev.bwaim.loteria.theme.impl
 
 import androidx.datastore.core.CorruptionException
 import dev.bwaim.loteria.theme.Theme
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Test
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
 
 internal class ThemePreferencesSerializerTest {
 
@@ -34,7 +34,7 @@ internal class ThemePreferencesSerializerTest {
             themePreferencesSerializer.defaultValue,
             themePreferences {
                 // Default value
-            }
+            },
         )
     }
 
@@ -54,7 +54,7 @@ internal class ThemePreferencesSerializerTest {
 
         Assert.assertEquals(
             expectedThemePreferences,
-            actualThemePreferences
+            actualThemePreferences,
         )
     }
 

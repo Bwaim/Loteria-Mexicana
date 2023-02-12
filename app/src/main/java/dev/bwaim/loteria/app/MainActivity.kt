@@ -47,7 +47,7 @@ public class MainActivity : AppCompatActivity() {
         setContent {
             LoteriaApp(
                 shouldUseDarkColors = themeActivityDelegate.shouldUseDarkColors(),
-                windowSizeClass = calculateWindowSizeClass(activity = this)
+                windowSizeClass = calculateWindowSizeClass(activity = this),
             )
         }
     }

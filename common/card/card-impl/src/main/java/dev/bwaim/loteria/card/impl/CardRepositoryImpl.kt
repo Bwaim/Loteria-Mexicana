@@ -21,12 +21,12 @@ import dev.bwaim.loteria.card.CardRepository
 import dev.bwaim.loteria.card.db.CardDao
 import dev.bwaim.loteria.card.db.CardEntity
 import dev.bwaim.loteria.card.db.asExternalModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 internal class CardRepositoryImpl @Inject constructor(
-    private val cardDao: CardDao
+    private val cardDao: CardDao,
 ) : CardRepository {
 
     override fun observeCards(): Flow<List<Card>> =

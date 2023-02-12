@@ -20,14 +20,14 @@ import androidx.annotation.VisibleForTesting
 import androidx.datastore.core.DataStore
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeRepository
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 @VisibleForTesting
 public class ThemeRepositoryImpl @Inject constructor(
-    private val dataStore: DataStore<ThemePreferences>
+    private val dataStore: DataStore<ThemePreferences>,
 ) : ThemeRepository {
 
     override fun observeTheme(): Flow<Theme> {

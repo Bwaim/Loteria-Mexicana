@@ -22,12 +22,12 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import androidx.core.content.getSystemService
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import okhttp3.Interceptor
 import okhttp3.Response
+import javax.inject.Inject
 
 internal class ConnectivityInterceptor @Inject constructor(
-    @ApplicationContext context: Context
+    @ApplicationContext context: Context,
 ) : Interceptor, ConnectivityManager.NetworkCallback() {
     private val connectivityManager = context.getSystemService<ConnectivityManager>()!!
     private var connected = false
@@ -45,7 +45,7 @@ internal class ConnectivityInterceptor @Inject constructor(
 
     override fun onCapabilitiesChanged(
         network: Network,
-        capabilities: NetworkCapabilities
+        capabilities: NetworkCapabilities,
     ) {
         connected = capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }

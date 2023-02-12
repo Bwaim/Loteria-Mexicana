@@ -32,7 +32,7 @@ internal data class BackgroundTheme(
     val primaryGradientColor: Color = Color.Unspecified,
     val secondaryGradientColor: Color = Color.Unspecified,
     val tertiaryGradientColor: Color = Color.Unspecified,
-    val neutralGradientColor: Color = Color.Unspecified
+    val neutralGradientColor: Color = Color.Unspecified,
 )
 
 /**

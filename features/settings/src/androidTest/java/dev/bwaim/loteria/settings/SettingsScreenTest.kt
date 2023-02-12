@@ -21,9 +21,9 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import dev.bwaim.loteria.theme.Theme
-import java.util.Locale
 import org.junit.Rule
 import org.junit.Test
+import java.util.Locale
 
 internal class SettingsScreenTest {
     @get:Rule
@@ -37,18 +37,18 @@ internal class SettingsScreenTest {
                     viewState = SettingsState(
                         appTheme = Theme.LIGHT,
                         themes = themes,
-                        availableLocales = applicationLocales
+                        availableLocales = applicationLocales,
                     ),
                     onBackClick = { },
                     onThemeChanged = { },
-                    onLocaleChange = { }
+                    onLocaleChange = { },
                 )
             }
         }
 
         composeTestRule
             .onNodeWithText(
-                composeTestRule.activity.resources.getString(R.string.settings_app_theme_light)
+                composeTestRule.activity.resources.getString(R.string.settings_app_theme_light),
             )
             .assertExists()
     }
@@ -57,6 +57,6 @@ internal class SettingsScreenTest {
     private val applicationLocales = listOf(
         Locale("es"),
         Locale.ENGLISH,
-        Locale.FRENCH
+        Locale.FRENCH,
     )
 }

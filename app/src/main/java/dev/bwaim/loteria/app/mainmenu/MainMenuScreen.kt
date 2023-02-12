@@ -45,11 +45,11 @@ import dev.bwaim.loteria.compose.TopAppBarTitle
 public fun MainMenuRoute(
     modifier: Modifier = Modifier,
     navigateToSettings: () -> Unit,
-    navigateToDraw: () -> Unit
+    navigateToDraw: () -> Unit,
 ) {
     MainMenu(
         navigateToSettings = navigateToSettings,
-        navigateToDraw = navigateToDraw
+        navigateToDraw = navigateToDraw,
 
     )
 }
@@ -57,7 +57,7 @@ public fun MainMenuRoute(
 @Composable
 private fun MainMenu(
     navigateToSettings: () -> Unit,
-    navigateToDraw: () -> Unit
+    navigateToDraw: () -> Unit,
 ) {
     val scaffoldState = rememberScaffoldState()
 
@@ -65,16 +65,16 @@ private fun MainMenu(
         scaffoldState = scaffoldState,
         topBar = {
             MainMenuAppBar(
-                navigateToSettings = navigateToSettings
+                navigateToSettings = navigateToSettings,
             )
-        }
+        },
     ) { contentPadding ->
         Column(
             Modifier
                 .padding(contentPadding)
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
         ) {
             Button(onClick = { navigateToDraw() }) {
                 Text(text = stringResource(id = R.string.start_menu))
@@ -91,17 +91,17 @@ private fun MainMenuAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.app_name)) },
         modifier = Modifier.windowInsetsPadding(
             WindowInsets
-                .safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+                .safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top),
         ),
         actions = {
             IconButton(
-                onClick = { navigateToSettings() }
+                onClick = { navigateToSettings() },
             ) {
                 Icon(
                     Icons.Filled.Settings,
-                    contentDescription = stringResource(id = R.string.settings)
+                    contentDescription = stringResource(id = R.string.settings),
                 )
             }
-        }
+        },
     )
 }

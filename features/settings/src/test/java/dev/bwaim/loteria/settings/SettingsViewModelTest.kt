@@ -21,7 +21,6 @@ import dev.bwaim.loteria.test.MainDispatcherRule
 import dev.bwaim.loteria.test.repository.TestThemeRepository
 import dev.bwaim.loteria.theme.Theme
 import dev.bwaim.loteria.theme.ThemeService
-import java.util.Locale
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -31,6 +30,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.Locale
 
 @ExperimentalCoroutinesApi
 internal class SettingsViewModelTest {
@@ -48,7 +48,7 @@ internal class SettingsViewModelTest {
     fun setUp() {
         viewModel = SettingsViewModel(
             themeService = themeService,
-            localeService = localeService
+            localeService = localeService,
         )
     }
 
@@ -56,7 +56,7 @@ internal class SettingsViewModelTest {
     fun stateIsInitiallyDefaultValue() = runTest {
         assertEquals(
             SettingsState(),
-            viewModel.viewState.value
+            viewModel.viewState.value,
         )
     }
 
@@ -72,10 +72,10 @@ internal class SettingsViewModelTest {
                 availableLocales = listOf(
                     Locale("es"),
                     Locale.ENGLISH,
-                    Locale.FRENCH
-                )
+                    Locale.FRENCH,
+                ),
             ),
-            viewModel.viewState.value
+            viewModel.viewState.value,
         )
 
         collectJob.cancel()
@@ -88,14 +88,14 @@ internal class SettingsViewModelTest {
 
         assertEquals(
             Theme.DARK,
-            viewModel.viewState.value.appTheme
+            viewModel.viewState.value.appTheme,
         )
 
         viewModel.setTheme(Theme.SYSTEM)
 
         assertEquals(
             Theme.SYSTEM,
-            viewModel.viewState.value.appTheme
+            viewModel.viewState.value.appTheme,
         )
 
         collectJob.cancel()

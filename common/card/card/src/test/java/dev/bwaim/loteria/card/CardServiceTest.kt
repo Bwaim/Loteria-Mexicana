@@ -31,23 +31,25 @@ internal class CardServiceTest {
     private lateinit var subject: CardService
 
     private lateinit var cardRepository: TestCardRepository
+
     @Before
     fun setUp() {
         val ioDispatcher = UnconfinedTestDispatcher()
         cardRepository = TestCardRepository()
         subject = CardService(ioDispatcher, cardRepository)
     }
+
     @Test
     fun cardService_cards_stream_is_backed_by_card_repository() = runTest {
         cardRepository.sendCards(
             listOf(
                 Card(0, 1),
-                Card(1, 2)
-            )
+                Card(1, 2),
+            ),
         )
         Assert.assertEquals(
             cardRepository.observeCards().first(),
-            subject.observeCards().first()
+            subject.observeCards().first(),
         )
     }
 }

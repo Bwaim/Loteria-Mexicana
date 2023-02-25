@@ -11,6 +11,7 @@ import org.gradle.kotlin.dsl.withType
 import org.gradle.testing.jacoco.plugins.JacocoPluginExtension
 import org.gradle.testing.jacoco.plugins.JacocoTaskExtension
 import org.gradle.testing.jacoco.tasks.JacocoReport
+import java.util.Locale
 
 private val coverageExclusions = listOf(
     // Android
@@ -32,25 +33,39 @@ fun Project.configureJacoco(
     val jacocoTestReport = tasks.create("jacocoTestReport")
 
     androidComponentsExtension.onVariants { variant ->
-        val testTaskName = "test${variant.name.capitalize()}UnitTest"
-
-        val reportTask = tasks.register("jacoco${testTaskName.capitalize()}Report", JacocoReport::class) {
-            dependsOn(testTaskName)
-
-            reports {
-                xml.required.set(true)
-                html.required.set(true)
-            }
-
-            classDirectories.setFrom(
-                fileTree("$buildDir/tmp/kotlin-classes/${variant.name}") {
-                    exclude(coverageExclusions)
-                }
-            )
-
-            sourceDirectories.setFrom(files("$projectDir/src/main/java", "$projectDir/src/main/kotlin"))
-            executionData.setFrom(file("$buildDir/jacoco/$testTaskName.exec"))
+        val capitalizedVariantName = variant.name.replaceFirstChar {
+            if (it.isLowerCase())
+                it.titlecase(Locale.getDefault())
+            else
+                it.toString()
         }
+
+        val testTaskName = "test${capitalizedVariantName}UnitTest"
+        val capitalizedTestTaskName = "Test${capitalizedVariantName}UnitTest"
+
+        val reportTask =
+            tasks.register("jacoco${capitalizedTestTaskName}Report", JacocoReport::class) {
+                dependsOn(testTaskName)
+
+                reports {
+                    xml.required.set(true)
+                    html.required.set(true)
+                }
+
+                classDirectories.setFrom(
+                    fileTree("$buildDir/tmp/kotlin-classes/${variant.name}") {
+                        exclude(coverageExclusions)
+                    }
+                )
+
+                sourceDirectories.setFrom(
+                    files(
+                        "$projectDir/src/main/java",
+                        "$projectDir/src/main/kotlin"
+                    )
+                )
+                executionData.setFrom(file("$buildDir/jacoco/$testTaskName.exec"))
+            }
 
         jacocoTestReport.dependsOn(reportTask)
     }
@@ -79,8 +94,18 @@ fun Project.configureJacoco() {
     val jacocoTestReport = tasks.create("jacocoTestKotlinReport")
 
     val testTaskName = "test"
+    val capitalizedTestTaskName = "Test"
+    val capitalizedName = name.replaceFirstChar {
+        if (it.isLowerCase())
+            it.titlecase(Locale.getDefault())
+        else
+            it.toString()
+    }
 
-    val reportTask = tasks.register("jacoco${testTaskName.capitalize()}${name.capitalize()}Report", JacocoReport::class) {
+    val reportTask = tasks.register(
+        "jacoco${capitalizedTestTaskName}${capitalizedName}Report",
+        JacocoReport::class
+    ) {
         dependsOn(testTaskName)
 
         reports {

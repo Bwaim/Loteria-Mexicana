@@ -24,6 +24,10 @@ plugins {
 
 android {
     namespace = "dev.bwaim.loteria.compose"
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {

@@ -23,8 +23,8 @@ fun Project.configureKotlinAndroid(
         }
 
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
             isCoreLibraryDesugaringEnabled = true
         }
 
@@ -45,8 +45,8 @@ fun Project.configureKotlinAndroid(
                 "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
             )
 
-            // Set JVM target to 11
-            jvmTarget = JavaVersion.VERSION_11.toString()
+            // Set JVM target to 17
+            jvmTarget = JavaVersion.VERSION_17.toString()
         }
     }
 

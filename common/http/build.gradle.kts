@@ -25,13 +25,17 @@ plugins {
 android {
     namespace = "dev.bwaim.loteria.http"
 
-    packagingOptions {
+    packaging {
         resources {
             excludes += setOf(
                 "/META-INF/LICENSE.md",
                 "/META-INF/LICENSE-notice.md"
             )
         }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 

@@ -22,6 +22,10 @@ plugins {
 
 android {
     namespace = "dev.bwaim.loteria.imageloading"
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {

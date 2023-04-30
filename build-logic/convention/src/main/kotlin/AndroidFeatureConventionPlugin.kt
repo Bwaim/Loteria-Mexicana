@@ -47,6 +47,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 // TODO : Remove this dependency once we upgrade to Android Studio Dolphin b/228889042
                 // These dependencies are currently necessary to render Compose previews
                 add("debugImplementation", libs.findLibrary("androidx.customview.poolingcontainer").get())
+
+                add("androidTestImplementation", project(":common:test:android"))
             }
         }
     }

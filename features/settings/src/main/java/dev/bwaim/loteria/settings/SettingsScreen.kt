@@ -19,14 +19,8 @@ package dev.bwaim.loteria.settings
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -34,12 +28,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.core.os.LocaleListCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.bwaim.loteria.compose.BackButton
-import dev.bwaim.loteria.compose.TopAppBarTitle
 import dev.bwaim.loteria.compose.design.preference.model.ListPreferenceValues
 import dev.bwaim.loteria.compose.design.preference.model.Preference
 import dev.bwaim.loteria.compose.design.preference.ui.ListPreferenceWidget
 import dev.bwaim.loteria.core.utils.BuildWrapper
+import dev.bwaim.loteria.settings.components.SettingsAppBar
 import dev.bwaim.loteria.theme.Theme
 import java.util.Locale
 
@@ -88,21 +81,6 @@ internal fun SettingsScreen(
             )
         }
     }
-}
-
-@Composable
-private fun SettingsAppBar(
-    onBackClick: () -> Unit,
-) {
-    TopAppBar(
-        title = { TopAppBarTitle(text = stringResource(id = R.string.settings_title)) },
-        modifier = Modifier.windowInsetsPadding(
-            WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top),
-        ),
-        navigationIcon = {
-            BackButton { onBackClick() }
-        },
-    )
 }
 
 @Composable

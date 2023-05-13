@@ -18,18 +18,12 @@ package dev.bwaim.loteria.draw
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -38,8 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
-import dev.bwaim.loteria.compose.BackButton
-import dev.bwaim.loteria.compose.TopAppBarTitle
 
 @Composable
 public fun DrawRoute(
@@ -78,23 +70,6 @@ private fun Draw(
 
 //        CoilImage(viewState.card)
     }
-}
-
-@Composable
-private fun SettingsAppBar(
-    onBackClick: () -> Unit,
-) {
-    TopAppBar(
-        title = { TopAppBarTitle(text = stringResource(id = R.string.draw_title)) },
-        modifier = Modifier.windowInsetsPadding(
-            WindowInsets.safeDrawing.only(
-                WindowInsetsSides.Horizontal + WindowInsetsSides.Top,
-            ),
-        ),
-        navigationIcon = {
-            BackButton { onBackClick() }
-        },
-    )
 }
 
 @Composable

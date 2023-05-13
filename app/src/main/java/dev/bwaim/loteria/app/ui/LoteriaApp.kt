@@ -24,12 +24,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dev.bwaim.loteria.app.navigation.LoteriaNavHost
 import dev.bwaim.loteria.app.navigation.LoteriaTopLevelNavigation
 import dev.bwaim.loteria.compose.component.LoteriaBackground
@@ -41,7 +43,20 @@ internal fun LoteriaApp(
     shouldUseDarkColors: Boolean,
     windowSizeClass: WindowSizeClass,
 ) {
+    val systemUiController = rememberSystemUiController()
+
     LoteriaTheme(darkTheme = shouldUseDarkColors) {
+        // Update the dark content of the system bars to match the theme
+        val colorStatusBar = MaterialTheme.colorScheme.background
+        DisposableEffect(systemUiController, shouldUseDarkColors) {
+            systemUiController.systemBarsDarkContentEnabled = !shouldUseDarkColors
+            systemUiController.setStatusBarColor(
+                color = colorStatusBar,
+                darkIcons = !shouldUseDarkColors,
+            )
+            onDispose {}
+        }
+
         val navController = rememberAnimatedNavController()
         val loteriaTopLevelNavigation = remember(navController) {
             LoteriaTopLevelNavigation(navController)

@@ -18,7 +18,7 @@ package dev.bwaim.loteria.app.ui
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.consumedWindowInsets
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -75,7 +75,7 @@ internal fun LoteriaApp(
                     navController = navController,
                     modifier = Modifier
                         .padding(padding)
-                        .consumedWindowInsets(padding),
+                        .consumeWindowInsets(padding),
                 )
             }
         }

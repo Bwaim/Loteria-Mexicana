@@ -18,13 +18,8 @@ package dev.bwaim.loteria.draw
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
@@ -86,11 +81,6 @@ private fun SettingsAppBar(
 ) {
     TopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.draw_title)) },
-        modifier = Modifier.windowInsetsPadding(
-            WindowInsets.safeDrawing.only(
-                WindowInsetsSides.Horizontal + WindowInsetsSides.Top,
-            ),
-        ),
         navigationIcon = {
             BackButton { onBackClick() }
         },

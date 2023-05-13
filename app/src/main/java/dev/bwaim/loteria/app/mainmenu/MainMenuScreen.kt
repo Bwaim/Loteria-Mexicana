@@ -18,13 +18,8 @@ package dev.bwaim.loteria.app.mainmenu
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -89,10 +84,6 @@ private fun MainMenuAppBar(
 ) {
     TopAppBar(
         title = { TopAppBarTitle(text = stringResource(id = R.string.app_name)) },
-        modifier = Modifier.windowInsetsPadding(
-            WindowInsets
-                .safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top),
-        ),
         actions = {
             IconButton(
                 onClick = { navigateToSettings() },

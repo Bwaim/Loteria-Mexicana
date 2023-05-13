@@ -20,21 +20,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.google.accompanist.insets.ui.TopAppBar
 import dev.bwaim.loteria.app.R
-import dev.bwaim.loteria.compose.TopAppBarTitle
+import dev.bwaim.loteria.app.mainmenu.components.MainMenuAppBar
 
 @Composable
 public fun MainMenuRoute(
@@ -76,23 +71,4 @@ private fun MainMenu(
             }
         }
     }
-}
-
-@Composable
-private fun MainMenuAppBar(
-    navigateToSettings: () -> Unit,
-) {
-    TopAppBar(
-        title = { TopAppBarTitle(text = stringResource(id = R.string.app_name)) },
-        actions = {
-            IconButton(
-                onClick = { navigateToSettings() },
-            ) {
-                Icon(
-                    Icons.Filled.Settings,
-                    contentDescription = stringResource(id = R.string.settings),
-                )
-            }
-        },
-    )
 }

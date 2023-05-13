@@ -24,7 +24,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -33,8 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
-import dev.bwaim.loteria.compose.BackButton
-import dev.bwaim.loteria.compose.TopAppBarTitle
 
 @Composable
 public fun DrawRoute(
@@ -73,18 +70,6 @@ private fun Draw(
 
 //        CoilImage(viewState.card)
     }
-}
-
-@Composable
-private fun SettingsAppBar(
-    onBackClick: () -> Unit,
-) {
-    TopAppBar(
-        title = { TopAppBarTitle(text = stringResource(id = R.string.draw_title)) },
-        navigationIcon = {
-            BackButton { onBackClick() }
-        },
-    )
 }
 
 @Composable

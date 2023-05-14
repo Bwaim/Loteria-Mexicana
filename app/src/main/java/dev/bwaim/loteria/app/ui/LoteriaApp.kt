@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
+@file:OptIn(ExperimentalAnimationApi::class)
+
 package dev.bwaim.loteria.app.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.consumeWindowInsets
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
@@ -37,7 +37,7 @@ import dev.bwaim.loteria.app.navigation.LoteriaTopLevelNavigation
 import dev.bwaim.loteria.compose.component.LoteriaBackground
 import dev.bwaim.loteria.compose.theme.LoteriaTheme
 
-@OptIn(ExperimentalAnimationApi::class, ExperimentalLayoutApi::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 internal fun LoteriaApp(
     shouldUseDarkColors: Boolean,
@@ -47,11 +47,10 @@ internal fun LoteriaApp(
 
     LoteriaTheme(darkTheme = shouldUseDarkColors) {
         // Update the dark content of the system bars to match the theme
-        val colorStatusBar = MaterialTheme.colorScheme.background
         DisposableEffect(systemUiController, shouldUseDarkColors) {
             systemUiController.systemBarsDarkContentEnabled = !shouldUseDarkColors
             systemUiController.setStatusBarColor(
-                color = colorStatusBar,
+                color = Color.Transparent,
                 darkIcons = !shouldUseDarkColors,
             )
             onDispose {}
@@ -70,12 +69,10 @@ internal fun LoteriaApp(
                 modifier = Modifier,
                 containerColor = Color.Transparent,
                 contentColor = MaterialTheme.colorScheme.onBackground,
-            ) { padding ->
+            ) {
+                // Voluntary ignore the padding as the topBar are drawn below in the tree
                 LoteriaNavHost(
                     navController = navController,
-                    modifier = Modifier
-                        .padding(padding)
-                        .consumeWindowInsets(padding),
                 )
             }
         }

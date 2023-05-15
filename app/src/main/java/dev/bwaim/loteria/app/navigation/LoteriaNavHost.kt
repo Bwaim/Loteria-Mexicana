@@ -22,32 +22,36 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
-import dev.bwaim.loteria.app.mainmenu.navigation.MainMenuDestination
-import dev.bwaim.loteria.app.mainmenu.navigation.mainMenuGraph
-import dev.bwaim.loteria.draw.navigation.DrawDestination
-import dev.bwaim.loteria.draw.navigation.drawGraph
-import dev.bwaim.loteria.settings.navigation.SettingsDestination
-import dev.bwaim.loteria.settings.navigation.settingsGraph
+import dev.bwaim.loteria.draw.navigation.DrawRoute
+import dev.bwaim.loteria.draw.navigation.drawScreen
+import dev.bwaim.loteria.home.navigation.HomeRoute
+import dev.bwaim.loteria.home.navigation.homeScreen
+import dev.bwaim.loteria.settings.navigation.SettingsRoute
+import dev.bwaim.loteria.settings.navigation.settingsScreen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 public fun LoteriaNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = MainMenuDestination.route,
+    startDestination: String = HomeRoute.route,
 ) {
     AnimatedNavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier,
     ) {
-        mainMenuGraph(
-            navigateToSettings = { navController.navigate(SettingsDestination.route) },
-            navigateToDraw = { navController.navigate(DrawDestination.route) },
-            nestedGraphs = {
-                settingsGraph(onBackClick = { navController.popBackStack() })
-                drawGraph(onBackClick = { navController.popBackStack() })
-            },
+        homeScreen(
+            navigateToSettings = { navController.navigate(SettingsRoute.route) },
+            navigateToDraw = { navController.navigate(DrawRoute.route) },
+        )
+
+        settingsScreen(
+            onBackClick = { navController.popBackStack() },
+        )
+
+        drawScreen(
+            onBackClick = { navController.popBackStack() },
         )
     }
 }

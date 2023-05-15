@@ -16,22 +16,23 @@
 
 package dev.bwaim.loteria.draw.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavGraphBuilder
-import com.google.accompanist.navigation.animation.composable
 import dev.bwaim.loteria.draw.DrawRoute
-import dev.bwaim.loteria.navigation.LoteriaNavigationDestination
+import dev.bwaim.loteria.navigation.Route
 
-public object DrawDestination : LoteriaNavigationDestination {
-    override val route: String = "draw_route"
-    override val destination: String = "draw_destination"
+private const val drawNavigationRoute: String = "draw"
+
+public object DrawRoute : Route {
+    override val baseRoutePattern: String = drawNavigationRoute
+    override val mandatoryArguments: List<NamedNavArgument> = emptyList()
+    override val optionalArguments: List<NamedNavArgument> = emptyList()
 }
 
-@OptIn(ExperimentalAnimationApi::class)
-public fun NavGraphBuilder.drawGraph(
+public fun NavGraphBuilder.drawScreen(
     onBackClick: () -> Unit,
 ) {
-    composable(route = DrawDestination.route) {
+    DrawRoute.composable {
         DrawRoute(
             onBackClick = onBackClick,
         )

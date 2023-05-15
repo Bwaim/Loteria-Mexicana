@@ -24,6 +24,10 @@ plugins {
 
 android {
     namespace = "dev.bwaim.loteria.draw"
+
+    kotlinOptions {
+        context()
+    }
 }
 
 dependencies {

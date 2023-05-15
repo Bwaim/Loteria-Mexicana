@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright 2022 Dev Bwaim team
+     Copyright 2023 Dev Bwaim team
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,5 +15,11 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Loterie</string>
+    <string name="app_name">Lottery</string>
+
+    <!--  Action Bar  -->
+    <string name="settings">Settings</string>
+
+    <!-- Main Menu -->
+    <string name="start_menu">Start</string>
 </resources>

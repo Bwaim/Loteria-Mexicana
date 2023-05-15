@@ -61,9 +61,9 @@ internal class AppNavigationTest {
     @Before
     fun setUp() {
         composeTestRule.activity.apply {
-            drawButtonLabel = getString(R.string.start_menu)
+            drawButtonLabel = getString(dev.bwaim.loteria.home.R.string.start_menu)
             drawScreenTitle = getString(dev.bwaim.loteria.draw.R.string.draw_title)
-            settingsButtonLabel = getString(R.string.settings)
+            settingsButtonLabel = getString(dev.bwaim.loteria.home.R.string.settings)
             settingsScreenTitle = getString(dev.bwaim.loteria.settings.R.string.settings_title)
             mainScreenTitle = getString(R.string.app_name)
             upArrowDescription = getString(dev.bwaim.loteria.compose.R.string.toolbar_up_description)

@@ -27,8 +27,10 @@ class AndroidTestConventionPlugin : Plugin<Project> {
                 add("androidTestImplementation", project(":common:test:android"))
                 add("androidTestImplementation", libs.findLibrary("kotlin.coroutines.test").get())
                 add("androidTestImplementation", libs.findLibrary("junit-library").get())
+                // force upgrade to 1.1.0 because its required by androidTestImplementation,
+                // and without this statement AGP will silently downgrade to tracing:1.0.0
+                add("implementation", libs.findLibrary("androidx-tracing").get())
             }
         }
     }
-
 }

@@ -15,7 +15,6 @@ STATUS=$?
 if [ $STATUS -ne 0 ]
 then
   ./gradlew spotlessApply
-  STATUS=$?
 fi
 
 # return 1 exit code if running checks fails

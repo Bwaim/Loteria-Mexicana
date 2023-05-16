@@ -22,10 +22,6 @@ plugins {
 
 android {
     namespace = "dev.bwaim.loteria.initializers"
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {

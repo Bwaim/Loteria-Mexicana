@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Dev Bwaim team
+ * Copyright 2023 Dev Bwaim team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,19 +22,17 @@ import androidx.startup.Initializer
 
 internal class StrictModeInitializer : Initializer<Unit> {
     override fun create(context: Context) {
-        if (BuildConfig.DEBUG) {
-            StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .build()
-                .also { StrictMode.setThreadPolicy(it) }
+        StrictMode.ThreadPolicy.Builder()
+            .detectAll()
+            .penaltyLog()
+            .build()
+            .also { StrictMode.setThreadPolicy(it) }
 
-            StrictMode.VmPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .build()
-                .also { StrictMode.setVmPolicy(it) }
-        }
+        StrictMode.VmPolicy.Builder()
+            .detectAll()
+            .penaltyLog()
+            .build()
+            .also { StrictMode.setVmPolicy(it) }
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Dev Bwaim team
+ * Copyright 2023 Dev Bwaim team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,21 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("loteriamexicana.android.library")
-    id("loteriamexicana.android.library.jacoco")
-    id("loteriamexicana.hilt")
-    id("loteriamexicana.spotless")
-}
 
-android {
-    namespace = "dev.bwaim.loteria.imageloading"
-}
+package dev.bwaim.loteria.imageloading.extension
 
-dependencies {
-    implementation(project(":common:coroutines:coroutines"))
+import coil.ImageLoader
 
-    implementation(libs.androidx.core.library)
-
-    api(libs.coil.library)
-}
+public fun ImageLoader.Builder.addLogging(): ImageLoader.Builder = this

@@ -18,13 +18,11 @@ package dev.bwaim.loteria.imageloading
 
 import android.app.ActivityManager
 import android.content.Context
-import android.util.Log
 import androidx.core.content.getSystemService
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
-import coil.util.DebugLogger
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
@@ -32,6 +30,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.bwaim.loteria.coroutines.IODispatcher
+import dev.bwaim.loteria.imageloading.extension.addLogging
 import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
@@ -76,9 +75,7 @@ internal object ImageLoaderModule {
                     val activityManager = getSystemService<ActivityManager>()!!
                     allowRgb565(activityManager.isLowRamDevice)
 
-                    if (BuildConfig.DEBUG) {
-                        logger(DebugLogger(Log.VERBOSE))
-                    }
+                    addLogging()
                 }
                 .build()
         }

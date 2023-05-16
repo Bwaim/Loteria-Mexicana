@@ -14,24 +14,15 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.settings.components
+package dev.bwaim.loteria.compose.extensions
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import dev.bwaim.loteria.compose.component.LoteriaTopAppBarWithBackButton
-import dev.bwaim.loteria.compose.extensions.testTag
-import dev.bwaim.loteria.settings.R.string
-
-public const val SETTINGS_TOP_APP_BAR: String = "SettingsTopAppBar"
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 
 @Composable
-internal fun SettingsAppBar(
-    onBackClick: () -> Unit,
-) {
-    LoteriaTopAppBarWithBackButton(
-        title = stringResource(id = string.settings_title),
-        modifier = Modifier.testTag(SETTINGS_TOP_APP_BAR),
-        backAction = onBackClick,
-    )
-}
+public fun Modifier.testTag(tag: String): Modifier =
+    this.semantics {
+        testTag = tag
+    }

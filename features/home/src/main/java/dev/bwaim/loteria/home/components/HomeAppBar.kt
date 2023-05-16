@@ -19,10 +19,15 @@ package dev.bwaim.loteria.home.components
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import dev.bwaim.loteria.compose.component.ActionButton
 import dev.bwaim.loteria.compose.component.LoteriaTopAppBar
+import dev.bwaim.loteria.compose.extensions.testTag
 import dev.bwaim.loteria.home.R.string
+
+public const val HOME_TOP_APP_BAR: String = "HomeTopAppBar"
+public const val SETTINGS_BUTTON: String = "SettingsButton"
 
 @Composable
 internal fun HomeAppBar(
@@ -32,10 +37,12 @@ internal fun HomeAppBar(
         title = stringResource(id = string.app_name),
         actions = {
             ActionButton(
-                onClick = { navigateToSettings() },
                 imageVector = Filled.Settings,
                 contentDescription = stringResource(id = string.settings),
+                modifier = Modifier.testTag(SETTINGS_BUTTON),
+                onClick = { navigateToSettings() },
             )
         },
+        modifier = Modifier.testTag(HOME_TOP_APP_BAR),
     )
 }

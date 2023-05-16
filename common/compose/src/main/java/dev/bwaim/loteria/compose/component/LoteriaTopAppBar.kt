@@ -31,8 +31,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import dev.bwaim.loteria.compose.LoteriaPreviews
-import dev.bwaim.loteria.compose.R.string
 import dev.bwaim.loteria.compose.extensions.testTag
+import dev.bwaim.loteria.localization.R.string
 
 public const val BACK_BUTTON: String = "BackButton"
 

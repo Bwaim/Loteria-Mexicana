@@ -31,10 +31,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:card:card"))
-    implementation(project(":common:compose"))
-    implementation(project(":common:core"))
-    implementation(project(":common:theme:theme"))
+    implementation(projects.common.card.card)
+    implementation(projects.common.compose)
+    implementation(projects.common.core)
+    implementation(projects.common.localization)
+    implementation(projects.common.theme.theme)
 
     implementation(libs.coil.library)
     implementation(libs.coil.compose)

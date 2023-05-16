@@ -21,7 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import dev.bwaim.loteria.compose.component.LoteriaTopAppBarWithBackButton
 import dev.bwaim.loteria.compose.extensions.testTag
-import dev.bwaim.loteria.settings.R.string
+import dev.bwaim.loteria.localization.R.string
 
 public const val SETTINGS_TOP_APP_BAR: String = "SettingsTopAppBar"
 

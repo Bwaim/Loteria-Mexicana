@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import dev.bwaim.loteria.compose.extensions.testTag
 import dev.bwaim.loteria.home.components.HomeAppBar
+import dev.bwaim.loteria.localization.R.string
 
 public const val START_BUTTON: String = "StartButton"
 
@@ -67,7 +68,7 @@ private fun HomeScreen(
                 onClick = { navigateToDraw() },
                 modifier = Modifier.testTag(START_BUTTON),
             ) {
-                Text(text = stringResource(id = R.string.start_menu))
+                Text(text = stringResource(id = string.start_menu))
             }
         }
     }

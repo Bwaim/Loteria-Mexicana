@@ -24,7 +24,7 @@ import androidx.compose.ui.res.stringResource
 import dev.bwaim.loteria.compose.component.ActionButton
 import dev.bwaim.loteria.compose.component.LoteriaTopAppBar
 import dev.bwaim.loteria.compose.extensions.testTag
-import dev.bwaim.loteria.home.R.string
+import dev.bwaim.loteria.localization.R.string
 
 public const val HOME_TOP_APP_BAR: String = "HomeTopAppBar"
 public const val SETTINGS_BUTTON: String = "SettingsButton"

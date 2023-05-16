@@ -14,27 +14,29 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.settings.navigation
+package dev.bwaim.loteria.home.navigation
 
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavGraphBuilder
+import dev.bwaim.loteria.home.HomeRoute
 import dev.bwaim.loteria.navigation.Route
-import dev.bwaim.loteria.settings.SettingsRoute
 
-private const val settingsNavigationRoute: String = "settings"
+private const val homeNavigationRoute: String = "home"
 
-public object SettingsRoute : Route {
-    override val baseRoutePattern: String = settingsNavigationRoute
+public object HomeRoute : Route {
+    override val baseRoutePattern: String = homeNavigationRoute
     override val mandatoryArguments: List<NamedNavArgument> = emptyList()
     override val optionalArguments: List<NamedNavArgument> = emptyList()
 }
 
-public fun NavGraphBuilder.settingsScreen(
-    onBackClick: () -> Unit,
+public fun NavGraphBuilder.homeScreen(
+    navigateToSettings: () -> Unit,
+    navigateToDraw: () -> Unit,
 ) {
-    SettingsRoute.composable {
-        SettingsRoute(
-            onBackClick = onBackClick,
+    HomeRoute.composable {
+        HomeRoute(
+            navigateToSettings = navigateToSettings,
+            navigateToDraw = navigateToDraw,
         )
     }
 }

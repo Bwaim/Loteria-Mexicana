@@ -18,7 +18,7 @@ package dev.bwaim.loteria.app.navigation
 
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import dev.bwaim.loteria.app.mainmenu.navigation.MainMenuDestination
+import dev.bwaim.loteria.home.navigation.HomeRoute
 
 public class LoteriaTopLevelNavigation(private val navController: NavHostController) {
     public fun navigateTo(destination: TopLevelDestination) {
@@ -47,6 +47,6 @@ public data class TopLevelDestination(
 
 internal val TOP_LEVEL_DESTINATIONS = listOf(
     TopLevelDestination(
-        route = MainMenuDestination.route,
+        route = HomeRoute.route,
     ),
 )

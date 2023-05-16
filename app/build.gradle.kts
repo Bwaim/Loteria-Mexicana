@@ -89,6 +89,7 @@ dependencies {
     implementation(projects.common.theme.themeImpl)
 
     implementation(projects.features.draw)
+    implementation(projects.features.home)
     implementation(projects.features.settings)
 
     implementation(libs.androidx.activity.compose)

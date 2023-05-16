@@ -16,10 +16,4 @@
 -->
 <resources>
     <string name="app_name">Lottery</string>
-
-    <!--  Action Bar  -->
-    <string name="settings">Settings</string>
-
-    <!-- Main Menu -->
-    <string name="start_menu">Start</string>
 </resources>

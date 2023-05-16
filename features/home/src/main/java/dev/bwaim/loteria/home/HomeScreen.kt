@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.app.mainmenu
+package dev.bwaim.loteria.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,29 +27,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import dev.bwaim.loteria.app.R
-import dev.bwaim.loteria.app.mainmenu.components.MainMenuAppBar
+import dev.bwaim.loteria.home.components.HomeAppBar
 
 @Composable
-public fun MainMenuRoute(
+public fun HomeRoute(
     modifier: Modifier = Modifier,
     navigateToSettings: () -> Unit,
     navigateToDraw: () -> Unit,
 ) {
-    MainMenu(
+    HomeScreen(
         navigateToSettings = navigateToSettings,
         navigateToDraw = navigateToDraw,
     )
 }
 
 @Composable
-private fun MainMenu(
+private fun HomeScreen(
     navigateToSettings: () -> Unit,
     navigateToDraw: () -> Unit,
 ) {
     Scaffold(
         topBar = {
-            MainMenuAppBar(
+            HomeAppBar(
                 navigateToSettings = navigateToSettings,
             )
         },

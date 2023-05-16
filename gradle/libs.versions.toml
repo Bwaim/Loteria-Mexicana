@@ -1,5 +1,5 @@
 [versions]
-accompanist = "0.30.1"
+accompanist = "0.31.1-alpha"
 activity = "1.7.1"
 androidCacheFix = "2.7.1"
 androidDesugarJdkLibs = "2.0.3"
@@ -16,9 +16,10 @@ androidxSplashscreen = "1.0.1"
 androidxStartup = "1.2.0-alpha02"
 androidxTest = "1.5.0"
 androidxTestRunner = "1.5.2"
+androidxTracing = "1.1.0"
 benManesVersion = "0.46.0"
 coil = "2.3.0"
-compose = "1.4.3"
+compose = "1.5.0-alpha04"
 composeCompiler = "1.4.6"
 coroutines = "1.6.4"
 dagger = "2.46.1"
@@ -38,7 +39,7 @@ lifecycle = "2.6.1"
 material3 = "1.9.0"
 mockk = "1.13.5"
 mockkAndroid = "1.13.5"
-navigation = "2.5.3"
+navigation = "2.6.0-rc01"
 okhttp = "5.0.0-alpha.11"
 protobuf = "3.23.0"
 protobufKotlin = "3.23.0"
@@ -75,6 +76,7 @@ androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-kt
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 androidx-lifecycle-viewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-navigation-common = { module = "androidx.navigation:navigation-common", version.ref = "navigation" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidxSplashscreen" }
 androidx-startup = { group = "androidx.startup", name = "startup-runtime", version.ref = "androidxStartup" }
@@ -82,6 +84,7 @@ androidx-test-core = { group = "androidx.test", name = "core", version.ref = "an
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-test-rules = { module = "androidx.test:rules", version.ref = "test" }
 androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
+androidx-tracing = { group = "androidx.tracing", name = "tracing", version.ref = "androidxTracing" }
 
 cash-turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 

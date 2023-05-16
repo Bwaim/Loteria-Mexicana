@@ -14,7 +14,27 @@
  * limitations under the License.
  */
 plugins {
-    id("loteriamexicana.kotlin.library")
-    id("loteriamexicana.kotlin.library.jacoco")
+    id("loteriamexicana.android.library")
+    id("loteriamexicana.android.library.compose")
+    id("loteriamexicana.android.library.jacoco")
     id("loteriamexicana.spotless")
+}
+
+android {
+    namespace = "dev.bwaim.loteria.navigation"
+    kotlinOptions {
+        context()
+    }
+}
+
+dependencies {
+
+    implementation(libs.kotlin.stdlib)
+
+    implementation(libs.androidx.navigation.common)
+
+    implementation(libs.compose.animation)
+
+    implementation(libs.accompanist.navigation.animation)
+    implementation(libs.accompanist.navigation.material)
 }

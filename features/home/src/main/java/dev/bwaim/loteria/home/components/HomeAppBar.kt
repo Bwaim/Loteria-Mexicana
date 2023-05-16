@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package dev.bwaim.loteria.app.mainmenu.components
+package dev.bwaim.loteria.home.components
 
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import dev.bwaim.loteria.app.R.string
 import dev.bwaim.loteria.compose.component.ActionButton
 import dev.bwaim.loteria.compose.component.LoteriaTopAppBar
+import dev.bwaim.loteria.home.R.string
 
 @Composable
-internal fun MainMenuAppBar(
+internal fun HomeAppBar(
     navigateToSettings: () -> Unit,
 ) {
     LoteriaTopAppBar(

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Dev Bwaim team
+ * Copyright 2023 Dev Bwaim team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.bwaim.loteria.settings"
+    namespace = "dev.bwaim.loteria.home"
 
     kotlinOptions {
         context()
@@ -35,14 +35,6 @@ android {
 
 dependencies {
     implementation(projects.common.compose)
-    implementation(projects.common.core)
-    implementation(projects.common.locale.locale)
-    implementation(projects.common.theme.theme)
-
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.lifecycle.runtime.compose)
 
     implementation(libs.compose.material3)
-
-    testImplementation(project(":common:test:test"))
 }

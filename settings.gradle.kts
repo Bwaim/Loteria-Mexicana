@@ -42,5 +42,6 @@ include(":common:theme:theme-impl")
 include(":common:ui-resources")
 
 include(":features:draw")
+include(":features:home")
 include(":features:exampleFeature")
 include(":features:settings")

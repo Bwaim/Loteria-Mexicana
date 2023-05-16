@@ -26,20 +26,26 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import dev.bwaim.loteria.compose.LoteriaPreviews
 import dev.bwaim.loteria.compose.R.string
+import dev.bwaim.loteria.compose.extensions.testTag
+
+public const val BACK_BUTTON: String = "BackButton"
 
 @Composable
 public fun LoteriaTopAppBar(
     title: String?,
+    modifier: Modifier = Modifier,
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
 ) {
     TopAppBar(
         title = { title?.let { TopAppBarTitle(text = it) } },
+        modifier = modifier,
         navigationIcon = navigationIcon,
         actions = actions,
     )
@@ -48,11 +54,13 @@ public fun LoteriaTopAppBar(
 @Composable
 public fun LoteriaTopAppBarWithBackButton(
     title: String?,
+    modifier: Modifier = Modifier,
     backAction: () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
 ) {
     LoteriaTopAppBar(
         title = title,
+        modifier = modifier,
         navigationIcon = { BackButton { backAction() } },
         actions = actions,
     )
@@ -60,7 +68,10 @@ public fun LoteriaTopAppBarWithBackButton(
 
 @Composable
 public fun BackButton(onClick: () -> Unit) {
-    IconButton(onClick = onClick) {
+    IconButton(
+        onClick = onClick,
+        modifier = Modifier.testTag(BACK_BUTTON),
+    ) {
         Icon(
             imageVector = Icons.Default.ArrowBack,
             contentDescription = stringResource(string.toolbar_up_description),
@@ -81,10 +92,12 @@ public fun TopAppBarTitle(text: String) {
 public fun ActionButton(
     imageVector: ImageVector,
     contentDescription: String?,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
     IconButton(
         onClick = onClick,
+        modifier = modifier,
     ) {
         Icon(
             imageVector = imageVector,

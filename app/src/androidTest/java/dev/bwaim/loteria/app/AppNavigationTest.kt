@@ -19,14 +19,19 @@ package dev.bwaim.loteria.app
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithContentDescription
-import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoActivityResumedException
 import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import dev.bwaim.loteria.compose.component.BACK_BUTTON
+import dev.bwaim.loteria.draw.DRAW_TOP_APP_BAR
+import dev.bwaim.loteria.home.START_BUTTON
+import dev.bwaim.loteria.home.components.HOME_TOP_APP_BAR
+import dev.bwaim.loteria.home.components.SETTINGS_BUTTON
+import dev.bwaim.loteria.settings.components.SETTINGS_TOP_APP_BAR
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -51,24 +56,8 @@ internal class AppNavigationTest {
     @get:Rule(order = 2)
     val tmpFolder: TemporaryFolder = TemporaryFolder.builder().assureDeletion().build()
 
-    private lateinit var drawButtonLabel: String
-    private lateinit var drawScreenTitle: String
-    private lateinit var settingsButtonLabel: String
-    private lateinit var settingsScreenTitle: String
-    private lateinit var mainScreenTitle: String
-    private lateinit var upArrowDescription: String
-
     @Before
-    fun setUp() {
-        composeTestRule.activity.apply {
-            drawButtonLabel = getString(dev.bwaim.loteria.home.R.string.start_menu)
-            drawScreenTitle = getString(dev.bwaim.loteria.draw.R.string.draw_title)
-            settingsButtonLabel = getString(dev.bwaim.loteria.home.R.string.settings)
-            settingsScreenTitle = getString(dev.bwaim.loteria.settings.R.string.settings_title)
-            mainScreenTitle = getString(R.string.app_name)
-            upArrowDescription = getString(dev.bwaim.loteria.compose.R.string.toolbar_up_description)
-        }
-    }
+    fun setUp() { }
 
     @After
     fun tearDown() {
@@ -77,7 +66,7 @@ internal class AppNavigationTest {
     @Test
     fun firstScreen_isMain() {
         composeTestRule.apply {
-            onNodeWithText(mainScreenTitle).assertIsDisplayed()
+            onNodeWithTag(HOME_TOP_APP_BAR).assertIsDisplayed()
         }
     }
 
@@ -91,7 +80,7 @@ internal class AppNavigationTest {
     @Test
     fun navigation_navigateToPreviousScreen_restoreScreen() {
         composeTestRule.apply {
-            onNodeWithText(mainScreenTitle).assertIsDisplayed()
+            onNodeWithTag(HOME_TOP_APP_BAR).assertIsDisplayed()
             goToSettings()
             goBack()
         }
@@ -119,7 +108,7 @@ internal class AppNavigationTest {
             goToSettings()
             // and then navigates to the Main destination
             goBack()
-            onNodeWithText(mainScreenTitle).assertIsDisplayed()
+            onNodeWithTag(HOME_TOP_APP_BAR).assertIsDisplayed()
             // WHEN the user uses the system button/gesture to go back
             Espresso.pressBack()
             // THEN the app quits
@@ -127,16 +116,16 @@ internal class AppNavigationTest {
     }
 
     private fun goToSettings() {
-        composeTestRule.onNodeWithContentDescription(settingsButtonLabel).performClick()
-        composeTestRule.onNodeWithText(settingsScreenTitle).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(SETTINGS_BUTTON).performClick()
+        composeTestRule.onNodeWithTag(SETTINGS_TOP_APP_BAR).assertIsDisplayed()
     }
 
     private fun goToDraw() {
-        composeTestRule.onNodeWithText(drawButtonLabel).performClick()
-        composeTestRule.onNodeWithText(drawScreenTitle).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(START_BUTTON).performClick()
+        composeTestRule.onNodeWithTag(DRAW_TOP_APP_BAR).assertIsDisplayed()
     }
 
     private fun goBack() {
-        composeTestRule.onNodeWithContentDescription(upArrowDescription).performClick()
+        composeTestRule.onNodeWithTag(BACK_BUTTON).performClick()
     }
 }

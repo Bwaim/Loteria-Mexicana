@@ -17,9 +17,13 @@
 package dev.bwaim.loteria.draw
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import dev.bwaim.loteria.compose.component.LoteriaTopAppBarWithBackButton
+import dev.bwaim.loteria.compose.extensions.testTag
 import dev.bwaim.loteria.draw.R.string
+
+public const val DRAW_TOP_APP_BAR: String = "DrawTopAppBar"
 
 @Composable
 internal fun SettingsAppBar(
@@ -27,6 +31,7 @@ internal fun SettingsAppBar(
 ) {
     LoteriaTopAppBarWithBackButton(
         title = stringResource(id = string.draw_title),
+        modifier = Modifier.testTag(DRAW_TOP_APP_BAR),
         backAction = onBackClick,
     )
 }

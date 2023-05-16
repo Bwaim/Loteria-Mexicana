@@ -27,7 +27,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import dev.bwaim.loteria.compose.extensions.testTag
 import dev.bwaim.loteria.home.components.HomeAppBar
+
+public const val START_BUTTON: String = "StartButton"
 
 @Composable
 public fun HomeRoute(
@@ -60,7 +63,10 @@ private fun HomeScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            Button(onClick = { navigateToDraw() }) {
+            Button(
+                onClick = { navigateToDraw() },
+                modifier = Modifier.testTag(START_BUTTON),
+            ) {
                 Text(text = stringResource(id = R.string.start_menu))
             }
         }

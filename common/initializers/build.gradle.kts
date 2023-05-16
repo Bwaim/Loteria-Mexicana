@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:coroutines:coroutines"))
+    implementation(projects.common.coroutines.coroutines)
 
     implementation(libs.androidx.startup)
 

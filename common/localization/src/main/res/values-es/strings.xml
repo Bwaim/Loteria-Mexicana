@@ -15,6 +15,8 @@
      limitations under the License.
 -->
 <resources>
+    <string name="app_name">Loteria</string>
+
     <string name="card_1">El gallo</string>
     <string name="card_2">El diablito</string>
     <string name="card_3">La dama</string>
@@ -69,4 +71,23 @@
     <string name="card_52">La maceta</string>
     <string name="card_53">El arpa</string>
     <string name="card_54">La rana</string>
+
+    <!-- The description of the button in the toolbar to navigate up -->
+    <string name="toolbar_up_description">Desplazarse hacia arriba</string>
+
+    <!--  Draw screen  -->
+    <string name="draw_title">Baraja</string>
+
+    <!--  Home screen  -->
+    <string name="start_menu">Empezar</string>
+    <string name="settings">Ajustes</string>
+
+    <!--  Settings screen  -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_app_theme_title">"Escoge un tema"</string>
+    <string name="settings_app_theme_light">"Claro"</string>
+    <string name="settings_app_theme_dark">"Oscuro"</string>
+    <string name="settings_app_theme_battery">"Establecido por ahorro de batería"</string>
+    <string name="settings_app_theme_system">"Usar sistema predeterminado"</string>
+    <string name="settings_language_title">"Escoge idioma"</string>
 </resources>

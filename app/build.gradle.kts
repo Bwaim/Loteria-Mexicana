@@ -117,7 +117,7 @@ dependencies {
 
     implementation(libs.coil.library)
 
-    androidTestImplementation(project(":common:test:android"))
+    androidTestImplementation(projects.common.test.android)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.hilt.testing)
     kaptAndroidTest(libs.hilt.compiler)

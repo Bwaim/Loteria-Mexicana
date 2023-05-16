@@ -37,6 +37,7 @@ dependencies {
     implementation(projects.common.compose)
     implementation(projects.common.core)
     implementation(projects.common.locale.locale)
+    implementation(projects.common.localization)
     implementation(projects.common.theme.theme)
 
     implementation(libs.androidx.appcompat)
@@ -44,5 +45,5 @@ dependencies {
 
     implementation(libs.compose.material3)
 
-    testImplementation(project(":common:test:test"))
+    testImplementation(projects.common.test.test)
 }

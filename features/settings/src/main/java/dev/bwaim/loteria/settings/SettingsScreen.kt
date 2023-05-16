@@ -32,6 +32,7 @@ import dev.bwaim.loteria.compose.design.preference.model.ListPreferenceValues
 import dev.bwaim.loteria.compose.design.preference.model.Preference
 import dev.bwaim.loteria.compose.design.preference.ui.ListPreferenceWidget
 import dev.bwaim.loteria.core.utils.BuildWrapper
+import dev.bwaim.loteria.localization.R.string
 import dev.bwaim.loteria.settings.components.SettingsAppBar
 import dev.bwaim.loteria.theme.Theme
 import java.util.Locale
@@ -87,10 +88,10 @@ internal fun SettingsScreen(
 @VisibleForTesting
 public fun Theme.getLabel(): String =
     when (this) {
-        Theme.LIGHT -> stringResource(id = R.string.settings_app_theme_light)
-        Theme.DARK -> stringResource(id = R.string.settings_app_theme_dark)
-        Theme.SYSTEM -> stringResource(id = R.string.settings_app_theme_system)
-        Theme.BATTERY_SAVER -> stringResource(id = R.string.settings_app_theme_battery)
+        Theme.LIGHT -> stringResource(id = string.settings_app_theme_light)
+        Theme.DARK -> stringResource(id = string.settings_app_theme_dark)
+        Theme.SYSTEM -> stringResource(id = string.settings_app_theme_system)
+        Theme.BATTERY_SAVER -> stringResource(id = string.settings_app_theme_battery)
     }
 
 @Composable
@@ -100,7 +101,7 @@ private fun Theme.toPreference(): Preference<Theme> =
 @Composable
 private fun List<Theme>.toThemeListPreferences(): ListPreferenceValues<Theme> =
     ListPreferenceValues(
-        title = stringResource(id = R.string.settings_app_theme_title),
+        title = stringResource(id = string.settings_app_theme_title),
         entries = this
             .filter { it.isAvailable() }
             .associate {
@@ -134,7 +135,7 @@ private fun List<Locale>.toLocaleListPreferences(): ListPreferenceValues<Locale>
         }
     }
     return ListPreferenceValues(
-        title = stringResource(id = R.string.settings_language_title),
+        title = stringResource(id = string.settings_language_title),
         entries = locales,
     )
 }

@@ -35,6 +35,7 @@ android {
 
 dependencies {
     implementation(projects.common.compose)
+    implementation(projects.common.localization)
 
     implementation(libs.compose.material3)
 }

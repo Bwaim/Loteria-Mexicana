@@ -20,6 +20,7 @@ import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import dev.bwaim.loteria.localization.R.string
 import dev.bwaim.loteria.theme.Theme
 import org.junit.Rule
 import org.junit.Test
@@ -48,7 +49,7 @@ internal class SettingsScreenTest {
 
         composeTestRule
             .onNodeWithText(
-                composeTestRule.activity.resources.getString(R.string.settings_app_theme_light),
+                composeTestRule.activity.resources.getString(string.settings_app_theme_light),
             )
             .assertExists()
     }

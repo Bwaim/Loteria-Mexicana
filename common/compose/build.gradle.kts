@@ -27,7 +27,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:theme:theme"))
+    implementation(projects.common.localization)
+    implementation(projects.common.theme.theme)
 
     implementation(libs.androidx.core.library)
     implementation(libs.androidx.lifecycle.runtime)

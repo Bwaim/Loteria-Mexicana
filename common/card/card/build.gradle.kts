@@ -21,7 +21,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":common:coroutines:coroutines"))
+    implementation(projects.common.coroutines.coroutines)
 
     implementation(libs.androidx.annotation)
 

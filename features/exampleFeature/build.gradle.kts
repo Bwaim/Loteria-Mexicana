@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:compose"))
+    implementation(projects.common.compose)
 
     implementation(libs.compose.material3)
 

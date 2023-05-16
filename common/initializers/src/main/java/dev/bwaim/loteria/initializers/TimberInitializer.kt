@@ -19,47 +19,12 @@ package dev.bwaim.loteria.initializers
 import android.content.Context
 import androidx.startup.Initializer
 import timber.log.Timber
-import java.util.regex.Pattern
 
 internal class TimberInitializer : Initializer<Unit> {
     override fun create(context: Context) {
-        val tree = if (BuildConfig.DEBUG) {
-            LoteriaDebugTree()
-        } else {
-            ReleaseTree()
-        }
+        val tree = getTimberTree()
         Timber.plant(tree)
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
-
-    /**
-     * Special version of [Timber.DebugTree] which is tailored for Timber being wrapped
-     * within another class.
-     */
-    private class LoteriaDebugTree : Timber.DebugTree() {
-        override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-            super.log(priority, createClassTag(), message, t)
-        }
-
-        private fun createClassTag(): String {
-            val stackTrace = Throwable().stackTrace
-            check(stackTrace.size > CALL_STACK_INDEX) {
-                "Synthetic stacktrace didn't have enough elements: are you using proguard?"
-            }
-            var tag = stackTrace[CALL_STACK_INDEX].className
-            val m = ANONYMOUS_CLASS.matcher(tag)
-            if (m.find()) {
-                tag = m.replaceAll("")
-            }
-            tag = tag.substring(tag.lastIndexOf('.') + 1)
-            // Tag length limit was removed in API 24.
-            return tag
-        }
-
-        private companion object {
-            const val CALL_STACK_INDEX = 7
-            val ANONYMOUS_CLASS: Pattern = Pattern.compile("(\\$\\d+)+$")
-        }
-    }
 }

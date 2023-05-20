@@ -63,6 +63,17 @@ android {
                 "proguard-rules.pro"
             )
         }
+        create("benchmark") {
+            // Enable all the optimizations from release build through initWith(release).
+            initWith(release)
+            matchingFallbacks.add("release")
+            // Debug key signing is available to everyone.
+            signingConfig = signingConfigs.getByName("debug")
+            // Only use benchmark proguard rules
+            proguardFiles("benchmark-rules.pro")
+            isMinifyEnabled = true
+            applicationIdSuffix = ".benchmark"
+        }
     }
 
     packaging {
@@ -97,6 +108,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.profile.installer)
     implementation(libs.androidx.splashscreen)
 
     implementation(libs.compose.animation)

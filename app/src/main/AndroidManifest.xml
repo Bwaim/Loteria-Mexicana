@@ -29,6 +29,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Loteria.Splash"
         tools:targetApi="tiramisu">
+        <profileable
+            android:shell="true"
+            tools:targetApi="29" />
 
         <activity
             android:name=".MainActivity"
@@ -48,7 +51,6 @@
                 android:name="autoStoreLocales"
                 android:value="true" />
         </service>
-
     </application>
 
 </manifest>

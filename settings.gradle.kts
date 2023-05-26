@@ -19,6 +19,8 @@ rootProject.name = "loteriamexicana"
 
 include(":app")
 
+include(":benchmarks")
+
 include(":common:card:card")
 include(":common:card:card-db")
 include(":common:card:card-impl")

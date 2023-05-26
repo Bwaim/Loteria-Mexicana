@@ -44,19 +44,16 @@ jobs:
           key: gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Check spotless
-        run: ./gradlew spotlessCheck --stacktrace
+        run: ./gradlew spotlessCheck
 
       - name: Check lint
-        run: ./gradlew lintDebug --stacktrace
+        run: ./gradlew lintDebug
 
-      - name: Build debug
-        run: ./gradlew assembleDebug --stacktrace
-
-      - name: Build release
-        run: ./gradlew assembleRelease --stacktrace
+      - name: Build all build type and flavor permutations
+        run: ./gradlew assemble
 
       - name: Run local tests
-        run: ./gradlew jacocoTestReport --stacktrace
+        run: ./gradlew jacocoTestReport
 
       - name: Upload build outputs (APKs)
         uses: actions/upload-artifact@v3
@@ -106,19 +103,22 @@ jobs:
             ~/.gradle/caches/build-cache-*
           key: gradle-${{ hashFiles('checksum.txt') }}
 
+      - name: Build AndroidTest apps
+        run: ./gradlew packageDebug packageDebugAndroidTest --daemon
+
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
           disable-animations: true
-          disk-size: 1500M
-          heap-size: 512M
-          script: ./gradlew connectedAndroidTest
+          disk-size: 6000M
+          heap-size: 600M
+          script: ./gradlew connectedDebugAndroidTest --daemon
 
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: test-reports
-          path: '*/build/reports/androidTests'
+          name: test-reports-${{ matrix.api-level }}
+          path: '**/build/reports/androidTests'

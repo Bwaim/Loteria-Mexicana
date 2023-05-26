@@ -29,6 +29,10 @@ gradlePlugin {
             id = "loteriamexicana.android.application.jacoco"
             implementationClass = "AndroidApplicationJacocoConventionPlugin"
         }
+        register("androidBenchmark") {
+            id = "loteriamexicana.android.benchmark"
+            implementationClass = "BenchmarkConventionPlugin"
+        }
         register("androidLibraryCompose") {
             id = "loteriamexicana.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"

@@ -21,6 +21,41 @@
       "api_key": [
         {
           "current_key": "AIzaSyCRu6jV0wxanvQYKS-4LV7xNpOEXyKCbOk"
+        },
+        {
+          "current_key": "AIzaSyBy4Jstl5sHDlbgtPi4_PZgsInLLqhz79w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642651592936-amjmt2kc48i8r7lqgopg56c5md4muiek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642651592936:android:44e8f5b87e9970a8cc515d",
+        "android_client_info": {
+          "package_name": "dev.bwaim.loteria.benchmark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642651592936-amjmt2kc48i8r7lqgopg56c5md4muiek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRu6jV0wxanvQYKS-4LV7xNpOEXyKCbOk"
+        },
+        {
+          "current_key": "AIzaSyBy4Jstl5sHDlbgtPi4_PZgsInLLqhz79w"
         }
       ],
       "services": {
@@ -50,6 +85,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyCRu6jV0wxanvQYKS-4LV7xNpOEXyKCbOk"
+        },
+        {
+          "current_key": "AIzaSyBy4Jstl5sHDlbgtPi4_PZgsInLLqhz79w"
         }
       ],
       "services": {

@@ -1,7 +1,7 @@
 [versions]
 accompanist = "0.31.1-alpha"
 activity = "1.7.2"
-androidCacheFix = "2.7.1"
+androidCacheFix = "2.7.2"
 androidDesugarJdkLibs = "2.0.3"
 androidGradlePlugin = "8.0.2"
 androidxAnnotation = "1.6.0"
